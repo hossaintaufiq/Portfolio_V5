@@ -26,7 +26,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <motion.article
       className={cn(
-        "group relative flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-md transition-all hover:border-accent/40 hover:shadow-[0_18px_80px_-40px_rgba(34,211,238,0.65)]",
+        "group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0b0f18]/90 backdrop-blur-xl transition-all hover:border-accent/40 hover:shadow-[0_18px_80px_-40px_rgba(34,211,238,0.55)]",
         className,
       )}
       style={{ rotateX: springX, rotateY: springY, transformPerspective: 900 }}
@@ -36,10 +36,21 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         rotateY.set(0);
       }}
     >
-      <span className="pointer-events-none absolute inset-0 rounded-2xl bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-      <div className="mb-4 flex items-start justify-between gap-4">
-        <h3 className="text-xl font-semibold text-foreground">{project.title}</h3>
-        <div className="flex shrink-0 gap-2">
+      <span className="pointer-events-none absolute inset-0 rounded-2xl bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.10),transparent)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+      <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.02] px-4 py-3 sm:px-5">
+        <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+        <span className="ml-2 truncate font-mono text-[10px] uppercase tracking-widest text-muted sm:text-xs">
+          {project.title}.tsx
+        </span>
+      </div>
+
+      <div className="p-5 sm:p-6">
+        <div className="mb-4 flex items-start justify-between gap-4">
+          <h3 className="text-lg font-semibold text-foreground sm:text-xl">{project.title}</h3>
+          <div className="flex shrink-0 gap-2">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
@@ -62,22 +73,32 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
               <GitHubIcon />
             </a>
           )}
+          </div>
         </div>
-      </div>
 
-      <p className="mb-6 flex-1 leading-relaxed text-muted">
-        {project.description}
-      </p>
+        <div className="mb-5 rounded-xl border border-white/10 bg-black/20 p-3">
+          <p className="font-mono text-[11px] leading-relaxed text-muted sm:text-xs">
+            <span className="text-violet-300">const</span>{" "}
+            <span className="text-cyan-300">project</span>{" "}
+            <span className="text-muted">=</span>{" "}
+            <span className="text-foreground">\"{project.title}\"</span>
+            <span className="text-muted">;</span>
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-muted sm:text-[15px]">
+            {project.description}
+          </p>
+        </div>
 
-      <div className="flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-md border border-white/10 bg-background/70 px-2.5 py-1 text-xs font-medium text-muted"
-          >
-            {tag}
-          </span>
-        ))}
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-md border border-white/10 bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide text-muted sm:text-xs"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </motion.article>
   );

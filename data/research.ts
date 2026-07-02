@@ -17,7 +17,7 @@ export const research: ResearchItem[] = [
     status: "Preparing for journal submission",
     description:
       "Preprocessing raw EEG signals, designing CNN/LSTM architectures, and evaluating models for automated seizure detection — targeting clinical-grade accuracy benchmarks.",
-    repoUrl: "https://github.com/hossaintaufiq/AI_and_Machine_Learning",
+    repoUrl: "",
   },
   {
     title: "Multimodal RAG with Cross-Modal Hallucination Reduction",

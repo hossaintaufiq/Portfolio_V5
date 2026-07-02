@@ -70,7 +70,7 @@ export function Header() {
         </a>
 
         <nav
-          className="hidden flex-1 items-center justify-end gap-1 rounded-full border border-white/10 bg-white/[0.03] px-2 py-1.5 backdrop-blur-md md:flex lg:gap-2 lg:px-3"
+          className="hidden w-fit shrink-0 items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] px-2 py-1.5 backdrop-blur-md md:flex lg:gap-2 lg:px-3"
           aria-label="Main"
         >
           {navLinks.map((link) => (

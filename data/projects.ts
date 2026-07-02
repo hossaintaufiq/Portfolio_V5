@@ -40,6 +40,7 @@ export const projects: Project[] = [
       "AWS",
     ],
     liveUrl: "https://justkaaj.com",
+    repoUrl: "https://github.com/hossaintaufiq/JustKaaj",
     featured: true,
   },
 
@@ -56,6 +57,7 @@ export const projects: Project[] = [
       "Telegram API",
       "Tailwind CSS",
     ],
+    repoUrl: "https://github.com/hossaintaufiq/CSE327_Project",
     featured: true,
   },
  
