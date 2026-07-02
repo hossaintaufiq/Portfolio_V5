@@ -45,7 +45,7 @@ export function Skills() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+            <h2 className="font-[family-name:var(--font-brand)] text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
               Technologies orbiting my{" "}
               <span className="bg-gradient-to-r from-foreground via-cyan-300 to-violet-300 bg-clip-text text-transparent">
                 stack

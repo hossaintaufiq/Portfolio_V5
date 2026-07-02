@@ -22,7 +22,7 @@ export function Education() {
             </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+            <h2 className="font-[family-name:var(--font-brand)] text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
               Academic profile and{" "}
               <span className="bg-gradient-to-r from-foreground via-amber-300 to-cyan-300 bg-clip-text text-transparent">
                 scholarly track

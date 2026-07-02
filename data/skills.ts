@@ -40,14 +40,15 @@ export const skillCategories: SkillCategory[] = [
     items: ["PostgreSQL", "MySQL", "MongoDB", "Firebase", "Query Optimisation"],
   },
   {
-    title: "Mobile & Tools",
-    items: [
-      "Kotlin (Android)",
-      "React Native",
-      "Git",
-      "GitHub Actions",
-      "Web Scraping",
-      "Automation",
-    ],
+    title: "Mobile",
+    items: ["Kotlin (Android)", "React Native"],
+  },
+  {
+    title: "Tools",
+    items: ["Git", "GitHub", "GitHub Actions (CI/CD)"],
+  },
+  {
+    title: "Others",
+    items: ["Web Scraping", "Automation", "DSA & CP"],
   },
 ];

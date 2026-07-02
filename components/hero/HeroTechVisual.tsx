@@ -46,13 +46,29 @@ export function HeroTechVisual() {
         </div>
 
         <div className="relative border-b border-white/5 px-4 py-5 text-center sm:px-6 sm:py-6 md:py-8">
+          <div className="pointer-events-none absolute inset-0">
+            <motion.div
+              className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/20 blur-2xl sm:h-28 sm:w-28 md:h-32 md:w-32"
+              animate={{ opacity: [0.35, 0.7, 0.35], scale: [0.95, 1.08, 0.95] }}
+              transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute left-[58%] top-[46%] h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-400/25 blur-2xl sm:h-20 sm:w-20 md:h-24 md:w-24"
+              animate={{ opacity: [0.2, 0.55, 0.2], scale: [0.9, 1.05, 0.9] }}
+              transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut", delay: 0.35 }}
+            />
+          </div>
+
           <motion.div
             animate={{ opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="mx-auto inline-flex h-20 w-20 items-center justify-center rounded-xl border border-cyan-400/30 bg-gradient-to-br from-cyan-500/20 to-violet-500/20 sm:h-24 sm:w-24 md:h-28 md:w-28 lg:h-32 lg:w-32"
+            className="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-xl border border-cyan-400/30 bg-gradient-to-br from-cyan-500/20 to-violet-500/20 sm:h-20 sm:w-20 md:h-24 md:w-24 lg:h-28 lg:w-28"
           >
-            <span className="bg-gradient-to-br from-cyan-200 to-violet-300 bg-clip-text font-mono text-3xl font-bold tracking-tighter text-transparent sm:text-4xl md:text-5xl">
-              HAT
+            <span
+              className="bg-gradient-to-br from-cyan-200 via-white to-violet-300 bg-clip-text text-lg font-bold tracking-tight text-transparent sm:text-xl md:text-2xl"
+              style={{ fontFamily: 'Specimen, "Times New Roman", serif' }}
+            >
+              EPIC Panda
             </span>
           </motion.div>
           <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.25em] text-cyan-300/80 sm:mt-3 sm:text-xs sm:tracking-[0.35em]">

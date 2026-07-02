@@ -26,6 +26,11 @@ const fredoka = Fredoka({
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
+  icons: {
+    icon: "/EpicPandaLogo.png",
+    shortcut: "/EpicPandaLogo.png",
+    apple: "/EpicPandaLogo.png",
+  },
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,
@@ -46,7 +51,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${fredoka.variable} h-full bg-background antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <SmoothScrollProvider />
         <ScrollProgress />
         <PremiumCursor />
         <AuroraBackground />

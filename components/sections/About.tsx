@@ -99,7 +99,7 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="max-w-3xl font-[family-name:var(--font-brand)] text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
             Building products with{" "}
             <span className="bg-gradient-to-r from-foreground via-cyan-300 to-violet-300 bg-clip-text text-transparent">
               engineering depth

@@ -8,6 +8,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
 import { Research } from "@/components/sections/Research";
 import { Skills } from "@/components/sections/Skills";
+import { SkillsList } from "@/components/sections/SkillsList";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <About />
         <Skills />
+        <SkillsList />
         <Projects />
         <Experience />
         <Research />

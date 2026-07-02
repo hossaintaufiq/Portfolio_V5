@@ -13,7 +13,9 @@ const categoryColors: Record<string, string> = {
   Languages: "#34d399",
   Frontend: "#60a5fa",
   Databases: "#fbbf24",
-  "Mobile & Tools": "#f472b6",
+  Mobile: "#f472b6",
+  Tools: "#fb7185",
+  Others: "#f59e0b",
 };
 
 type SkillNodeData = {
@@ -23,30 +25,50 @@ type SkillNodeData = {
   color: string;
 };
 
+const EXTRA_SKILLS = [
+  { skill: "System Design", category: "Backend" },
+  { skill: "API Security", category: "Backend" },
+  { skill: "Distributed Systems", category: "Backend" },
+  { skill: "Prompt Engineering", category: "AI / ML" },
+  { skill: "Model Evaluation", category: "AI / ML" },
+  { skill: "Vector Databases", category: "AI / ML" },
+  { skill: "Unit Testing", category: "Languages" },
+  { skill: "Problem Solving", category: "Languages" },
+  { skill: "Performance Tuning", category: "Frontend" },
+  { skill: "Accessibility", category: "Frontend" },
+  { skill: "Database Indexing", category: "Databases" },
+  { skill: "CI/CD Pipelines", category: "Tools" },
+  { skill: "Docker", category: "Tools" },
+] as const;
+
 function distributeNodes(): SkillNodeData[] {
   const nodes: SkillNodeData[] = [];
-  const total = skillCategories.reduce((acc, cat) => acc + cat.items.length, 0);
+  const merged = [
+    ...skillCategories.flatMap((category) =>
+      category.items.map((skill) => ({ skill, category: category.title })),
+    ),
+    ...EXTRA_SKILLS,
+  ];
+  const total = merged.length;
   let index = 0;
 
-  skillCategories.forEach((category, catIndex) => {
-    category.items.forEach((skill) => {
-      const t = (index + 0.5) / total;
-      const phi = Math.acos(1 - 2 * t);
-      const theta = Math.PI * (1 + Math.sqrt(5)) * index + (catIndex * Math.PI) / 3;
-      const radius = 2.35;
+  merged.forEach(({ skill, category }, catIndex) => {
+    const t = (index + 0.5) / total;
+    const phi = Math.acos(1 - 2 * t);
+    const theta = Math.PI * (1 + Math.sqrt(5)) * index + (catIndex * Math.PI) / 3;
+    const radius = 2.35;
 
-      nodes.push({
-        skill,
-        category: category.title,
-        position: [
-          radius * Math.sin(phi) * Math.cos(theta),
-          radius * Math.cos(phi),
-          radius * Math.sin(phi) * Math.sin(theta),
-        ],
-        color: categoryColors[category.title] ?? "#22d3ee",
-      });
-      index += 1;
+    nodes.push({
+      skill,
+      category,
+      position: [
+        radius * Math.sin(phi) * Math.cos(theta),
+        radius * Math.cos(phi),
+        radius * Math.sin(phi) * Math.sin(theta),
+      ],
+      color: categoryColors[category] ?? "#22d3ee",
     });
+    index += 1;
   });
 
   return nodes;
@@ -110,23 +132,25 @@ function SkillNode({
         />
       </mesh>
 
-      <Html
-        center
-        distanceFactor={5.5}
-        className="pointer-events-none select-none"
-      >
-        <div
-          className="whitespace-nowrap rounded-full border px-1.5 py-0.5 text-[8px] font-medium backdrop-blur-md sm:px-2 sm:py-[2px] sm:text-[9px]"
-          style={{
-            borderColor: `${color}55`,
-            background: "rgba(9,9,11,0.78)",
-            color,
-            boxShadow: hovered ? `0 0 16px ${color}55` : `0 0 8px ${color}22`,
-          }}
+      {(hovered || index % 6 === 0) && (
+        <Html
+          center
+          distanceFactor={5}
+          className="pointer-events-none select-none"
         >
-          {skill}
-        </div>
-      </Html>
+          <div
+            className="whitespace-nowrap rounded-full border px-1.5 py-0.5 text-[8px] font-medium backdrop-blur-md sm:px-2 sm:py-[2px] sm:text-[9px]"
+            style={{
+              borderColor: `${color}55`,
+              background: "rgba(9,9,11,0.78)",
+              color,
+              boxShadow: hovered ? `0 0 16px ${color}55` : `0 0 8px ${color}22`,
+            }}
+          >
+            {skill}
+          </div>
+        </Html>
+      )}
     </group>
   );
 }
@@ -143,28 +167,38 @@ function GlobeScene() {
 
   return (
     <>
-      <ambientLight intensity={0.45} />
-      <pointLight position={[4, 4, 4]} intensity={1.2} color="#a5f3fc" />
-      <pointLight position={[-4, -2, 2]} intensity={0.8} color="#c4b5fd" />
+      <ambientLight intensity={0.7} />
+      <pointLight position={[4, 4, 4]} intensity={1.4} color="#a5f3fc" />
+      <pointLight position={[-4, -2, 2]} intensity={1.05} color="#c4b5fd" />
 
       <group ref={groupRef}>
         <mesh>
-          <sphereGeometry args={[1.85, 56, 56]} />
+          <sphereGeometry args={[2.15, 56, 56]} />
           <meshStandardMaterial
-            color="#111a2a"
+            color="#16243a"
             transparent
-            opacity={0.78}
+            opacity={0.95}
             roughness={0.32}
             metalness={0.42}
             emissive="#0ea5e9"
-            emissiveIntensity={0.08}
+            emissiveIntensity={0.2}
             wireframe={false}
           />
         </mesh>
 
         <mesh>
-          <sphereGeometry args={[1.87, 42, 42]} />
-          <meshBasicMaterial color="#22d3ee" wireframe transparent opacity={0.22} />
+          <sphereGeometry args={[2.05, 32, 32]} />
+          <meshBasicMaterial color="#38bdf8" transparent opacity={0.08} />
+        </mesh>
+
+        <mesh>
+          <sphereGeometry args={[2.16, 42, 42]} />
+          <meshBasicMaterial color="#22d3ee" wireframe transparent opacity={0.3} />
+        </mesh>
+
+        <mesh>
+          <sphereGeometry args={[0.08, 18, 18]} />
+          <meshBasicMaterial color="#67e8f9" />
         </mesh>
 
         <ConnectionLines nodes={nodes} />
@@ -196,14 +230,14 @@ export function SkillsGlobe() {
       <Canvas
         className="relative rounded-2xl"
         dpr={[1, 1.5]}
-        camera={{ position: [0, 0, 5.5], fov: 45 }}
+        camera={{ position: [0, 0, 5.4], fov: 44 }}
         gl={{ antialias: true, alpha: true }}
       >
         <Suspense fallback={null}>
           <GlobeScene />
         </Suspense>
       </Canvas>
-      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_50%_50%,transparent_35%,rgba(9,9,11,0.55)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_50%_50%,transparent_40%,rgba(9,9,11,0.35)_100%)]" />
     </div>
   );
 }
