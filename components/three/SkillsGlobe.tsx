@@ -137,7 +137,7 @@ function GlobeScene() {
 
   useFrame((_, delta) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.12;
+      groupRef.current.rotation.y += delta * 0.085;
     }
   });
 
@@ -149,20 +149,22 @@ function GlobeScene() {
 
       <group ref={groupRef}>
         <mesh>
-          <sphereGeometry args={[1.85, 48, 48]} />
+          <sphereGeometry args={[1.85, 56, 56]} />
           <meshStandardMaterial
-            color="#0c1220"
+            color="#111a2a"
             transparent
-            opacity={0.55}
-            roughness={0.4}
-            metalness={0.3}
+            opacity={0.78}
+            roughness={0.32}
+            metalness={0.42}
+            emissive="#0ea5e9"
+            emissiveIntensity={0.08}
             wireframe={false}
           />
         </mesh>
 
         <mesh>
-          <sphereGeometry args={[1.86, 32, 32]} />
-          <meshBasicMaterial color="#22d3ee" wireframe transparent opacity={0.14} />
+          <sphereGeometry args={[1.87, 42, 42]} />
+          <meshBasicMaterial color="#22d3ee" wireframe transparent opacity={0.22} />
         </mesh>
 
         <ConnectionLines nodes={nodes} />
@@ -175,7 +177,11 @@ function GlobeScene() {
       <OrbitControls
         enableZoom={false}
         enablePan={false}
-        autoRotate={false}
+        autoRotate
+        autoRotateSpeed={0.35}
+        enableDamping
+        dampingFactor={0.08}
+        rotateSpeed={0.55}
         maxPolarAngle={Math.PI * 0.85}
         minPolarAngle={Math.PI * 0.15}
       />
@@ -185,7 +191,7 @@ function GlobeScene() {
 
 export function SkillsGlobe() {
   return (
-    <div className="relative h-[min(58vh,520px)] w-full min-h-[320px] sm:h-[min(62vh,560px)] lg:h-[min(68vh,620px)]">
+    <div className="relative h-[min(66vh,620px)] w-full min-h-[380px] sm:h-[min(70vh,680px)] lg:h-[min(78vh,760px)]">
       <div className="absolute inset-0 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm" />
       <Canvas
         className="relative rounded-2xl"

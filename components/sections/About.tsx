@@ -208,6 +208,19 @@ export function About() {
                 </div>
               </motion.div>
             </Reveal>
+
+            <Reveal delay={0.24}>
+              <Magnetic className="w-full sm:max-w-sm">
+                <a
+                  href={profile.resumeUrl}
+                  download="Hossain_Ahmmed_Taufiq_Resume.pdf"
+                  className="group relative flex h-12 w-full items-center justify-center overflow-hidden rounded-full border border-cyan-300/25 bg-gradient-to-r from-cyan-500/10 via-transparent to-violet-500/10 px-5 text-sm font-semibold text-foreground backdrop-blur-md transition-all hover:border-cyan-300/45 hover:shadow-[0_10px_35px_-18px_rgba(34,211,238,0.7)]"
+                >
+                  <span className="absolute inset-0 bg-[linear-gradient(110deg,transparent,rgba(255,255,255,0.15),transparent)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <span className="relative">Download Resume →</span>
+                </a>
+              </Magnetic>
+            </Reveal>
           </div>
 
           {/* Sidebar */}
@@ -256,17 +269,6 @@ export function About() {
               </a>
             </InfoCard>
 
-            <Reveal delay={0.26}>
-              <Magnetic className="w-full">
-                <a
-                  href={profile.resumeUrl}
-                  download="Hossain_Ahmmed_Taufiq_Resume.pdf"
-                  className="flex h-12 w-full items-center justify-center rounded-full border border-white/15 bg-white/[0.05] text-sm font-semibold text-foreground backdrop-blur-md transition-all hover:border-accent/40 hover:bg-white/10"
-                >
-                  Download Resume →
-                </a>
-              </Magnetic>
-            </Reveal>
           </div>
         </div>
       </div>

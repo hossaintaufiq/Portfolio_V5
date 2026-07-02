@@ -9,7 +9,7 @@ const SkillsGlobe = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex h-[min(58vh,520px)] min-h-[320px] w-full items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03]">
+      <div className="flex h-[min(66vh,620px)] min-h-[380px] w-full items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03]">
         <div className="h-10 w-10 animate-spin rounded-full border-2 border-cyan-400/30 border-t-cyan-400" />
       </div>
     ),
