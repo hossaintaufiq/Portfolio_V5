@@ -1,9 +1,29 @@
-import Image from "next/image";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { About } from "@/components/sections/About";
+import { Contact } from "@/components/sections/Contact";
+import { Education } from "@/components/sections/Education";
+import { Experience } from "@/components/sections/Experience";
+import { Hero } from "@/components/sections/Hero";
+import { Projects } from "@/components/sections/Projects";
+import { Research } from "@/components/sections/Research";
+import { Skills } from "@/components/sections/Skills";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <h1 className="text-4xl font-bold">Hello World</h1>
-    </div>
+    <>
+      <Header />
+      <main className="flex-1">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Research />
+        <Education />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
