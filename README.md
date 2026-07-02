@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Epic Panda 22 — Portfolio Website
 
-## Getting Started
+Premium, interactive portfolio built with **Next.js (App Router)** + **TypeScript** + **Tailwind CSS**.
+The page is designed for fast recruiter scanning (strong hero CTA), then deep dive into skills (3D globe), projects, experience, research, education, and contact.
 
-First, run the development server:
+## Tech Stack
+
+- **Next.js** 16.2.10 (Webpack mode)
+- **React** 19.x
+- **Tailwind CSS** (v4)
+- **Three.js / React Three Fiber / Drei** (Skills 3D globe)
+- **Framer Motion** (micro-interactions, reveals, transitions)
+- **Lenis** (smooth-scroll provider exists; see note below)
+- **GSAP** (installed for future motion work)
+
+## Run / Build
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Note (Windows): scripts use `--webpack` in `package.json` to avoid Turbopack native binary issues.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Page Layout (What you see)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`app/page.tsx` composes the portfolio in this order:
 
-## Learn More
+1. `Header` (fixed, full-width navigation)
+2. `Hero` (headline, rotating tagline, CTAs, tech visual)
+3. `About` (tabbed bio + interactive info cards)
+4. `Skills` (3D globe + legend)
+5. `SkillsList` (neural-network styled skills list right after the globe)
+6. `Projects` (selected featured + additional projects)
+7. `Experience` (road-style timeline, alternating sides)
+8. `Research` (neural network concept + “research node” cards)
+9. `Education` (academic ledger layout with periods, details, certifications, languages)
+10. `Contact` (connection vibe + contact cards + social links)
+11. `Footer`
 
-To learn more about Next.js, take a look at the following resources:
+## Global UI / Providers
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `app/layout.tsx`
+  - Loads brand typography (`Fredoka`) and Geist fonts via `next/font`.
+  - Adds global background effects:
+    - `AuroraBackground` (animated aurora + grid/noise)
+    - `PremiumCursor` (dotted cursor trail on fine pointers)
+    - `ScrollProgress` (fixed top progress bar)
+  - Sets favicon via `metadata.icons` to `public/EpicPandaLogo.png`.
+- `components/background/AuroraBackground.tsx`
+  - Fixed, animated background layer.
+- `components/ui/PremiumCursor.tsx`
+  - Shows a dotted cursor trail on devices that match `(pointer: fine)` and non-reduced motion preferences.
+- `components/ui/ScrollProgress.tsx`
+  - Uses Framer Motion `useScroll` to draw a thin top progress bar.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Smooth scrolling note
 
-## Deploy on Vercel
+`components/providers/SmoothScrollProvider.tsx` (Lenis) exists, but the provider is **not mounted** in `app/layout.tsx` right now. If you want it back, re-add `<SmoothScrollProvider />` in the root layout.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Data-Driven Content
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Most page text is stored under `data/`:
+
+- `data/site.ts`: brand name, nav links, socials, contact info
+- `data/profile.ts`: hero + about sidebar content (name, role, bio, resume url, CGPA, etc.)
+- `data/skills.ts`: skill categories and skill items (used by the globe + legend + list)
+- `data/projects.ts`: projects rendered in the Projects section
+- `data/experience.ts`: experience rendered in the Experience section
+- `data/research.ts`: research cards rendered in the Research section
+- `data/education.ts`: education timeline + certifications + language levels
+
+## Skills: 3D Globe + Node Data
+
+Globe implementation:
+
+- `components/three/SkillsGlobe.tsx`
+  - Reads `skillCategories` from `data/skills.ts`
+  - Places category-colored nodes on a sphere and draws subtle connection lines.
+  - Uses `OrbitControls` for auto-rotation (zoom/pan disabled for stability).
+  - Displays a label for hovered nodes (plus a subset for visibility).
+
+Extra nodes:
+
+- `EXTRA_SKILLS` inside `SkillsGlobe.tsx` adds additional nodes beyond `data/skills.ts`.
+
+If you update `data/skills.ts`, the globe reflects it automatically.
+
+## Favicon
+
+Browser icon is configured in `app/layout.tsx` and points to:
+
+- `public/EpicPandaLogo.png`
+
+## Where to Customize
+
+- Edit site content: `data/*.ts`
+- Change section styling/behavior: `components/sections/*.tsx`
+- Update 3D globe visuals/data mapping: `components/three/SkillsGlobe.tsx`
+- Change global background/cursor/progress: `components/background/*` and `components/ui/*`
