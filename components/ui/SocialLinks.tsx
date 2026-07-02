@@ -7,7 +7,7 @@ type SocialLinksProps = {
 
 export function SocialLinks({ className }: SocialLinksProps) {
   return (
-    <div className={cn("flex flex-wrap gap-4", className)}>
+    <div className={cn("flex flex-wrap gap-3 sm:gap-4", className)}>
       {socialLinks.map((link) => (
         <a
           key={link.label}

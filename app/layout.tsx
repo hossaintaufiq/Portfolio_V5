@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fredoka, Geist, Geist_Mono } from "next/font/google";
+import { AuroraBackground } from "@/components/background/AuroraBackground";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { PremiumCursor } from "@/components/ui/PremiumCursor";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
 
@@ -11,6 +15,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const fredoka = Fredoka({
+  variable: "--font-brand",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -33,9 +43,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full bg-background antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fredoka.variable} h-full bg-background antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background">{children}</body>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <SmoothScrollProvider />
+        <ScrollProgress />
+        <PremiumCursor />
+        <AuroraBackground />
+        {children}
+      </body>
     </html>
   );
 }

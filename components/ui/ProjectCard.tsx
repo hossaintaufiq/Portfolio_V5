@@ -1,5 +1,8 @@
+"use client";
+
 import type { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 type ProjectCardProps = {
   project: Project;
@@ -7,13 +10,33 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, className }: ProjectCardProps) {
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springX = useSpring(rotateX, { stiffness: 190, damping: 20, mass: 0.4 });
+  const springY = useSpring(rotateY, { stiffness: 190, damping: 20, mass: 0.4 });
+
+  const onMove: React.MouseEventHandler<HTMLElement> = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width;
+    const py = (event.clientY - rect.top) / rect.height;
+    rotateY.set((px - 0.5) * 10);
+    rotateX.set((0.5 - py) * 10);
+  };
+
   return (
-    <article
+    <motion.article
       className={cn(
-        "group flex flex-col rounded-2xl border border-border bg-surface p-6 transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5",
+        "group relative flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-md transition-all hover:border-accent/40 hover:shadow-[0_18px_80px_-40px_rgba(34,211,238,0.65)]",
         className,
       )}
+      style={{ rotateX: springX, rotateY: springY, transformPerspective: 900 }}
+      onMouseMove={onMove}
+      onMouseLeave={() => {
+        rotateX.set(0);
+        rotateY.set(0);
+      }}
     >
+      <span className="pointer-events-none absolute inset-0 rounded-2xl bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       <div className="mb-4 flex items-start justify-between gap-4">
         <h3 className="text-xl font-semibold text-foreground">{project.title}</h3>
         <div className="flex shrink-0 gap-2">
@@ -22,7 +45,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted transition-colors hover:text-accent"
+              className="text-muted transition-colors hover:scale-110 hover:text-accent"
               aria-label={`View ${project.title} live`}
             >
               <ExternalLinkIcon />
@@ -33,7 +56,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted transition-colors hover:text-accent"
+              className="text-muted transition-colors hover:scale-110 hover:text-accent"
               aria-label={`View ${project.title} source code`}
             >
               <GitHubIcon />
@@ -50,13 +73,13 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-md bg-background px-2.5 py-1 text-xs font-medium text-muted"
+            className="rounded-md border border-white/10 bg-background/70 px-2.5 py-1 text-xs font-medium text-muted"
           >
             {tag}
           </span>
         ))}
       </div>
-    </article>
+    </motion.article>
   );
 }
 
