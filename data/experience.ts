@@ -10,6 +10,20 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     role: "Full-Stack Developer",
+    company: "ZERODEVS LTD",
+    location: "Bangladesh · Software firm",
+    period: "Jan 2026 — May 2026",
+    description:
+      "Bangladeshi software firm building SaaS products — developed client platforms including SHORBORNO School ERP and other full-stack web applications.",
+    highlights: [
+      "Developed the official website for SHORBORNO, a cloud-based School ERP platform serving 100+ educational institutions across Bangladesh",
+      "Built full-stack SaaS features with Next.js, TypeScript, Node.js, Express.js, and MySQL over RESTful APIs",
+      "Delivered product-facing UI with Framer Motion, focusing on performance, clarity, and institutional onboarding",
+      "Collaborated with the team on delivery timelines, code quality, and iterative SaaS product improvements",
+    ],
+  },
+  {
+    role: "Full-Stack Developer",
     company: "Brooksource",
     location: "Remote · US-based consultancy",
     period: "Apr 2023 — Sep 2024",

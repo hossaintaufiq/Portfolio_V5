@@ -28,9 +28,9 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: "SHORBORNO — Website",
+    title: "SHORBORNO — School ERP Website",
     description:
-      "Full-stack SHORBORNO platform built with Next.js, TypeScript, Node.js, Express.js, and MySQL over RESTful APIs, with Framer Motion for polished UI motion. Delivers a full-featured CRM powered by Gemini 2.5 AI automation for intelligent task management, and extends workflows to a native Android app (Kotlin) and Telegram bot for voice and chat-based CRM interactions.",
+      "Official website for SHORBORNO, a cloud-based School ERP platform serving 100+ educational institutions across Bangladesh. Built with Next.js, TypeScript, Node.js, Express.js, and MySQL over RESTful APIs, with Framer Motion for polished UI — showcasing product features, onboarding flows, and institutional outreach for a nationwide SaaS education platform.",
     tags: [
       "Next.js",
       "Express.js",
@@ -39,9 +39,6 @@ export const projects: Project[] = [
       "Framer Motion",
       "Node.js",
       "REST API",
-      "Gemini 2.5",
-      "Kotlin",
-      "Telegram API",
     ],
     liveUrl: "https://shorborno.cloud/",
     featured: true,
