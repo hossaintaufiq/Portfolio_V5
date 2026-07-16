@@ -3,7 +3,7 @@ export const siteConfig = {
   brandName: "Epic Panda 22",
   title: "Hossain Ahmmed Taufiq — Full-Stack Engineer · Backend & AI/ML Systems",
   description:
-    "Full-Stack Engineer specialising in Node.js, GraphQL & REST APIs, and LLM-integrated backend systems. Founder of Justkaaj. CS student at North South University.",
+    "Full-Stack Engineer specialising in Node.js, GraphQL & REST APIs, and LLM-integrated backend systems. CS student at North South University.",
   url: "https://yourdomain.com",
   email: "hossainahmmedtaufiq22@gmail.com",
   phone: "+880 1728-360834",

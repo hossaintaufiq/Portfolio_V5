@@ -213,7 +213,7 @@ export function About() {
               <Magnetic className="w-full sm:max-w-sm">
                 <a
                   href={profile.resumeUrl}
-                  download="Hossain_Ahmmed_Taufiq_Resume.pdf"
+                  download="Resume.pdf"
                   className="group relative flex h-12 w-full items-center justify-center overflow-hidden rounded-full border border-cyan-300/25 bg-gradient-to-r from-cyan-500/10 via-transparent to-violet-500/10 px-5 text-sm font-semibold text-foreground backdrop-blur-md transition-all hover:border-cyan-300/45 hover:shadow-[0_10px_35px_-18px_rgba(34,211,238,0.7)]"
                 >
                   <span className="absolute inset-0 bg-[linear-gradient(110deg,transparent,rgba(255,255,255,0.15),transparent)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

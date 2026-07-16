@@ -119,7 +119,7 @@ export function Hero() {
               <Magnetic>
                 <a
                   href={profile.resumeUrl}
-                  download="Hossain_Ahmmed_Taufiq_Resume.pdf"
+                  download="Resume.pdf"
                   className="inline-flex h-11 items-center justify-center rounded-full border border-white/20 bg-white/[0.04] px-6 text-sm font-semibold text-foreground backdrop-blur-md transition-all hover:border-accent/40 hover:bg-white/10 sm:h-12 sm:px-7"
                 >
                   Download Resume
@@ -218,7 +218,7 @@ export function Hero() {
                 <Magnetic>
                   <a
                     href={profile.resumeUrl}
-                    download="Hossain_Ahmmed_Taufiq_Resume.pdf"
+                    download="Resume.pdf"
                     className="group flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/[0.03] text-muted shadow-[0_0_0_1px_rgba(148,163,184,0.25)] transition-all hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent"
                     aria-label="Resume"
                   >

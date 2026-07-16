@@ -9,20 +9,6 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
-    role: "Founder & CEO",
-    company: "Justkaaj",
-    location: "Dhaka, Bangladesh",
-    period: "Apr 2024 — Present",
-    description:
-      "Service marketplace startup — architected and launched a full-stack platform with a custom ML recommendation engine.",
-    highlights: [
-      "Scaled to 500+ active users and 200+ service providers in production",
-      "Built secure REST APIs, role-based auth, real-time dashboards, and admin panel — cut manual operations by 40%",
-      "Led a cross-functional team of 4–6 engineers through sprint planning, architecture, code reviews, and roadmap execution",
-      "Secured government funding support and pitched to international investors",
-    ],
-  },
-  {
     role: "Full-Stack Developer",
     company: "Brooksource",
     location: "Remote · US-based consultancy",
