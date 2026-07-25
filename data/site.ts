@@ -4,7 +4,7 @@ export const siteConfig = {
   title:
     "Hossain Ahmmed Taufiq — Software Engineer · Full Stack · Backend · AI Systems",
   description:
-    "Software engineer building enterprise platforms, AI products, and modern web applications. Full-stack, backend, and systems-focused product engineering.",
+    "Software engineer building enterprise platforms, AI products, and modern web applications. Open to full-stack, backend, and AI engineering roles.",
   url: "https://yourdomain.com",
   email: "hossainahmmedtaufiq22@gmail.com",
   phone: "+880 1728-360834",

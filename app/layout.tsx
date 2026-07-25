@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
   icons: {
-    icon: "/EpicPandaLogo.png",
-    shortcut: "/EpicPandaLogo.png",
-    apple: "/EpicPandaLogo.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
   openGraph: {
     title: siteConfig.title,

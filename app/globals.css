@@ -111,36 +111,94 @@ body {
 
 .ambient-navy {
   background:
-    radial-gradient(ellipse 55% 45% at 90% 20%, rgba(56, 189, 248, 0.1), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 90% 20%, rgba(56, 189, 248, 0.18), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 10% 70%, rgba(52, 211, 153, 0.08), transparent 50%),
     linear-gradient(180deg, #070b14 0%, #0a1220 48%, #070b14 100%);
 }
 
 .ambient-violet {
   background:
-    radial-gradient(ellipse 50% 40% at 10% 30%, rgba(139, 124, 246, 0.12), transparent 55%),
-    radial-gradient(ellipse 40% 35% at 90% 70%, rgba(56, 189, 248, 0.08), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 10% 30%, rgba(167, 139, 250, 0.2), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 90% 70%, rgba(56, 189, 248, 0.14), transparent 50%),
+    radial-gradient(ellipse 35% 30% at 50% 100%, rgba(244, 114, 182, 0.08), transparent 50%),
     linear-gradient(180deg, #070b14 0%, #0c1426 50%, #070b14 100%);
 }
 
 .ambient-gold {
   background:
-    radial-gradient(ellipse 45% 40% at 80% 15%, rgba(212, 165, 116, 0.12), transparent 55%),
-    radial-gradient(ellipse 40% 35% at 15% 80%, rgba(56, 189, 248, 0.07), transparent 50%),
+    radial-gradient(ellipse 45% 40% at 80% 15%, rgba(251, 191, 36, 0.14), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 15% 80%, rgba(56, 189, 248, 0.12), transparent 50%),
+    radial-gradient(ellipse 30% 30% at 60% 50%, rgba(249, 115, 22, 0.06), transparent 50%),
     linear-gradient(180deg, #070b14 0%, #10161f 50%, #070b14 100%);
 }
 
 .ambient-slate {
   background:
-    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(148, 163, 184, 0.08), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(125, 211, 252, 0.12), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 85% 80%, rgba(167, 139, 250, 0.12), transparent 50%),
     linear-gradient(180deg, #070b14 0%, #0e1624 55%, #070b14 100%);
 }
 
 .ambient-finale {
   background:
-    radial-gradient(ellipse 70% 55% at 50% 40%, rgba(56, 189, 248, 0.16), transparent 55%),
-    radial-gradient(ellipse 45% 40% at 20% 80%, rgba(139, 124, 246, 0.14), transparent 50%),
-    radial-gradient(ellipse 40% 35% at 85% 20%, rgba(212, 165, 116, 0.12), transparent 50%),
+    radial-gradient(ellipse 70% 55% at 50% 40%, rgba(56, 189, 248, 0.22), transparent 55%),
+    radial-gradient(ellipse 45% 40% at 20% 80%, rgba(167, 139, 250, 0.2), transparent 50%),
+    radial-gradient(ellipse 40% 35% at 85% 20%, rgba(251, 191, 36, 0.16), transparent 50%),
     linear-gradient(180deg, #070b14 0%, #0b1528 55%, #070b14 100%);
+}
+
+.ambient-emerald {
+  background:
+    radial-gradient(ellipse 50% 40% at 20% 20%, rgba(52, 211, 153, 0.14), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 80% 70%, rgba(56, 189, 248, 0.12), transparent 50%),
+    linear-gradient(180deg, #070b14 0%, #0a1614 50%, #070b14 100%);
+}
+
+.panel-glow {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.panel-glow:hover {
+  border-color: rgba(125, 211, 252, 0.35);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 0 0 1px rgba(56, 189, 248, 0.08),
+    0 28px 70px -36px rgba(56, 189, 248, 0.35);
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.float-y {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+.shimmer-border {
+  background: linear-gradient(
+    90deg,
+    rgba(56, 189, 248, 0.15),
+    rgba(167, 139, 250, 0.35),
+    rgba(251, 191, 36, 0.2),
+    rgba(56, 189, 248, 0.15)
+  );
+  background-size: 200% 100%;
+  animation: shimmer 6s linear infinite;
 }
 
 .text-gradient {
@@ -165,5 +223,12 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .float-y,
+  .shimmer-border {
+    animation: none;
   }
 }

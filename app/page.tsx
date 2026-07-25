@@ -1,26 +1,77 @@
+import dynamic from "next/dynamic";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { About } from "@/components/sections/About";
-import { Achievements } from "@/components/sections/Achievements";
-import { Contact } from "@/components/sections/Contact";
-import { Education } from "@/components/sections/Education";
-import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
-import { Philosophy } from "@/components/sections/Philosophy";
 import { Projects } from "@/components/sections/Projects";
-import { Research } from "@/components/sections/Research";
-import { Skills } from "@/components/sections/Skills";
-import { SystemDesign } from "@/components/sections/SystemDesign";
-import { WhatIBuild } from "@/components/sections/WhatIBuild";
+import { Marquee } from "@/components/ui/Marquee";
+
+const WhatIBuild = dynamic(() =>
+  import("@/components/sections/WhatIBuild").then((m) => ({ default: m.WhatIBuild })),
+);
+const Experience = dynamic(() =>
+  import("@/components/sections/Experience").then((m) => ({ default: m.Experience })),
+);
+const Skills = dynamic(() =>
+  import("@/components/sections/Skills").then((m) => ({ default: m.Skills })),
+);
+const Philosophy = dynamic(() =>
+  import("@/components/sections/Philosophy").then((m) => ({ default: m.Philosophy })),
+);
+const SystemDesign = dynamic(() =>
+  import("@/components/sections/SystemDesign").then((m) => ({ default: m.SystemDesign })),
+);
+const Research = dynamic(() =>
+  import("@/components/sections/Research").then((m) => ({ default: m.Research })),
+);
+const Education = dynamic(() =>
+  import("@/components/sections/Education").then((m) => ({ default: m.Education })),
+);
+const Achievements = dynamic(() =>
+  import("@/components/sections/Achievements").then((m) => ({ default: m.Achievements })),
+);
+const Contact = dynamic(() =>
+  import("@/components/sections/Contact").then((m) => ({ default: m.Contact })),
+);
+
+const MARQUEE_A = [
+  "Full-Stack Engineering",
+  "Backend Systems",
+  "Enterprise SaaS",
+  "AI Applications",
+  "System Architecture",
+  "Production Delivery",
+  "Technical Leadership",
+  "Research to Product",
+];
+
+const MARQUEE_B = [
+  "Next.js",
+  "Node.js",
+  "Express",
+  "TypeScript",
+  "Python",
+  "Java",
+  "Kotlin",
+  "PostgreSQL",
+  "MongoDB",
+  "REST APIs",
+  "AWS",
+  "RAG Systems",
+  "Docker",
+  "React",
+];
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 overflow-x-hidden">
         <Hero />
+        <Marquee items={MARQUEE_A} speed={32} />
         <About />
         <WhatIBuild />
+        <Marquee items={MARQUEE_B} speed={28} reverse />
         <Projects />
         <Experience />
         <Skills />
