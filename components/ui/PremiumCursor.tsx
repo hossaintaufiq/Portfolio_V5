@@ -17,14 +17,11 @@ export function PremiumCursor() {
 
     const onMove = (event: MouseEvent) => {
       const next = { x: event.clientX, y: event.clientY };
-      setTrail((prev) => [next, ...prev].slice(0, 8));
+      setTrail((prev) => [next, ...prev].slice(0, 7));
     };
 
     window.addEventListener("mousemove", onMove);
-
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-    };
+    return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
   if (!enabled) return null;
@@ -34,10 +31,10 @@ export function PremiumCursor() {
       {trail.map((point, idx) => (
         <span
           key={`${point.x}-${point.y}-${idx}`}
-          className="absolute h-2 w-2 rounded-full bg-cyan-300/70 blur-[1px]"
+          className="absolute h-1.5 w-1.5 rounded-full bg-sky-300/70"
           style={{
-            transform: `translate(${point.x - 4}px, ${point.y - 4}px)`,
-            opacity: 1 - idx / 10,
+            transform: `translate(${point.x - 3}px, ${point.y - 3}px)`,
+            opacity: 1 - idx / 8,
           }}
         />
       ))}

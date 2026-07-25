@@ -1,102 +1,86 @@
 "use client";
 
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { certifications, education, languages } from "@/data/education";
 
 export function Education() {
   return (
     <section
       id="education"
-      className="relative flex min-h-[100dvh] scroll-mt-20 items-center overflow-hidden border-t border-white/5 py-10 pt-20 sm:py-14"
+      className="ambient-slate relative scroll-mt-24 overflow-hidden py-20 sm:py-28"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[8%] top-1/4 h-64 w-64 rounded-full bg-amber-500/10 blur-3xl" />
-        <div className="absolute bottom-0 right-[12%] h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
-      </div>
+      <div className="section-shell relative">
+        <SectionHeading
+          eyebrow="Education"
+          title="Academic foundation for systems work."
+          description="Computer Science & Engineering with depth across algorithms, systems, and machine learning."
+        />
 
-      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 xl:max-w-7xl">
-        <div className="mb-8 text-center sm:mb-10">
-          <Reveal>
-            <p className="mb-2 text-xs font-medium uppercase tracking-widest text-accent sm:text-sm">
-              Education
-            </p>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="font-[family-name:var(--font-brand)] text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
-              Academic profile and{" "}
-              <span className="bg-gradient-to-r from-foreground via-amber-300 to-cyan-300 bg-clip-text text-transparent">
-                scholarly track
-              </span>
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-              Formal education, certifications, and language proficiency in one academic ledger.
-            </p>
-          </Reveal>
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="space-y-5">
-            {education.map((item, idx) => (
-              <Reveal key={item.degree} delay={idx * 0.08}>
-                <article className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0f1117]/90 p-5 backdrop-blur-xl sm:p-6">
-                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent)]" />
-                  <div className="relative">
-                    <div className="mb-4 flex items-center justify-between border-b border-dashed border-white/15 pb-3">
+        <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="space-y-4">
+            {education.map((item, index) => (
+              <Reveal key={item.degree} delay={index * 0.06}>
+                <article className="panel overflow-hidden">
+                  <div className="border-b border-border bg-gradient-to-r from-sky-400/5 via-transparent to-violet-400/5 px-5 py-4 sm:px-6">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                       <div>
-                        <h3 className="text-base font-semibold text-foreground sm:text-lg">
+                        <h3 className="text-lg font-semibold text-foreground sm:text-xl">
                           {item.degree}
                         </h3>
-                        <p className="mt-1 text-sm text-accent">{item.institution}</p>
+                        <p className="mt-1 text-sm text-sky-100/80">
+                          {item.institution}
+                        </p>
                       </div>
-                      <time className="rounded-full border border-white/15 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-muted sm:text-xs">
+                      <time className="font-mono text-xs text-muted">
                         {item.period}
                       </time>
                     </div>
-                    <ul className="space-y-2.5">
-                      {item.details.map((detail) => (
-                        <li key={detail} className="flex gap-3 text-sm leading-relaxed text-muted">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
-                          {detail}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
+                  <ul className="space-y-2.5 p-5 sm:p-6">
+                    {item.details.map((detail) => (
+                      <li
+                        key={detail}
+                        className="flex gap-3 text-sm leading-relaxed text-muted"
+                      >
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-sky-300" />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
                 </article>
               </Reveal>
             ))}
           </div>
 
-          <div className="space-y-5">
-            <Reveal delay={0.12}>
-              <div className="rounded-2xl border border-white/10 bg-[#0f1117]/90 p-5 backdrop-blur-xl sm:p-6">
-                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-accent">
+          <div className="space-y-4">
+            <Reveal delay={0.08}>
+              <div className="panel p-5 sm:p-6">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-accent-gold">
                   Certifications
                 </p>
-                <ul className="space-y-2">
+                <ul className="mt-4 space-y-2.5">
                   {certifications.map((cert) => (
-                    <li key={cert} className="flex gap-2 text-sm text-muted">
-                      <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+                    <li key={cert} className="text-sm text-muted">
                       {cert}
                     </li>
                   ))}
                 </ul>
               </div>
             </Reveal>
-
-            <Reveal delay={0.16}>
-              <div className="rounded-2xl border border-white/10 bg-[#0f1117]/90 p-5 backdrop-blur-xl sm:p-6">
-                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-accent">
+            <Reveal delay={0.12}>
+              <div className="panel p-5 sm:p-6">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-sky-300/80">
                   Languages
                 </p>
-                <ul className="space-y-3">
+                <ul className="mt-4 space-y-3">
                   {languages.map((lang) => (
-                    <li key={lang.name} className="flex items-center justify-between text-sm">
-                      <span className="font-medium text-foreground">{lang.name}</span>
-                      <span className="rounded-full border border-white/15 bg-white/[0.04] px-2 py-0.5 text-xs text-muted">
-                        {lang.level}
-                      </span>
+                    <li
+                      key={lang.name}
+                      className="flex items-center justify-between gap-3 text-sm"
+                    >
+                      <span className="text-foreground">{lang.name}</span>
+                      <span className="text-muted">{lang.level}</span>
                     </li>
                   ))}
                 </ul>

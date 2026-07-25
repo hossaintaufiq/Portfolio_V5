@@ -4,43 +4,30 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-white/10 bg-[#090c12] py-8 sm:py-10">
-      <div className="pointer-events-none absolute -top-12 left-0 right-0 h-12 overflow-hidden sm:-top-14 sm:h-14">
-        <svg
-          className="h-full w-full"
-          viewBox="0 0 1440 160"
-          preserveAspectRatio="none"
-          aria-hidden
-        >
-          <path
-            d="M0,96 C180,50 320,140 520,110 C710,82 840,18 1030,44 C1210,68 1320,138 1440,106 L1440,160 L0,160 Z"
-            fill="rgba(9,12,18,0.95)"
-          />
-          <path
-            d="M0,98 C190,55 330,142 525,112 C720,84 845,20 1035,46 C1215,70 1325,140 1440,108"
-            fill="none"
-            stroke="rgba(34,211,238,0.25)"
-            strokeWidth="2"
-          />
-        </svg>
-      </div>
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 xl:max-w-7xl">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative border-t border-border bg-[#060a12] py-14 sm:py-16">
+      <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
+      <div className="section-shell">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="font-[family-name:var(--font-brand)] text-xl font-semibold tracking-wide text-foreground">
-              {siteConfig.brandName}
+            <p className="font-[family-name:var(--font-brand)] text-xl font-semibold tracking-wide">
+              <span className="text-gradient">{siteConfig.brandName}</span>
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-muted">
-              Full-Stack Engineer · Backend & AI/ML Systems
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
+              Software Engineer · Full Stack · Backend · AI Systems
             </p>
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-accent">Quick Links</p>
-            <ul className="mt-3 space-y-2">
-              {navLinks.slice(0, 4).map((link) => (
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-sky-300/80">
+              Navigate
+            </p>
+            <ul className="mt-4 space-y-2">
+              {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-sm text-muted transition-colors hover:text-foreground">
+                  <a
+                    href={link.href}
+                    className="text-sm text-muted transition-colors hover:text-foreground"
+                  >
                     {link.label}
                   </a>
                 </li>
@@ -49,24 +36,35 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-accent">Contact</p>
-            <ul className="mt-3 space-y-2 text-sm text-muted">
-              <li>{siteConfig.email}</li>
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent-gold">
+              Contact
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-muted">
+              <li>
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="transition-colors hover:text-foreground"
+                >
+                  {siteConfig.email}
+                </a>
+              </li>
               <li>{siteConfig.phone}</li>
               <li>{siteConfig.location}</li>
             </ul>
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-accent">Social</p>
-            <div className="mt-3 flex flex-wrap gap-4">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-violet-300/80">
+              Social
+            </p>
+            <div className="mt-4 flex flex-wrap gap-4">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-muted transition-colors hover:text-accent"
+                  className="text-sm text-muted transition-colors hover:text-foreground"
                 >
                   {link.label}
                 </a>
@@ -75,9 +73,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-2 border-t border-white/10 pt-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} {siteConfig.name}. All rights reserved.</p>
-          <p>Built with Next.js, TypeScript, Tailwind CSS</p>
+        <div className="mt-12 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {year} {siteConfig.name}. All rights reserved.
+          </p>
+          <p>Built with Next.js, TypeScript, Tailwind CSS, Framer Motion</p>
         </div>
       </div>
     </footer>

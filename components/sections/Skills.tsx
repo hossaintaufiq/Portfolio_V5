@@ -1,85 +1,161 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { skillCategories } from "@/data/skills";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
-const SkillsGlobe = dynamic(
-  () => import("@/components/three/SkillsGlobe").then((m) => m.SkillsGlobe),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex h-[min(66vh,620px)] min-h-[380px] w-full items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03]">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-cyan-400/30 border-t-cyan-400" />
-      </div>
-    ),
-  },
-);
-
-const legendColors: Record<string, string> = {
-  Backend: "#22d3ee",
-  "AI / ML": "#a78bfa",
-  Languages: "#34d399",
-  Frontend: "#60a5fa",
-  Databases: "#fbbf24",
-  "Mobile & Tools": "#f472b6",
-};
+const NODE_COLORS = [
+  "#38bdf8",
+  "#8b7cf6",
+  "#d4a574",
+  "#34d399",
+  "#f472b6",
+  "#60a5fa",
+];
 
 export function Skills() {
+  const [active, setActive] = useState(0);
+  const activeCategory = skillCategories[active];
+
   return (
     <section
       id="skills"
-      className="relative flex min-h-[100dvh] scroll-mt-20 items-center overflow-hidden border-y border-white/5 py-6 pt-20 sm:py-8"
+      className="ambient-slate relative scroll-mt-24 overflow-hidden py-20 sm:py-28"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/3 left-1/4 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />
-        <div className="absolute right-1/4 bottom-1/4 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
-      </div>
+      <div className="section-shell relative">
+        <SectionHeading
+          eyebrow="Tech ecosystem"
+          title="A connected engineering stack."
+          description="Interactive categories with a living network — not a flat badge dump."
+          tone="cool"
+        />
 
-      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 xl:max-w-7xl">
-        <div className="mb-6 text-center sm:mb-8">
+        <div className="grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
           <Reveal>
-            <p className="mb-2 text-xs font-medium uppercase tracking-widest text-accent sm:text-sm">
-              Skills
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.05}>
-            <h2 className="font-[family-name:var(--font-brand)] text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
-              Technologies orbiting my{" "}
-              <span className="bg-gradient-to-r from-foreground via-cyan-300 to-violet-300 bg-clip-text text-transparent">
-                stack
-              </span>
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <p className="mx-auto mt-2 max-w-xl text-sm text-muted sm:text-base">
-              Hover nodes to explore — drag to rotate the globe.
-            </p>
-          </Reveal>
-        </div>
-
-        <Reveal delay={0.12}>
-          <SkillsGlobe />
-        </Reveal>
-
-        <Reveal delay={0.16}>
-          <div className="mt-5 flex flex-wrap justify-center gap-2 sm:mt-6 sm:gap-3">
-            {skillCategories.map((category) => (
-              <span
-                key={category.title}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[10px] font-medium text-muted sm:px-3 sm:py-1.5 sm:text-xs"
+            <div className="panel relative min-h-[320px] overflow-hidden p-4 sm:min-h-[420px] sm:p-6">
+              <div className="absolute inset-0 grid-fade opacity-30" />
+              <svg
+                viewBox="0 0 500 420"
+                className="relative h-full w-full"
+                aria-hidden
               >
-                <span
-                  className="h-2 w-2 rounded-full"
-                  style={{ background: legendColors[category.title] }}
+                <defs>
+                  <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.35" />
+                    <stop offset="100%" stopColor="#38bdf8" stopOpacity="0" />
+                  </radialGradient>
+                </defs>
+                {skillCategories.map((category, index) => {
+                  const angle =
+                    (index / skillCategories.length) * Math.PI * 2 - Math.PI / 2;
+                  const x = 250 + Math.cos(angle) * 145;
+                  const y = 210 + Math.sin(angle) * 130;
+                  const color = NODE_COLORS[index % NODE_COLORS.length];
+                  const isActive = index === active;
+
+                  return (
+                    <g key={category.title}>
+                      <line
+                        x1="250"
+                        y1="210"
+                        x2={x}
+                        y2={y}
+                        stroke={color}
+                        strokeOpacity={isActive ? 0.55 : 0.18}
+                        strokeWidth={isActive ? 1.8 : 1}
+                      />
+                      <circle cx="250" cy="210" r="34" fill="url(#nodeGlow)" />
+                      <motion.circle
+                        cx={x}
+                        cy={y}
+                        r={isActive ? 18 : 12}
+                        fill={color}
+                        fillOpacity={isActive ? 0.95 : 0.55}
+                        className="cursor-pointer"
+                        onClick={() => setActive(index)}
+                        whileHover={{ scale: 1.15 }}
+                      />
+                      <text
+                        x={x}
+                        y={y + 32}
+                        textAnchor="middle"
+                        fill={isActive ? "#e2e8f0" : "#94a3b8"}
+                        fontSize="11"
+                        className="cursor-pointer"
+                        onClick={() => setActive(index)}
+                      >
+                        {category.title}
+                      </text>
+                    </g>
+                  );
+                })}
+                <circle
+                  cx="250"
+                  cy="210"
+                  r="22"
+                  fill="#0b1528"
+                  stroke="rgba(56,189,248,0.45)"
                 />
-                {category.title}
-              </span>
-            ))}
+                <text
+                  x="250"
+                  y="214"
+                  textAnchor="middle"
+                  fill="#bae6fd"
+                  fontSize="10"
+                >
+                  Stack
+                </text>
+              </svg>
+            </div>
+          </Reveal>
+
+          <div>
+            <Reveal>
+              <div className="mb-4 flex flex-wrap gap-2">
+                {skillCategories.map((category, index) => (
+                  <button
+                    key={category.title}
+                    type="button"
+                    onClick={() => setActive(index)}
+                    className={`rounded-full border px-3 py-1.5 text-xs transition-colors ${
+                      active === index
+                        ? "border-sky-300/40 bg-sky-400/10 text-sky-100"
+                        : "border-border text-muted hover:text-foreground"
+                    }`}
+                  >
+                    {category.title}
+                  </button>
+                ))}
+              </div>
+            </Reveal>
+
+            <Reveal key={activeCategory.title}>
+              <div className="panel p-6">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-accent-gold">
+                  Category
+                </p>
+                <h3 className="mt-2 text-2xl font-semibold text-foreground">
+                  {activeCategory.title}
+                </h3>
+                <div className="mt-6 flex flex-wrap gap-2.5">
+                  {activeCategory.items.map((skill, i) => (
+                    <motion.span
+                      key={skill}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.04 }}
+                      className="rounded-full border border-border bg-black/25 px-3.5 py-2 text-sm text-slate-200"
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

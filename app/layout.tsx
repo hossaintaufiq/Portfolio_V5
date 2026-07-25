@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Fredoka, Geist, Geist_Mono } from "next/font/google";
-import { AuroraBackground } from "@/components/background/AuroraBackground";
-import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { PremiumCursor } from "@/components/ui/PremiumCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { siteConfig } from "@/data/site";
@@ -38,6 +36,11 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
 };
 
 export default function RootLayout({
@@ -53,7 +56,6 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ScrollProgress />
         <PremiumCursor />
-        <AuroraBackground />
         {children}
       </body>
     </html>

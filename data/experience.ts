@@ -9,6 +9,23 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
+    role: "Co-Founder & Software Engineer",
+    company: "Softlligence Technologies",
+    location: "Bangladesh",
+    period: "Present",
+    description:
+      "Software company focused on enterprise software and AI solutions — leading architecture, product engineering, and client delivery.",
+    highlights: [
+      "Co-founded a software company focused on enterprise software and AI solutions",
+      "Lead system architecture and technical strategy",
+      "Design scalable software systems for ERP, CRM, CMS, and custom business platforms",
+      "Manage client communication and technical discovery",
+      "Lead product planning and software engineering decisions",
+      "Develop production-ready web applications and backend services",
+      "Build AI-powered automation and business intelligence solutions",
+    ],
+  },
+  {
     role: "Full-Stack Developer",
     company: "ZERODEVS LTD",
     location: "Bangladesh · Software firm",

@@ -2,65 +2,45 @@
 
 import type { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 
 type ProjectCardProps = {
   project: Project;
   className?: string;
+  featured?: boolean;
 };
 
-export function ProjectCard({ project, className }: ProjectCardProps) {
-  const rotateX = useMotionValue(0);
-  const rotateY = useMotionValue(0);
-  const springX = useSpring(rotateX, { stiffness: 190, damping: 20, mass: 0.4 });
-  const springY = useSpring(rotateY, { stiffness: 190, damping: 20, mass: 0.4 });
-
-  const onMove: React.MouseEventHandler<HTMLElement> = (event) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const px = (event.clientX - rect.left) / rect.width;
-    const py = (event.clientY - rect.top) / rect.height;
-    rotateY.set((px - 0.5) * 10);
-    rotateX.set((0.5 - py) * 10);
-  };
-
+export function ProjectCard({
+  project,
+  className,
+  featured = false,
+}: ProjectCardProps) {
   return (
     <motion.article
+      whileHover={{ y: -3 }}
+      transition={{ type: "spring", stiffness: 320, damping: 24 }}
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0b0f18]/90 backdrop-blur-xl transition-all hover:border-accent/40 hover:shadow-[0_18px_80px_-40px_rgba(34,211,238,0.55)]",
+        "group surface-card overflow-hidden transition-colors hover:border-border-strong",
+        featured && "md:col-span-2",
         className,
       )}
-      style={{ rotateX: springX, rotateY: springY, transformPerspective: 900 }}
-      onMouseMove={onMove}
-      onMouseLeave={() => {
-        rotateX.set(0);
-        rotateY.set(0);
-      }}
     >
-      <span className="pointer-events-none absolute inset-0 rounded-2xl bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.10),transparent)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-      <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.02] px-4 py-3 sm:px-5">
-        <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
-        <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
-        <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
-        <span className="ml-2 truncate font-mono text-[10px] uppercase tracking-widest text-muted sm:text-xs">
-          {project.title}.tsx
-        </span>
-      </div>
-
-      <div className="p-5 sm:p-6">
-        <div className="mb-4 flex items-start justify-between gap-4">
-          <h3 className="text-lg font-semibold text-foreground sm:text-xl">{project.title}</h3>
-          <div className="flex shrink-0 gap-2">
+      <div className="flex items-center justify-between gap-3 border-b border-border px-5 py-3.5">
+        <div className="flex min-w-0 items-center gap-3">
+          <span className="truncate text-xs font-medium uppercase tracking-[0.16em] text-muted">
+            {project.category}
+          </span>
+        </div>
+        <div className="flex shrink-0 items-center gap-2">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted transition-colors hover:scale-110 hover:text-accent"
+              className="rounded-md px-2 py-1 text-xs text-muted transition-colors hover:bg-white/[0.04] hover:text-foreground"
               aria-label={`View ${project.title} live`}
-              title="Live site"
             >
-              <ExternalLinkIcon />
+              Live
             </a>
           )}
           {project.personal_host && (
@@ -68,11 +48,10 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
               href={project.personal_host}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted transition-colors hover:scale-110 hover:text-accent"
+              className="rounded-md px-2 py-1 text-xs text-muted transition-colors hover:bg-white/[0.04] hover:text-foreground"
               aria-label={`View ${project.title} personal host`}
-              title="Personal host"
             >
-              <PersonalHostIcon />
+              Host
             </a>
           )}
           {project.repoUrl && (
@@ -80,34 +59,42 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted transition-colors hover:scale-110 hover:text-accent"
+              className="rounded-md px-2 py-1 text-xs text-muted transition-colors hover:bg-white/[0.04] hover:text-foreground"
               aria-label={`View ${project.title} source code`}
-              title="GitHub"
             >
-              <GitHubIcon />
+              GitHub
             </a>
           )}
+        </div>
+      </div>
+
+      <div className={cn("p-5 sm:p-6", featured && "sm:p-8")}>
+        <h3
+          className={cn(
+            "font-semibold tracking-tight text-foreground",
+            featured ? "text-2xl sm:text-3xl" : "text-lg sm:text-xl",
+          )}
+        >
+          {project.title}
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-muted sm:text-[15px]">
+          {project.description}
+        </p>
+
+        {featured && (
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <MetaBlock label="Problem" text={project.problem} />
+            <MetaBlock label="Solution" text={project.solution} />
+            <MetaBlock label="Architecture" text={project.architecture} />
+            <MetaBlock label="Outcome" text={project.outcome} />
           </div>
-        </div>
+        )}
 
-        <div className="mb-5 rounded-xl border border-white/10 bg-black/20 p-3">
-          <p className="font-mono text-[11px] leading-relaxed text-muted sm:text-xs">
-            <span className="text-violet-300">const</span>{" "}
-            <span className="text-cyan-300">project</span>{" "}
-            <span className="text-muted">=</span>{" "}
-            <span className="text-foreground">\"{project.title}\"</span>
-            <span className="text-muted">;</span>
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-muted sm:text-[15px]">
-            {project.description}
-          </p>
-        </div>
-
-        <div className="flex flex-wrap gap-2">
+        <div className="mt-5 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-md border border-white/10 bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide text-muted sm:text-xs"
+              className="rounded-full border border-border bg-white/[0.02] px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide text-muted"
             >
               {tag}
             </span>
@@ -118,59 +105,13 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
   );
 }
 
-function ExternalLinkIcon() {
+function MetaBlock({ label, text }: { label: string; text: string }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-      <polyline points="15 3 21 3 21 9" />
-      <line x1="10" y1="14" x2="21" y2="3" />
-    </svg>
-  );
-}
-
-function PersonalHostIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <rect x="2" y="3" width="20" height="14" rx="2" />
-      <line x1="8" y1="21" x2="16" y2="21" />
-      <line x1="12" y1="17" x2="12" y2="21" />
-    </svg>
-  );
-}
-
-function GitHubIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-    >
-      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-    </svg>
+    <div className="rounded-xl border border-border bg-black/20 p-4">
+      <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted">
+        {label}
+      </p>
+      <p className="mt-2 text-sm leading-relaxed text-foreground/85">{text}</p>
+    </div>
   );
 }

@@ -7,20 +7,14 @@ import { useEffect, useState } from "react";
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("#about");
-  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      if (y > lastY && y > 140 && !menuOpen) setHidden(true);
-      if (y < lastY) setHidden(false);
-      lastY = y;
-    };
-
+    const onScroll = () => setScrolled(window.scrollY > 18);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [menuOpen]);
+  }, []);
 
   useEffect(() => {
     const sections = navLinks
@@ -30,9 +24,7 @@ export function Header() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveHash(`#${entry.target.id}`);
-          }
+          if (entry.isIntersecting) setActiveHash(`#${entry.target.id}`);
         });
       },
       { rootMargin: "-40% 0px -45% 0px", threshold: 0.01 },
@@ -52,34 +44,34 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 w-full bg-transparent transition-transform duration-300",
-        hidden ? "-translate-y-full" : "translate-y-0",
+        "fixed inset-x-0 top-0 z-50 transition-[background,border-color,backdrop-filter] duration-300",
+        scrolled || menuOpen
+          ? "border-b border-border bg-[#070b14]/80 backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent",
       )}
     >
-      <div className="flex w-full min-h-16 items-center justify-between gap-4 px-4 py-3 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+      <div className="section-shell flex min-h-16 items-center justify-between gap-4 py-3">
         <a
           href="#"
-          className="font-[family-name:var(--font-brand)] text-xl font-semibold tracking-wide sm:text-2xl md:text-[1.75rem]"
+          className="font-[family-name:var(--font-brand)] text-lg font-semibold tracking-wide sm:text-xl"
         >
-          <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-300 bg-clip-text text-transparent">
+          <span className="text-gradient">
             {siteConfig.brandName.replace(/\s+\d+$/, "")}
           </span>
-          <span className="ml-1.5 font-[family-name:var(--font-geist-mono)] text-lg font-bold text-amber-300 sm:text-xl">
+          <span className="ml-1.5 font-mono text-sm font-medium text-accent-gold">
             {siteConfig.brandName.match(/\d+$/)?.[0] ?? ""}
           </span>
         </a>
 
-        <nav
-          className="hidden w-fit shrink-0 items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] px-2 py-1.5 backdrop-blur-md md:flex lg:gap-2 lg:px-3"
-          aria-label="Main"
-        >
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               className={cn(
-                "rounded-full px-3 py-1.5 text-sm font-medium tracking-wide text-muted transition-colors hover:text-foreground lg:px-4",
-                activeHash === link.href && "bg-white/10 text-foreground",
+                "rounded-full px-3 py-1.5 text-sm text-muted transition-colors hover:text-foreground",
+                activeHash === link.href &&
+                  "bg-white/[0.06] text-foreground shadow-[0_0_0_1px_rgba(148,163,184,0.12)]",
               )}
             >
               {link.label}
@@ -87,28 +79,54 @@ export function Header() {
           ))}
         </nav>
 
+        <a
+          href="#contact"
+          className="hidden rounded-full border border-sky-400/25 bg-sky-400/10 px-4 py-2 text-sm font-medium text-sky-100 transition-colors hover:border-sky-300/40 hover:bg-sky-400/15 md:inline-flex"
+        >
+          Let's talk
+        </a>
+
         <button
           type="button"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border text-foreground md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-foreground lg:hidden"
           onClick={() => setMenuOpen((open) => !open)}
           aria-expanded={menuOpen}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
-          {menuOpen ? <CloseIcon /> : <MenuIcon />}
+          <span className="flex flex-col gap-1.5">
+            <span
+              className={cn(
+                "block h-px w-4 bg-foreground transition-transform",
+                menuOpen && "translate-y-[3.5px] rotate-45",
+              )}
+            />
+            <span
+              className={cn(
+                "block h-px w-4 bg-foreground transition-opacity",
+                menuOpen && "opacity-0",
+              )}
+            />
+            <span
+              className={cn(
+                "block h-px w-4 bg-foreground transition-transform",
+                menuOpen && "-translate-y-[3.5px] -rotate-45",
+              )}
+            />
+          </span>
         </button>
       </div>
 
       {menuOpen && (
         <nav
-          className="w-full border-t border-border bg-background/95 px-4 py-4 backdrop-blur-md sm:px-6 md:hidden"
+          className="border-t border-border bg-[#070b14]/95 px-5 py-4 lg:hidden"
           aria-label="Mobile"
         >
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="block text-sm font-medium tracking-wide text-muted transition-colors hover:text-foreground"
+                  className="block rounded-lg px-3 py-2.5 text-sm text-muted hover:bg-white/[0.04] hover:text-foreground"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
@@ -119,43 +137,5 @@ export function Header() {
         </nav>
       )}
     </header>
-  );
-}
-
-function MenuIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden
-    >
-      <line x1="4" y1="8" x2="20" y2="8" />
-      <line x1="4" y1="16" x2="20" y2="16" />
-    </svg>
-  );
-}
-
-function CloseIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden
-    >
-      <line x1="6" y1="6" x2="18" y2="18" />
-      <line x1="18" y1="6" x2="6" y2="18" />
-    </svg>
   );
 }

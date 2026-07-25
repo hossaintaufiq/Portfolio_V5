@@ -1,15 +1,27 @@
 export const profile = {
   name: "Hossain Ahmmed Taufiq",
-  role: "Full-Stack Engineer · Backend & AI/ML Systems",
+  role: "Software Engineer · Full Stack · Backend · AI",
+  headline: "Engineering software that organizations rely on.",
   tagline:
-    "Building scalable backends, LLM-integrated systems, and production apps that ship ahead of schedule.",
+    "Building enterprise platforms, AI products and modern web applications with a focus on scalability, architecture and user experience.",
+  supporting:
+    "From research to production-grade software.",
   bio: [
-    "Full-Stack Engineer with 3+ years of experience specialising in Node.js, GraphQL & REST API design, and LLM-integrated backend systems. I build production-ready web applications with Next.js, Node.js, PostgreSQL, and AI/ML integrations.",
-    "Final-year CS student at North South University (CGPA 3.79/4.0) with two active deep-learning research projects. I have a proven track record of shipping production features ahead of schedule, reducing system failures, and leading engineering teams.",
+    "Software engineer focused on full-stack product engineering, backend systems, and AI applications. I design and ship production platforms — ERPs, CRMs, business dashboards, and AI-powered tools — with an emphasis on architecture, maintainability, and user experience.",
+    "I work across discovery, system design, implementation, and delivery. My practice spans enterprise SaaS, research-backed ML systems, and developer-facing products — always oriented toward software that scales and stays operable in production.",
   ],
-  availability: "Open to backend & full-stack engineering roles",
+  focusAreas: [
+    "Software Engineering",
+    "Enterprise Systems",
+    "AI Applications",
+    "System Architecture",
+    "Product Engineering",
+    "Research",
+  ],
+  availability:
+    "Available for senior software engineering, technical consulting, and enterprise / AI builds",
   education: "B.Sc. Computer Science & Engineering",
   university: "North South University, Dhaka",
-  cgpa: "3.79 / 4.00",
+  cgpa: "3.83 / 4.00",
   resumeUrl: "/Resume.pdf",
 } as const;

@@ -7,12 +7,12 @@ export type EducationItem = {
 
 export const education: EducationItem[] = [
   {
-    degree: "B.Sc. Computer Science & Engineering",
-    institution: "North South University, Dhaka",
+    degree: "Bachelor of Science in Computer Science and Engineering",
+    institution: "North South University",
     period: "Expected Dec 2026",
     details: [
-      "CGPA: 3.79 / 4.00",
-      "Relevant coursework: DSA, Machine Learning, AI, Software Engineering, Database Systems, Web Development",
+      "CGPA: 3.83 / 4.00",
+      "Relevant coursework: Data Structures, Algorithms, Software Engineering, Database Systems, Machine Learning, Artificial Intelligence, Operating Systems, Computer Networks",
       "Research: Epilepsy Detection (Deep Learning) · Multimodal RAG (NLP/CV)",
     ],
   },
@@ -22,8 +22,8 @@ export const education: EducationItem[] = [
     period: "Jan 2020",
     details: [
       "GPA: 5.00 / 5.00",
-      "Volunteered in organizing and hosting college events.",
-      "Developed teamwork, leadership, public speaking, and event management skills.",
+      "Volunteered in organizing and hosting college events",
+      "Developed teamwork, leadership, public speaking, and event management skills",
     ],
   },
 ];

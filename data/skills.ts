@@ -5,50 +5,52 @@ export type SkillCategory = {
 
 export const skillCategories: SkillCategory[] = [
   {
+    title: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "Tailwind", "HTML", "CSS"],
+  },
+  {
     title: "Backend",
     items: [
       "Node.js",
-      "Express.js",
-      "Django",
+      "Express",
       "REST APIs",
-      "GraphQL",
-      "Microservices",
+      "Authentication",
+      "MongoDB",
+      "PostgreSQL",
+      "Redis",
+      "Prisma",
     ],
   },
   {
-    title: "AI / ML",
+    title: "Cloud",
+    items: ["Docker", "GitHub Actions", "Vercel", "AWS", "Firebase"],
+  },
+  {
+    title: "AI",
     items: [
-      "Scikit-learn",
+      "OpenAI",
+      "LangChain",
+      "RAG",
+      "Python",
+      "Machine Learning",
       "TensorFlow",
-      "Deep Learning",
-      "RAG Systems",
-      "EEG Processing",
-      "Gemini API",
-      "LLM Integration",
+      "PyTorch",
     ],
   },
   {
-    title: "Languages",
-    items: ["Python", "JavaScript", "TypeScript", "Java", "C++", "SQL", "C#", ".NET"],
+    title: "System Design",
+    items: [
+      "Architecture",
+      "Caching",
+      "API Design",
+      "Authentication",
+      "Database Design",
+      "Scalability",
+      "CI/CD",
+    ],
   },
   {
-    title: "Frontend",
-    items: ["React.js", "Next.js", "Tailwind CSS", "HTML5", "CSS3"],
-  },
-  {
-    title: "Databases",
-    items: ["PostgreSQL", "MySQL", "MongoDB", "Firebase", "Query Optimisation"],
-  },
-  {
-    title: "Mobile",
-    items: ["Kotlin (Android)", "React Native"],
-  },
-  {
-    title: "Tools",
-    items: ["Git", "GitHub", "GitHub Actions (CI/CD)"],
-  },
-  {
-    title: "Others",
-    items: ["Web Scraping", "Automation", "DSA & CP"],
+    title: "Developer Tools",
+    items: ["Git", "GitHub", "Postman", "VS Code", "Figma", "Linux"],
   },
 ];
