@@ -83,7 +83,7 @@ export function Header() {
           href="#contact"
           className="hidden rounded-full border border-sky-400/25 bg-sky-400/10 px-4 py-2 text-sm font-medium text-sky-100 transition-colors hover:border-sky-300/40 hover:bg-sky-400/15 md:inline-flex"
         >
-          Let's talk
+          Let&apos;s talk
         </a>
 
         <button

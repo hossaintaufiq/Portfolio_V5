@@ -1,6 +1,5 @@
 "use client";
 
-import { Reveal } from "@/components/ui/Reveal";
 import { SectionFrame } from "@/components/ui/SectionFrame";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";

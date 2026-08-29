@@ -10,6 +10,7 @@ import { PipelineMock } from "@/components/ui/Visuals";
 import { profile } from "@/data/profile";
 import { siteConfig } from "@/data/site";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const STATS = [
   { label: "Years building", value: 3, suffix: "+" },
@@ -23,12 +24,28 @@ export function About() {
     <SectionFrame id="about" tone="sky">
       <div className="grid items-start gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
         <div>
-          <SectionHeading
-            eyebrow="About"
-            title="I build reliable software for real users and real operations."
-            description="Full-stack engineer with backend depth, AI experience, and a bias toward clean architecture and shipping."
-            tone="cool"
-          />
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center mb-8">
+            <motion.div
+              whileHover={{ scale: 1.04, rotate: 1 }}
+              className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.02] shadow-xl shadow-sky-500/5 sm:h-32 sm:w-32"
+            >
+              <Image
+                src="/profile_pic.jpg"
+                alt={profile.name}
+                fill
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+            <div className="min-w-0 flex-1">
+              <SectionHeading
+                eyebrow="About"
+                title="I build reliable software for real users and real operations."
+                description="Full-stack engineer with backend depth, AI experience, and a bias toward clean architecture and shipping."
+                tone="cool"
+              />
+            </div>
+          </div>
 
           <div className="space-y-5">
             {profile.bio.map((paragraph, index) => (

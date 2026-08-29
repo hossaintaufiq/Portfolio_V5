@@ -94,11 +94,10 @@ function ConnectionLines({ nodes }: { nodes: SkillNodeData[] }) {
 
 function SkillNode({
   skill,
-  category,
   position,
   color,
   index,
-}: SkillNodeData & { index: number }) {
+}: Omit<SkillNodeData, "category"> & { index: number }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
