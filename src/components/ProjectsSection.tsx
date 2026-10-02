@@ -5,21 +5,17 @@ import { PORTFOLIO_DATA, Project } from "@/data/portfolioData";
 import {
   ExternalLink,
   Lock,
-  Layers,
-  Sparkles,
-  Server,
   ArrowUpRight,
-  Database,
-  Cpu,
-  CheckCircle2,
   SlidersHorizontal,
+  Server,
+  Database,
+  Layers,
 } from "lucide-react";
 import { GithubIcon } from "./Icons";
 
 export default function ProjectsSection() {
   const { projects } = PORTFOLIO_DATA;
   const [filter, setFilter] = useState("ALL");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const categories = ["ALL", "ENTERPRISE", "SAAS", "EDUCATION", "DESKTOP / ML"];
 
@@ -35,6 +31,14 @@ export default function ProjectsSection() {
   const featuredProject = projects.find((p) => p.featured) || projects[0];
   const secondaryProjects = projects.filter((p) => !p.featured);
 
+  const getCategoryBadgeColor = (cat: string) => {
+    if (cat.includes("ENTERPRISE")) return "bg-[#FF5500] text-black";
+    if (cat.includes("SAAS")) return "bg-[#2563EB] text-white";
+    if (cat.includes("EDUCATION")) return "bg-[#10B981] text-black";
+    if (cat.includes("DESKTOP")) return "bg-black text-white";
+    return "bg-black text-white";
+  };
+
   return (
     <section
       id="projects"
@@ -45,22 +49,22 @@ export default function ProjectsSection() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-4 border-b-2 border-black">
           <div>
             <div className="inline-block px-3 py-1 bg-black text-white font-mono text-xs font-bold uppercase mb-2 brutal-shadow-sm">
-              03 / SELECTED PROJECTS
+              03 / CASE STUDY ARCHIVE
             </div>
             <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-black">
               PRODUCTION SYSTEMS
             </h2>
           </div>
           <div className="font-mono text-xs text-neutral-600">
-            [ENTERPRISE ERP · MULTI-TENANT ARCHITECTURE · WEB PLATFORMS]
+            [ENTERPRISE ERP · MULTI-TENANT SAAS · DESKTOP / AI ARCHITECTURE]
           </div>
         </div>
 
-        {/* Filter Bar */}
+        {/* Filter Tabs */}
         <div className="flex flex-wrap items-center gap-2 mb-8">
           <span className="font-mono text-xs font-bold text-neutral-500 mr-2 flex items-center gap-1.5">
             <SlidersHorizontal className="w-3.5 h-3.5" />
-            FILTER:
+            FILTER CATEGORY:
           </span>
           {categories.map((cat) => (
             <button
@@ -69,7 +73,7 @@ export default function ProjectsSection() {
               className={`px-3 py-1 font-mono text-xs font-bold border-2 border-black transition-all ${
                 filter === cat
                   ? "bg-black text-white brutal-shadow-sm"
-                  : "bg-white text-black hover:bg-neutral-100"
+                  : "bg-white text-black hover:bg-neutral-100 hover:text-[#2563EB]"
               }`}
             >
               {cat}
@@ -81,37 +85,50 @@ export default function ProjectsSection() {
         {(filter === "ALL" || filter === "ENTERPRISE" || filter === "SAAS") && (
           <div className="mb-10">
             <div className="bg-white border-2 sm:border-[4px] border-black brutal-shadow-xl p-6 sm:p-8 lg:p-10 relative group">
-              {/* Featured Badge */}
+              {/* Featured Header */}
               <div className="flex flex-wrap items-center justify-between gap-2 mb-6 pb-4 border-b-2 border-black">
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 bg-[#FF5500] text-black font-mono font-black text-xs uppercase border-2 border-black">
-                    ★ FEATURED FLAGSHIP ARCHITECTURE
+                  <span className="px-3 py-1 bg-[#FF5500] text-black font-mono font-black text-xs uppercase border border-black">
+                    ★ FEATURED FLAGSHIP CASE STUDY
                   </span>
-                  <span className="px-2.5 py-0.5 bg-black text-white font-mono text-xs font-bold">
-                    {featuredProject.category}
+                  <span className={`px-2.5 py-0.5 font-mono text-xs font-bold ${getCategoryBadgeColor(featuredProject.category)}`}>
+                    [{featuredProject.category}]
                   </span>
                 </div>
                 <div className="font-mono text-xs font-bold text-neutral-500">
-                  PROJECT_ID: PRJ-01 // PRODUCTION
+                  PROJECT_ID: PRJ-01 // PRODUCTION ARCHITECTURE
                 </div>
               </div>
 
-              {/* Title & Description */}
+              {/* Title & Description with Editorial Highlights */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <div className="lg:col-span-7 space-y-4">
                   <h3 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-black leading-tight">
                     {featuredProject.title}
                   </h3>
                   <div className="font-mono text-sm font-bold text-[#2563EB]">
-                    {featuredProject.subtitle}
+                    ↳ {featuredProject.subtitle}
                   </div>
                   <p className="text-base sm:text-lg text-neutral-800 leading-relaxed font-normal">
-                    {featuredProject.description}
+                    Built a{" "}
+                    <span className="font-bold text-black bg-[#FF5500]/10 border-b-2 border-[#FF5500] px-0.5">
+                      multi-tenant
+                    </span>{" "}
+                    Manufacturing{" "}
+                    <span className="font-bold text-[#2563EB]">
+                      ERP/MIS platform
+                    </span>{" "}
+                    for industrial businesses with modular architecture and{" "}
+                    <span className="font-semibold text-black">
+                      enterprise-grade scalability
+                    </span>
+                    .
                   </p>
+
                   {featuredProject.additional && (
                     <div className="p-4 bg-[#F4F4F0] border-2 border-black font-mono text-xs sm:text-sm text-neutral-900 leading-relaxed">
                       <span className="text-[#FF5500] font-bold block mb-1 uppercase">
-                        // ARCHITECTURAL DESIGN:
+                        // ARCHITECTURAL DESIGN & TENANT ISOLATION:
                       </span>
                       {featuredProject.additional}
                     </div>
@@ -174,13 +191,13 @@ export default function ProjectsSection() {
 
                     <div className="mb-6">
                       <div className="text-neutral-400 text-[10px] uppercase mb-2">
-                        TECHNOLOGY STACK
+                        KEY TECHNOLOGIES
                       </div>
                       <div className="flex flex-wrap gap-1.5">
                         {featuredProject.technologies.map((tech, tIdx) => (
                           <span
                             key={tIdx}
-                            className="px-2 py-0.5 bg-[#1C1D20] text-[#F4F4F0] border border-neutral-700 text-[11px] font-bold"
+                            className="px-2 py-0.5 bg-[#1C1D20] text-[#10B981] border border-neutral-700 text-[11px] font-bold"
                           >
                             {tech}
                           </span>
@@ -230,37 +247,82 @@ export default function ProjectsSection() {
             .map((project, idx) => (
               <div
                 key={project.id}
-                className="bg-white border-2 sm:border-[3px] border-black brutal-shadow-md p-6 sm:p-7 flex flex-col justify-between relative group hover:border-[#FF5500] transition-all"
+                className="bg-white border-2 sm:border-[3px] border-black brutal-shadow-md p-6 sm:p-7 flex flex-col justify-between relative group hover:border-[#2563EB] transition-all"
               >
                 <div>
                   {/* Card Header */}
                   <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b-2 border-black">
-                    <span className="px-2 py-0.5 bg-black text-white font-mono text-xs font-bold uppercase">
-                      {project.category}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-xs font-bold text-neutral-400">
+                        0{idx + 2}
+                      </span>
+                      <span className={`px-2 py-0.5 font-mono text-xs font-bold uppercase ${getCategoryBadgeColor(project.category)}`}>
+                        [{project.category}]
+                      </span>
+                    </div>
                     {project.status && (
-                      <span className="px-2 py-0.5 bg-[#10B981] text-black font-mono text-xs font-bold">
-                        STATUS: {project.status}
+                      <span className="px-2 py-0.5 bg-[#10B981] text-black font-mono text-[11px] font-bold">
+                        {project.status}
                       </span>
                     )}
                     {project.type && (
-                      <span className="px-2 py-0.5 bg-[#2563EB] text-white font-mono text-xs font-bold">
-                        TYPE: {project.type}
+                      <span className="px-2 py-0.5 bg-[#2563EB] text-white font-mono text-[11px] font-bold">
+                        {project.type}
                       </span>
                     )}
                   </div>
 
                   {/* Title & Subtitle */}
-                  <h3 className="font-display font-black text-2xl uppercase tracking-tight text-black mb-1 group-hover:text-[#FF5500] transition-colors">
+                  <h3 className="font-display font-black text-2xl uppercase tracking-tight text-black mb-1 group-hover:text-[#2563EB] transition-colors">
                     {project.title}
                   </h3>
                   <div className="font-mono text-xs font-bold text-neutral-600 mb-4">
-                    {project.subtitle}
+                    ↳ {project.subtitle}
                   </div>
 
-                  {/* Description */}
+                  {/* Description with selective keyword highlight */}
                   <p className="text-sm text-neutral-800 leading-relaxed font-normal mb-4">
-                    {project.description}
+                    {project.id === "playpen-school" ? (
+                      <>
+                        Developed a production-ready school management platform
+                        enabling{" "}
+                        <span className="font-semibold text-black bg-[#10B981]/15 px-0.5">
+                          online admissions
+                        </span>
+                        ,{" "}
+                        <span className="font-semibold text-[#2563EB]">
+                          tuition payments
+                        </span>
+                        , and event management.
+                      </>
+                    ) : project.id === "shorborno-erp" ? (
+                      <>
+                        Official SaaS platform website for a cloud-based School ERP
+                        serving{" "}
+                        <span className="font-bold text-[#FF5500] bg-[#FF5500]/10 px-0.5">
+                          100+ educational institutions
+                        </span>
+                        , emphasizing scalability and responsive design.
+                      </>
+                    ) : project.id === "mango-ev" ? (
+                      <>
+                        Scalable full-stack platform implementing secure{" "}
+                        <span className="font-semibold text-[#2563EB]">
+                          reservation workflows
+                        </span>
+                        , inquiry management, and payment integration.
+                      </>
+                    ) : project.id === "focusflow-app" ? (
+                      <>
+                        Architected a{" "}
+                        <span className="font-semibold text-black bg-neutral-200 px-0.5">
+                          fully offline productivity application
+                        </span>{" "}
+                        using Python and PySide6 with local data persistence.
+                      </>
+                    ) : (
+                      project.description
+                    )}
                   </p>
 
                   {/* Additional notes */}
@@ -278,7 +340,7 @@ export default function ProjectsSection() {
                       {project.technologies.map((tech, tIdx) => (
                         <span
                           key={tIdx}
-                          className="px-2 py-0.5 bg-[#F4F4F0] text-black border border-black font-mono text-[11px] font-bold"
+                          className="px-2 py-0.5 bg-[#F4F4F0] text-neutral-900 border border-black font-mono text-[11px] font-bold"
                         >
                           {tech}
                         </span>
@@ -317,7 +379,7 @@ export default function ProjectsSection() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="px-3 py-1.5 bg-white text-black border-2 border-black brutal-shadow-sm flex items-center gap-1.5 hover:bg-neutral-200 transition-colors"
+                        className="px-3 py-1.5 bg-white text-black border-2 border-black brutal-shadow-sm flex items-center gap-1.5 hover:bg-neutral-200 hover:text-[#2563EB] transition-colors"
                       >
                         <span>GITHUB</span>
                         <GithubIcon className="w-3 h-3" />

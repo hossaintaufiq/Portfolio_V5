@@ -10,27 +10,22 @@
 
 /* Neo-Brutalist Technical Grid & Textures */
 .bg-grid-pattern {
-  background-size: 32px 32px;
+  background-size: 28px 28px;
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
 }
 
 .dark .bg-grid-pattern {
-  background-size: 32px 32px;
+  background-size: 28px 28px;
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
 .bg-dot-pattern {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px);
-  background-size: 16px 16px;
-}
-
-.dark .bg-dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
-  background-size: 16px 16px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1px);
+  background-size: 14px 14px;
 }
 
 /* Custom Neo-Brutalist utility classes */
@@ -60,19 +55,7 @@
 }
 
 .brutal-shadow-xl {
-  box-shadow: 12px 12px 0px #000000;
-}
-
-.brutal-shadow-orange {
-  box-shadow: 5px 5px 0px #FF5500;
-}
-
-.brutal-shadow-blue {
-  box-shadow: 5px 5px 0px #2563EB;
-}
-
-.brutal-shadow-green {
-  box-shadow: 5px 5px 0px #10B981;
+  box-shadow: 10px 10px 0px #000000;
 }
 
 /* Interactive Brutalist Button States */
@@ -81,49 +64,64 @@
 }
 
 .brutal-btn:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 7px 7px 0px #000000;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
 }
 
 .brutal-btn:active {
   transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #000000;
+  box-shadow: 1px 1px 0px #000000;
 }
 
 .brutal-card {
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.18s ease;
 }
 
 .brutal-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 10px 10px 0px #000000;
+  transform: translateY(-3px);
+  box-shadow: 8px 8px 0px #000000;
 }
 
-/* Marquee Animations */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+/* Keyframe Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 24s linear infinite;
+@keyframes floatAlt {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
 }
 
-/* Subtle Technical Crosshair */
-.crosshair-corner {
-  position: relative;
+.animate-float-slow {
+  animation: floatSlow 4.5s ease-in-out infinite;
 }
-.crosshair-corner::before,
-.crosshair-corner::after {
-  content: '';
-  position: absolute;
-  background-color: currentColor;
+
+.animate-float-alt {
+  animation: floatAlt 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
 }
 
 html {

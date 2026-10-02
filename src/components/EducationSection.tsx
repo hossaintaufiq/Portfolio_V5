@@ -6,11 +6,8 @@ import {
   GraduationCap,
   Award,
   Languages,
-  BookOpen,
   Calendar,
   Sparkles,
-  CheckCircle2,
-  BookmarkCheck,
 } from "lucide-react";
 
 export default function EducationSection() {
@@ -33,7 +30,7 @@ export default function EducationSection() {
             </h2>
           </div>
           <div className="font-mono text-xs text-neutral-600">
-            [NORTH SOUTH UNIVERSITY · NOTRE DAME COLLEGE · PROFESSIONAL CERTS]
+            [NORTH SOUTH UNIVERSITY · NOTRE DAME COLLEGE · PROFESSIONAL CREDENTIALS]
           </div>
         </div>
 
@@ -42,7 +39,7 @@ export default function EducationSection() {
           {education.map((edu, idx) => (
             <div
               key={edu.id}
-              className="bg-white border-2 sm:border-[3px] border-black brutal-shadow-md p-6 sm:p-8 flex flex-col justify-between relative group hover:border-[#FF5500] transition-colors"
+              className="bg-white border-2 sm:border-[3px] border-black brutal-shadow-md p-6 sm:p-8 flex flex-col justify-between relative group hover:border-[#2563EB] transition-colors"
             >
               <div>
                 {/* Header */}
@@ -136,7 +133,7 @@ export default function EducationSection() {
               {certifications.map((cert, idx) => (
                 <div
                   key={idx}
-                  className="p-3 bg-[#F4F4F0] border-2 border-black flex flex-col justify-between hover:bg-[#FF5500] hover:text-black transition-colors group"
+                  className="p-3 bg-[#F4F4F0] border border-black flex flex-col justify-between hover:bg-[#FF5500] hover:text-black transition-colors group"
                 >
                   <div className="font-bold text-xs sm:text-sm text-black group-hover:text-black">
                     {cert.name}

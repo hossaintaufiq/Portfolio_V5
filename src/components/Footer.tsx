@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowUp, Terminal, Shield, Code, Cpu } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
 export default function Footer() {
@@ -21,13 +21,11 @@ export default function Footer() {
               </span>
               <span>{PORTFOLIO_DATA.identity.name}</span>
             </div>
-            <p className="text-neutral-400 max-w-md leading-relaxed">
-              Software Engineer · Backend & AI/ML Systems Builder. Founder of
-              Softlligence Technologies. Researcher in Multimodal RAG & Deep
-              Learning at North South University.
+            <p className="text-neutral-400 max-w-md leading-relaxed font-sans text-xs">
+              Software Engineer specializing in Backend Systems, Scalable Web Architecture, and AI/ML Research. Founder of Softlligence Technologies.
             </p>
             <div className="text-[11px] text-[#10B981] font-bold">
-              SYS.BUILD: v5.4 // NEXT.JS 16 // TAILWIND 4 // TYPESCRIPT 5
+              SYS.BUILD: v5.5 // NEXT.JS 16 // TAILWIND 4 // TYPESCRIPT 5
             </div>
           </div>
 
@@ -36,40 +34,40 @@ export default function Footer() {
             <div className="font-bold text-[#FF5500] uppercase tracking-wider mb-2">
               // INDEX
             </div>
-            <ul className="space-y-1 text-neutral-300">
+            <ul className="space-y-1.5 text-neutral-300 text-xs">
               <li>
-                <a href="#about" className="hover:text-white hover:underline">
-                  01 / ABOUT
+                <a href="#about" className="hover:text-[#FF5500] transition-colors">
+                  ABOUT
                 </a>
               </li>
               <li>
-                <a href="#experience" className="hover:text-white hover:underline">
-                  02 / EXPERIENCE
+                <a href="#experience" className="hover:text-[#2563EB] transition-colors">
+                  EXPERIENCE
                 </a>
               </li>
               <li>
-                <a href="#projects" className="hover:text-white hover:underline">
-                  03 / PROJECTS
+                <a href="#projects" className="hover:text-[#10B981] transition-colors">
+                  PROJECTS
                 </a>
               </li>
               <li>
-                <a href="#research" className="hover:text-white hover:underline">
-                  04 / RESEARCH
+                <a href="#research" className="hover:text-white transition-colors">
+                  RESEARCH
                 </a>
               </li>
               <li>
-                <a href="#skills" className="hover:text-white hover:underline">
-                  05 / SKILLS
+                <a href="#skills" className="hover:text-[#FF5500] transition-colors">
+                  SKILLS
                 </a>
               </li>
               <li>
-                <a href="#education" className="hover:text-white hover:underline">
-                  06 / EDUCATION
+                <a href="#education" className="hover:text-[#2563EB] transition-colors">
+                  EDUCATION
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-white hover:underline">
-                  07 / CONTACT
+                <a href="#contact" className="hover:text-[#10B981] transition-colors">
+                  CONTACT
                 </a>
               </li>
             </ul>
@@ -85,8 +83,8 @@ export default function Footer() {
               <ArrowUp className="w-4 h-4" />
             </button>
 
-            <div className="text-left md:text-right text-[11px] text-neutral-500 mt-6 md:mt-0">
-              <div>DESIGN SYSTEM: NEO-BRUTALISM</div>
+            <div className="text-left md:text-right text-[11px] text-neutral-500 mt-6 md:mt-0 space-y-0.5">
+              <div>DESIGN: PREMIUM NEO-BRUTALISM</div>
               <div>DHAKA, BANGLADESH</div>
             </div>
           </div>
@@ -95,8 +93,7 @@ export default function Footer() {
         {/* Bottom Ticker */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-neutral-400">
           <div>
-            © {new Date().getFullYear()} HOSSAIN AHMMED TAUFIQ. ALL SYSTEM RIGHTS
-            RESERVED.
+            © {new Date().getFullYear()} HOSSAIN AHMMED TAUFIQ. ALL RIGHTS RESERVED.
           </div>
           <div className="flex items-center gap-3">
             <span className="text-[#10B981]">● STRICT_TYPING_ACTIVE</span>

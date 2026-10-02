@@ -3,16 +3,11 @@
 import React from "react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import {
-  Cpu,
   FlaskConical,
   Microscope,
-  FileText,
-  UserCheck,
   Calendar,
+  UserCheck,
   AlertTriangle,
-  Network,
-  Sparkles,
-  Layers,
   ArrowUpRight,
 } from "lucide-react";
 import { GithubIcon } from "./Icons";
@@ -52,7 +47,7 @@ export default function ResearchSection() {
               <h3 className="font-display font-bold text-xl sm:text-2xl text-white">
                 Multimodal Retrieval-Augmented Generation & Deep Predictive Modeling
               </h3>
-              <p className="text-xs sm:text-sm text-neutral-300 max-w-3xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-neutral-300 max-w-3xl leading-relaxed font-sans">
                 Investigating cross-modal consistency across text, images, and tabular data to mitigate hallucinations in large foundation models, alongside multi-task deep architectures for scientific property prediction.
               </p>
             </div>
@@ -75,7 +70,7 @@ export default function ResearchSection() {
                 {/* Header Badge & Status */}
                 <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b-2 border-black font-mono text-xs">
                   <span className="px-2 py-0.5 bg-black text-white font-bold">
-                    LAB_0{idx + 1}
+                    RESEARCH / 0{idx + 1}
                   </span>
                   <span className="px-2 py-0.5 bg-[#10B981] text-black font-bold text-[11px] truncate max-w-[180px]">
                     {item.status}
@@ -87,7 +82,7 @@ export default function ResearchSection() {
                   {item.title}
                 </h3>
 
-                {/* Metadata */}
+                {/* Metadata Matrix */}
                 <div className="space-y-1.5 font-mono text-xs text-neutral-600 mb-4 p-3 bg-[#F4F4F0] border border-black">
                   <div className="font-bold text-black flex items-center gap-1.5">
                     <Microscope className="w-3.5 h-3.5 text-[#FF5500]" />
@@ -105,9 +100,46 @@ export default function ResearchSection() {
                   )}
                 </div>
 
-                {/* Description */}
+                {/* Description with selective keyword highlights */}
                 <p className="text-sm text-neutral-800 leading-relaxed mb-4">
-                  {item.description}
+                  {item.id === "res-rag" ? (
+                    <>
+                      Designed and implemented a{" "}
+                      <span className="font-bold text-[#10B981] bg-[#10B981]/10 px-0.5 border-b border-[#10B981]">
+                        multimodal Retrieval-Augmented Generation (RAG)
+                      </span>{" "}
+                      framework integrating text, images, and tables, applying{" "}
+                      <span className="font-semibold text-[#2563EB]">
+                        cross-modal hallucination reduction
+                      </span>{" "}
+                      techniques to improve factual consistency and reliability.
+                    </>
+                  ) : item.id === "res-multitask" ? (
+                    <>
+                      Developed a{" "}
+                      <span className="font-bold text-[#2563EB] bg-[#2563EB]/10 px-0.5 border-b border-[#2563EB]">
+                        multi-task deep learning model
+                      </span>{" "}
+                      for simultaneous band gap classification and formation
+                      energy prediction, achieving higher predictive performance
+                      and computational efficiency.
+                    </>
+                  ) : item.id === "res-stock" ? (
+                    <>
+                      Built an end-to-end machine learning pipeline for stock
+                      price forecasting using{" "}
+                      <span className="font-semibold text-black bg-neutral-200 px-0.5">
+                        financial time-series
+                      </span>{" "}
+                      and news sentiment analysis.{" "}
+                      <span className="font-bold text-[#FF5500]">
+                        Random Forest
+                      </span>{" "}
+                      achieved the best predictive accuracy in this project.
+                    </>
+                  ) : (
+                    item.description
+                  )}
                 </p>
 
                 {/* Disclaimer if any */}
@@ -127,7 +159,7 @@ export default function ResearchSection() {
                   {item.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className="px-2 py-0.5 bg-[#111111] text-white font-mono text-[10px] font-bold"
+                      className="px-2 py-0.5 bg-black text-[#10B981] font-mono text-[10px] font-bold"
                     >
                       {tag}
                     </span>
