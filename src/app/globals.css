@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Neo-Brutalist Technical Grid & Textures */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.dark .bg-dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Custom Neo-Brutalist utility classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Hard Shadows */
+.brutal-shadow-sm {
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.brutal-shadow {
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.brutal-shadow-md {
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.brutal-shadow-lg {
+  box-shadow: 8px 8px 0px #000000;
+}
+
+.brutal-shadow-xl {
+  box-shadow: 12px 12px 0px #000000;
+}
+
+.brutal-shadow-orange {
+  box-shadow: 5px 5px 0px #FF5500;
+}
+
+.brutal-shadow-blue {
+  box-shadow: 5px 5px 0px #2563EB;
+}
+
+.brutal-shadow-green {
+  box-shadow: 5px 5px 0px #10B981;
+}
+
+/* Interactive Brutalist Button States */
+.brutal-btn {
+  transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.12s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.brutal-btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px #000000;
+}
+
+.brutal-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.brutal-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brutal-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0px #000000;
+}
+
+/* Marquee Animations */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 24s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Subtle Technical Crosshair */
+.crosshair-corner {
+  position: relative;
+}
+.crosshair-corner::before,
+.crosshair-corner::after {
+  content: '';
+  position: absolute;
+  background-color: currentColor;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+section {
+  scroll-margin-top: 85px;
+}
