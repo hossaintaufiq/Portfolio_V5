@@ -94,7 +94,16 @@ export default function Navbar() {
           </nav>
 
           {/* Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2 sm:gap-3">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="px-3 py-1.5 bg-white text-black font-mono font-bold text-xs uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-black hover:text-white transition-colors"
+            >
+              <span>RESUME (PDF)</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#FF5500]" />
+            </a>
             <a
               href={`mailto:${PORTFOLIO_DATA.identity.email}`}
               className="px-3.5 py-1.5 bg-[#FF5500] text-black font-mono font-bold text-xs uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-[#ff6a1f]"
@@ -105,7 +114,15 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 xl:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 xl:hidden">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="sm:hidden px-2 py-1 bg-white text-black font-mono font-bold text-[10px] border border-black brutal-shadow-sm"
+            >
+              RESUME
+            </a>
             <a
               href={`mailto:${PORTFOLIO_DATA.identity.email}`}
               className="sm:hidden px-2 py-1 bg-[#FF5500] text-black font-mono font-bold text-[10px] border border-black brutal-shadow-sm"
@@ -139,6 +156,15 @@ export default function Navbar() {
               ))}
               <div className="pt-2 border-t border-dashed border-neutral-400 mt-1 flex flex-col gap-1.5">
                 <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-3 py-2 bg-[#FF5500] text-black font-mono text-xs font-bold border-2 border-black text-center flex items-center justify-center gap-1.5"
+                >
+                  <span>DOWNLOAD / VIEW RESUME (PDF)</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+                <a
                   href={PORTFOLIO_DATA.identity.links.github}
                   target="_blank"
                   rel="noreferrer"
@@ -148,7 +174,7 @@ export default function Navbar() {
                 </a>
                 <a
                   href={`mailto:${PORTFOLIO_DATA.identity.email}`}
-                  className="px-3 py-2 bg-[#FF5500] text-black font-mono text-xs font-bold border-2 border-black text-center"
+                  className="px-3 py-2 bg-white text-black font-mono text-xs font-bold border-2 border-black text-center"
                 >
                   EMAIL: {PORTFOLIO_DATA.identity.email}
                 </a>

@@ -39,10 +39,24 @@ export interface ExperienceItem {
   locationType: string;
   companyContext?: string;
   description: string;
+  points?: string[];
   highlight?: string;
   achievement?: string;
   additional?: string;
   technologies: string[];
+  stepLevel?: number;
+  badge?: string;
+}
+
+export interface VolunteerItem {
+  id: string;
+  role: string;
+  organization: string;
+  period: string;
+  location?: string;
+  tagline?: string;
+  description?: string;
+  tags?: string[];
 }
 
 export interface SkillCategory {
@@ -63,6 +77,8 @@ export const PORTFOLIO_DATA = {
       linkedin: "https://linkedin.com/in/hossaintaufiq",
       github: "https://github.com/hossaintaufiq",
       portfolio: "#",
+      resume: "/resume.pdf",
+      softlligence: "https://www.softlligence.tech",
     },
     summary:
       "Software Engineer with experience building scalable full-stack web applications, backend services, and AI-powered products.",
@@ -81,8 +97,8 @@ export const PORTFOLIO_DATA = {
   metrics: [
     {
       value: "100+",
-      label: "EDUCATIONAL INSTITUTIONS SERVED",
-      detail: "Through Shorborno School ERP platform across Bangladesh",
+      label: "ORGANIZATIONAL & CLIENT REACH",
+      detail: "Through scalable multi-tenant SaaS & enterprise deployments",
       accent: "orange",
     },
     {
@@ -124,7 +140,7 @@ export const PORTFOLIO_DATA = {
       },
       {
         label: "ENTERPRISE FOOTPRINT",
-        value: "Production platforms serving 100+ institutions & Fortune 500 clients",
+        value: "Production platforms serving industrial clients & Fortune 500 ecosystems",
       },
       {
         label: "ENGINEERING ETHOS",
@@ -137,6 +153,7 @@ export const PORTFOLIO_DATA = {
     badge: "VENTURE / STUDIO",
     company: "SOFTLLIGENCE TECHNOLOGIES",
     role: "FOUNDER",
+    websiteUrl: "https://www.softlligence.tech",
     description:
       "Founder of Softlligence Technologies and contributor to production software used by businesses and educational institutions.",
     deliverables: [
@@ -149,23 +166,33 @@ export const PORTFOLIO_DATA = {
 
   experience: [
     {
-      id: "exp-zerodevs",
+      id: "exp-mev",
       role: "Software Engineer",
-      company: "ZERODEVS LTD",
-      period: "Jan 2025 – May 2026",
+      company: "MEV (Mango Electric Vehicle)",
+      period: "Jan 2026 – Present",
       locationType: "On-site",
+      companyContext:
+        "Electric Vehicle Manufacturer · In-House Vehicle Platform & Operations",
       description:
-        "Engineered full-stack SaaS applications using Node.js, Express.js, MySQL, REST APIs, Next.js, and TypeScript, delivering scalable and production-ready software solutions.",
-      highlight:
-        "Developed the official platform for SHORBORNO School ERP, serving 100+ educational institutions across Bangladesh while improving application performance, maintainability, and user experience.",
-      technologies: [
-        "Node.js",
-        "Express.js",
-        "MySQL",
-        "REST APIs",
-        "Next.js",
-        "TypeScript",
+        "Maintain and enhance MEV's internal management systems supporting day-to-day operations, while building software applications for locally built electric vehicles.",
+      points: [
+        "Maintain and enhance MEV's internal management systems, supporting day-to-day operations across the business.",
+        "Develop applications for MEV's locally built electric vehicles, delivering software for the in-house vehicle platform.",
+        "Build and maintain CRM and customer-facing tools using Next.js, Express.js, PostgreSQL, and TypeScript.",
       ],
+      highlight:
+        "Engineered vehicle management systems & customer-facing operational tools with Next.js, Express.js, PostgreSQL, and TypeScript.",
+      technologies: [
+        "Next.js",
+        "Express.js",
+        "PostgreSQL",
+        "TypeScript",
+        "Node.js",
+        "Vehicle Platform",
+        "CRM Systems",
+      ],
+      stepLevel: 3,
+      badge: "CURRENT ROLE · ACTIVE",
     },
     {
       id: "exp-brooksource",
@@ -176,7 +203,12 @@ export const PORTFOLIO_DATA = {
       companyContext:
         "US-based staffing firm delivering React solutions to Fortune 500 clients",
       description:
+        "Developed and maintained production React.js + TypeScript applications with Redux serving high-traffic enterprise clients across distributed Agile teams.",
+      points: [
         "Developed and maintained production React.js + TypeScript applications with Redux serving high-traffic enterprise clients.",
+        "Reduced front-end load time by 20% through code splitting, lazy loading, and bundle optimisation; designed API integration layers that measurably reduced cross-service latency.",
+        "Consistently shipped features ahead of schedule across distributed Agile teams spanning multiple time zones.",
+      ],
       achievement:
         "Reduced front-end load time by 20% through code splitting, lazy loading, and bundle optimisation; designed API integration layers that measurably reduced cross-service latency.",
       additional:
@@ -187,9 +219,37 @@ export const PORTFOLIO_DATA = {
         "Redux",
         "API Integration",
         "Agile",
+        "Performance Optimization",
       ],
+      stepLevel: 2,
+      badge: "ENTERPRISE · FORTUNE 500",
     },
-  ],
+    {
+      id: "exp-americares",
+      role: "Associate, Web Developer",
+      company: "Americares",
+      period: "Feb 2023 – Nov 2023",
+      locationType: "Remote / Hybrid",
+      companyContext:
+        "Global Health & Humanitarian Organization Web Applications",
+      description:
+        "Built and maintained web applications as an Associate Web Developer, exploring a wide range of tools and modern engineering practices to grow quickly as an engineer.",
+      points: [
+        "Built and maintained web applications as an Associate Web Developer, exploring a wide range of tools and practices to grow quickly as an engineer.",
+        "Collaborated on responsive UI components, cross-browser compatibility, and modular codebase maintenance.",
+      ],
+      technologies: [
+        "JavaScript",
+        "React.js",
+        "HTML5",
+        "CSS3",
+        "REST APIs",
+        "Git",
+      ],
+      stepLevel: 1,
+      badge: "CAREER FOUNDATION",
+    },
+  ] as ExperienceItem[],
 
   projects: [
     {
@@ -221,7 +281,7 @@ export const PORTFOLIO_DATA = {
         "PostgreSQL",
         "TypeScript",
       ],
-      liveUrl: "https://github.com/hossaintaufiq",
+      liveUrl: "https://www.softlligence.tech",
       githubUrl: "https://github.com/hossaintaufiq",
     },
     {
@@ -247,28 +307,6 @@ export const PORTFOLIO_DATA = {
       liveUrl: "https://github.com/hossaintaufiq",
       previewUrl: "https://github.com/hossaintaufiq",
       githubUrl: "https://github.com/hossaintaufiq",
-    },
-    {
-      id: "shorborno-erp",
-      title: "SHORBORNO — SCHOOL MANAGEMENT ERP",
-      category: "SAAS PLATFORM",
-      subtitle: "Cloud-Based School ERP Serving 100+ Institutions",
-      type: "SaaS",
-      description:
-        "Developed and maintained the official SaaS platform website for a cloud-based School ERP serving 100+ educational institutions, emphasizing scalability, performance, and responsive design.",
-      additional:
-        "Implemented modern frontend architecture, API integration, and SEO optimization while collaborating with stakeholders to deliver production-ready features aligned with business requirements.",
-      technologies: [
-        "RESTful API",
-        "Node.js",
-        "Next.js",
-        "Express.js",
-        "MySQL",
-        "TypeScript",
-        "Framer Motion",
-      ],
-      liveUrl: "https://github.com/hossaintaufiq",
-      isPrivateRepo: true,
     },
     {
       id: "mango-ev",
@@ -304,7 +342,93 @@ export const PORTFOLIO_DATA = {
       technologies: ["Python", "PySide6", "Matplotlib"],
       githubUrl: "https://github.com/hossaintaufiq",
     },
-  ],
+    {
+      id: "handtrack-studio",
+      title: "HANDTRACK STUDIO — DUAL-HAND JIGSAW",
+      category: "COMPUTER VISION / AI",
+      subtitle: "Real-Time Dual-Hand Tracking & Gesture Puzzle Engine",
+      description:
+        "Architected an interactive computer vision application using MediaPipe and OpenCV that transforms live webcam input into a dual-hand gesture-controlled jigsaw puzzle engine with sub-pixel landmark tracking.",
+      modules: [
+        "MediaPipe Hand Landmarker",
+        "Dual-Hand Tracking (2 Hands)",
+        "Temporal Smoothing (EMA)",
+        "Pinch & Frame Detection",
+        "Interactive Jigsaw Physics",
+        "Snap-to-Grid Placement",
+      ],
+      additional:
+        "Engineered exponential moving average (EMA) temporal smoothing to eliminate hand tremor jitter, implemented independent dual-pointer state tracking, and designed custom real-time HUD overlays.",
+      technologies: [
+        "Python",
+        "OpenCV",
+        "MediaPipe",
+        "NumPy",
+        "Computer Vision",
+        "Gesture Recognition",
+      ],
+      githubUrl: "https://github.com/hossaintaufiq/Hand_Tracking",
+    },
+    {
+      id: "lucy-ai-assistant",
+      title: "LUCY — AUTONOMOUS AI ASSISTANT",
+      category: "AUTONOMOUS AI AGENTS",
+      subtitle: "Local-First J.A.R.V.I.S.-Style Voice & AI Companion on CPU",
+      description:
+        "Engineered an end-to-end local-first personal AI assistant with bidirectional live voice (Whisper STT + Kokoro TTS), on-device CPU LLM inference via Ollama, streaming WebSocket APIs, and customizable markdown memory.",
+      modules: [
+        "Local LLM Serving (Ollama / Qwen3 0.6B)",
+        "Live Voice Talk Loop (Mic → STT → TTS)",
+        "faster-whisper (int8 CPU)",
+        "Kokoro Neural TTS",
+        "FastAPI & Streaming WebSockets",
+        "React 19 + Vite 6 + Tailwind 4 UI",
+        "Persistent Markdown Soul & Memory",
+      ],
+      additional:
+        "Engineered zero-cloud local inference optimized for standard laptops without discrete GPUs, custom Windows packaging with one-click bat/PowerShell launchers, and real-time streaming telemetry views.",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "React 19",
+        "TypeScript",
+        "Ollama",
+        "faster-whisper",
+        "Kokoro TTS",
+        "WebSockets",
+        "Tailwind CSS 4",
+        "SQLite",
+      ],
+      githubUrl: "https://github.com/hossaintaufiq/Autonomous_Ai_Agents",
+    },
+    {
+      id: "uni-admission-portal",
+      title: "PRIVATE UNIVERSITY ADMISSION PORTAL",
+      category: "EDUCATION PORTAL",
+      subtitle: "University Comparison, Tuition Analytics & Test Prep Platform",
+      description:
+        "Engineered a comprehensive web platform for prospective university students, providing real-time admission deadlines, program & curriculum comparisons, tuition breakdown analytics, university rankings, and sample entrance exam question banks.",
+      modules: [
+        "Admission Deadline Tracker",
+        "Cross-University Subject Comparison",
+        "Tuition & Fee Breakdown Analytics",
+        "University Rankings Matrix",
+        "Sample Admission Test Bank",
+        "Program Offerings Explorer",
+      ],
+      additional:
+        "Designed an intuitive student-centric comparison interface with structured data filtering to help candidates make data-driven university admission decisions.",
+      technologies: [
+        "Next.js",
+        "React.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "REST APIs",
+        "Data Analytics",
+      ],
+      githubUrl: "https://github.com/hossaintaufiq/University_Admission_Helper",
+    },
+  ] as Project[],
 
   research: [
     {
@@ -360,7 +484,7 @@ export const PORTFOLIO_DATA = {
         "ARIMA",
       ],
     },
-  ],
+  ] as ResearchItem[],
 
   skills: [
     {
@@ -465,6 +589,42 @@ export const PORTFOLIO_DATA = {
     { name: "Bash Scripting", issuer: "freeCodeCamp" },
     { name: "Arduino", issuer: "Gobeshona" },
   ],
+
+  volunteering: [
+    {
+      id: "vol-nsu-acm",
+      role: "Coordinator Web Group & Moderator Research and Development Group",
+      organization: "NSU ACM Student Chapter",
+      period: "Oct 18, 2024 – Present",
+      location: "Dhaka, Bangladesh",
+      tagline: "Web Architecture, Research Guidance & Event Operations",
+      description:
+        "Leading and coordinating the web technical group while moderating research and development tracks, organizing hackathons, technical workshops, and developer mentoring.",
+      tags: ["Web Architecture", "Research Moderation", "Student Leadership", "ACM"],
+    },
+    {
+      id: "vol-bylc",
+      role: "Volunteer",
+      organization: "Bangladesh Youth Leadership Center (BYLC)",
+      period: "Oct 20, 2022 – Oct 2023",
+      location: "Dhaka, Bangladesh",
+      tagline: "Be the next leader",
+      description:
+        "Participated in the 'Be the next leader' youth development initiative, facilitating leadership workshops, community outreach programs, and public engagement events.",
+      tags: ["Leadership", "Community Outreach", "Public Speaking", "BYLC"],
+    },
+    {
+      id: "vol-ndnsc",
+      role: "Vice President, Dep of Administration",
+      organization: "Notre Dame Nature Study Club (NDNSC)",
+      period: "Jul 15, 2018 – Jun 14, 2020",
+      location: "Dhaka, Bangladesh",
+      tagline: "Administrative Leadership & National Festival Management",
+      description:
+        "Directed club administration, team governance, and logistical operations for nationwide environmental conventions, exhibitions, and student competitions.",
+      tags: ["Administration", "Event Logistics", "Executive Leadership", "Notre Dame College"],
+    },
+  ] as VolunteerItem[],
 
   languages: [
     { name: "Bangla", proficiency: "Native" },

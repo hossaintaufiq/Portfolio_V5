@@ -70,6 +70,16 @@ export default function Footer() {
                   CONTACT
                 </a>
               </li>
+              <li className="pt-1 border-t border-neutral-800">
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#FF5500] font-bold hover:underline flex items-center gap-1"
+                >
+                  <span>RESUME (PDF) ↗</span>
+                </a>
+              </li>
             </ul>
           </div>
 

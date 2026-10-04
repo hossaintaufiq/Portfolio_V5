@@ -17,14 +17,15 @@ export default function ProjectsSection() {
   const { projects } = PORTFOLIO_DATA;
   const [filter, setFilter] = useState("ALL");
 
-  const categories = ["ALL", "ENTERPRISE", "SAAS", "EDUCATION", "DESKTOP / ML"];
+  const categories = ["ALL", "ENTERPRISE", "AI AGENTS / ML", "SAAS", "EDUCATION", "DESKTOP"];
 
   const filteredProjects = projects.filter((p) => {
     if (filter === "ALL") return true;
     if (filter === "ENTERPRISE") return p.category.includes("ENTERPRISE");
+    if (filter === "AI AGENTS / ML") return p.category.includes("AGENT") || p.category.includes("VISION") || p.category.includes("AI");
     if (filter === "SAAS") return p.type === "SaaS" || p.category.includes("SAAS");
     if (filter === "EDUCATION") return p.category.includes("EDUCATION");
-    if (filter === "DESKTOP / ML") return p.category.includes("DESKTOP");
+    if (filter === "DESKTOP") return p.category.includes("DESKTOP");
     return true;
   });
 
@@ -32,9 +33,11 @@ export default function ProjectsSection() {
   const secondaryProjects = projects.filter((p) => !p.featured);
 
   const getCategoryBadgeColor = (cat: string) => {
+    if (cat.includes("AGENT")) return "bg-[#FF5500] text-black";
     if (cat.includes("ENTERPRISE")) return "bg-[#FF5500] text-black";
     if (cat.includes("SAAS")) return "bg-[#2563EB] text-white";
     if (cat.includes("EDUCATION")) return "bg-[#10B981] text-black";
+    if (cat.includes("VISION") || cat.includes("AI")) return "bg-[#84CC16] text-black";
     if (cat.includes("DESKTOP")) return "bg-black text-white";
     return "bg-black text-white";
   };
@@ -295,15 +298,6 @@ export default function ProjectsSection() {
                         </span>
                         , and event management.
                       </>
-                    ) : project.id === "shorborno-erp" ? (
-                      <>
-                        Official SaaS platform website for a cloud-based School ERP
-                        serving{" "}
-                        <span className="font-bold text-[#FF5500] bg-[#FF5500]/10 px-0.5">
-                          100+ educational institutions
-                        </span>
-                        , emphasizing scalability and responsive design.
-                      </>
                     ) : project.id === "mango-ev" ? (
                       <>
                         Scalable full-stack platform implementing secure{" "}
@@ -319,6 +313,30 @@ export default function ProjectsSection() {
                           fully offline productivity application
                         </span>{" "}
                         using Python and PySide6 with local data persistence.
+                      </>
+                    ) : project.id === "handtrack-studio" ? (
+                      <>
+                        Interactive computer vision application using{" "}
+                        <span className="font-semibold text-black bg-[#84CC16]/20 px-0.5 border-b border-[#84CC16]">
+                          MediaPipe & OpenCV
+                        </span>{" "}
+                        for real-time dual-hand tracking, sub-pixel landmark detection, and gesture-controlled jigsaw puzzles.
+                      </>
+                    ) : project.id === "lucy-ai-assistant" ? (
+                      <>
+                        Local-first personal AI assistant built with{" "}
+                        <span className="font-semibold text-black bg-[#FF5500]/15 px-0.5 border-b border-[#FF5500]">
+                          FastAPI, React 19 & Ollama
+                        </span>{" "}
+                        featuring bidirectional live voice (Whisper STT + Kokoro TTS), on-device CPU LLM inference, and persistent markdown memory.
+                      </>
+                    ) : project.id === "uni-admission-portal" ? (
+                      <>
+                        Comprehensive student admission portal featuring{" "}
+                        <span className="font-semibold text-black bg-[#10B981]/15 px-0.5 border-b border-[#10B981]">
+                          real-time deadline tracking
+                        </span>
+                        , subject & curriculum comparisons, tuition breakdown analytics, and entrance test question banks.
                       </>
                     ) : (
                       project.description

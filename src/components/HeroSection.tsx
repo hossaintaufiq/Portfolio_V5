@@ -104,10 +104,20 @@ export default function HeroSection() {
             </div>
 
             {/* Recruiter-Ready CTA Buttons */}
-            <div className="flex flex-wrap gap-2.5 sm:gap-3 items-center">
+            <div className="flex flex-wrap gap-2 sm:gap-2.5 items-center">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 sm:px-5 py-2.5 bg-white text-black font-mono font-bold text-xs sm:text-sm uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-[#10B981] hover:text-black transition-colors"
+              >
+                <span>RESUME (PDF)</span>
+                <ExternalLink className="w-4 h-4 text-black" />
+              </a>
+
               <a
                 href="#projects"
-                className="px-5 py-2.5 bg-[#FF5500] text-black font-mono font-bold text-xs sm:text-sm uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-[#ff691e]"
+                className="px-4 sm:px-5 py-2.5 bg-[#FF5500] text-black font-mono font-bold text-xs sm:text-sm uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-[#ff691e]"
               >
                 <span>VIEW PROJECTS</span>
                 <ArrowDownRight className="w-4 h-4" />
@@ -115,7 +125,7 @@ export default function HeroSection() {
 
               <a
                 href="#research"
-                className="px-5 py-2.5 bg-black text-white font-mono font-bold text-xs sm:text-sm uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-neutral-800"
+                className="px-4 sm:px-5 py-2.5 bg-black text-white font-mono font-bold text-xs sm:text-sm uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-neutral-800"
               >
                 <span>VIEW RESEARCH</span>
                 <Cpu className="w-4 h-4 text-[#10B981]" />
@@ -123,7 +133,7 @@ export default function HeroSection() {
 
               <a
                 href="#contact"
-                className="px-5 py-2.5 bg-white text-black font-mono font-bold text-xs sm:text-sm uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-neutral-100 hover:text-[#2563EB]"
+                className="px-4 sm:px-5 py-2.5 bg-[#F4F4F0] text-black font-mono font-bold text-xs sm:text-sm uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-white hover:text-[#2563EB]"
               >
                 <span>GET IN TOUCH</span>
                 <ExternalLink className="w-4 h-4 text-[#2563EB]" />
