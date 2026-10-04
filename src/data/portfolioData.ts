@@ -428,6 +428,68 @@ export const PORTFOLIO_DATA = {
       ],
       githubUrl: "https://github.com/hossaintaufiq/University_Admission_Helper",
     },
+    {
+      id: "neptune-shorts",
+      title: "NEPTUNE SHORTS — LOCAL AI VIDEO-TO-SHORTS",
+      category: "AI VIDEO & COMPUTER VISION",
+      subtitle: "100% Private, Local Video-to-Shorts Generator with Face-Tracking & Whisper",
+      description:
+        "Architected a desktop web application running 100% locally and privately to convert horizontal videos into viral 9:16 vertical shorts. Combines local faster-whisper speech-to-text, semantic moment selection (15–20s windowing), OpenCV Haar Cascade face-tracking with EMA smoothing, local Ollama clickbait titling, and FFmpeg audio normalization (EBU R128 + FFT denoiser).",
+      modules: [
+        "Local faster-whisper STT (CTranslate2)",
+        "Semantic Moment Selection (15-20s)",
+        "OpenCV Face Tracking & Reframing (9:16)",
+        "EMA Coordinate Smoothing (Anti-Jitter)",
+        "Local Ollama / NLP Clickbait Titler",
+        "EBU R128 Normalizer & FFT Denoiser",
+        "CUDA GPU (nvenc) / CPU (int8) Pipeline",
+        "FastAPI Backend + React/Vite UI",
+      ],
+      additional:
+        "Features auto-detecting hardware acceleration for NVIDIA CUDA (float16 + h264_nvenc) with seamless CPU int8 quantization fallback. Complete full-stack local workflow with automated one-click launcher (run.py).",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "React",
+        "Vite",
+        "Tailwind CSS 4",
+        "OpenCV",
+        "faster-whisper",
+        "FFmpeg",
+        "Ollama",
+        "PyTorch / CUDA",
+      ],
+      githubUrl: "https://github.com/hossaintaufiq/Youtube_Video_Generator",
+    },
+    {
+      id: "dhaka-road-network",
+      title: "DHAKA ROAD NETWORK — GRAPH ROUTING & DISPATCH",
+      category: "BACKEND & ALGORITHMS",
+      subtitle: "Graph Algorithms & Shortest-Path Navigation Engine for Urban Delivery Logistics",
+      description:
+        "Engineered a high-performance graph routing and spatial pathfinding backend designed for on-demand delivery platforms (Foodpanda, local couriers) navigating Dhaka city's complex road network. Implements optimized graph data structures, Dijkstra / A* shortest-path algorithms, one-way street constraints, and dynamic traffic weight heuristics to fast-track rider dispatch and ETA computation.",
+      modules: [
+        "Dhaka Urban Road Graph Modeling",
+        "Dijkstra & A* Shortest Path Algorithms",
+        "Dynamic Traffic & Turn Restriction Weights",
+        "Delivery Rider Fast-Track Routing",
+        "Spatial Coordinate Geocoding & Indexing",
+        "High-Throughput Dispatch REST APIs",
+      ],
+      additional:
+        "Designed for low-latency routing across dense metropolitan networks with hundreds of intersections and multi-constraint road topologies. Provides scalable REST endpoints for real-time rider dispatch and trip ETA optimization.",
+      technologies: [
+        "Python",
+        "Graph Algorithms",
+        "Dijkstra / A*",
+        "Data Structures",
+        "FastAPI",
+        "Spatial Indexing",
+        "REST APIs",
+        "Routing Engine",
+      ],
+      githubUrl: "https://github.com/hossaintaufiq/DhakaRoadNetwork",
+    },
   ] as Project[],
 
   research: [

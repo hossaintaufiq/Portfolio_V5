@@ -17,12 +17,29 @@ export default function ProjectsSection() {
   const { projects } = PORTFOLIO_DATA;
   const [filter, setFilter] = useState("ALL");
 
-  const categories = ["ALL", "ENTERPRISE", "AI AGENTS / ML", "SAAS", "EDUCATION", "DESKTOP"];
+  const categories = [
+    "ALL",
+    "ENTERPRISE",
+    "AI AGENTS / ML",
+    "BACKEND / ALGO",
+    "SAAS",
+    "EDUCATION",
+    "DESKTOP",
+  ];
 
   const filteredProjects = projects.filter((p) => {
     if (filter === "ALL") return true;
     if (filter === "ENTERPRISE") return p.category.includes("ENTERPRISE");
-    if (filter === "AI AGENTS / ML") return p.category.includes("AGENT") || p.category.includes("VISION") || p.category.includes("AI");
+    if (filter === "AI AGENTS / ML")
+      return (
+        p.category.includes("AGENT") ||
+        p.category.includes("VISION") ||
+        p.category.includes("AI")
+      );
+    if (filter === "BACKEND / ALGO")
+      return (
+        p.category.includes("BACKEND") || p.category.includes("ALGORITHM")
+      );
     if (filter === "SAAS") return p.type === "SaaS" || p.category.includes("SAAS");
     if (filter === "EDUCATION") return p.category.includes("EDUCATION");
     if (filter === "DESKTOP") return p.category.includes("DESKTOP");
@@ -35,9 +52,12 @@ export default function ProjectsSection() {
   const getCategoryBadgeColor = (cat: string) => {
     if (cat.includes("AGENT")) return "bg-[#FF5500] text-black";
     if (cat.includes("ENTERPRISE")) return "bg-[#FF5500] text-black";
+    if (cat.includes("BACKEND") || cat.includes("ALGORITHM"))
+      return "bg-[#06B6D4] text-black";
     if (cat.includes("SAAS")) return "bg-[#2563EB] text-white";
     if (cat.includes("EDUCATION")) return "bg-[#10B981] text-black";
-    if (cat.includes("VISION") || cat.includes("AI")) return "bg-[#84CC16] text-black";
+    if (cat.includes("VISION") || cat.includes("AI"))
+      return "bg-[#84CC16] text-black";
     if (cat.includes("DESKTOP")) return "bg-black text-white";
     return "bg-black text-white";
   };
@@ -242,9 +262,19 @@ export default function ProjectsSection() {
             .filter((p) => {
               if (filter === "ALL") return true;
               if (filter === "ENTERPRISE") return p.category.includes("ENTERPRISE");
+              if (filter === "AI AGENTS / ML")
+                return (
+                  p.category.includes("AGENT") ||
+                  p.category.includes("VISION") ||
+                  p.category.includes("AI")
+                );
+              if (filter === "BACKEND / ALGO")
+                return (
+                  p.category.includes("BACKEND") || p.category.includes("ALGORITHM")
+                );
               if (filter === "SAAS") return p.type === "SaaS" || p.category.includes("SAAS");
               if (filter === "EDUCATION") return p.category.includes("EDUCATION");
-              if (filter === "DESKTOP / ML") return p.category.includes("DESKTOP");
+              if (filter === "DESKTOP") return p.category.includes("DESKTOP");
               return true;
             })
             .map((project, idx) => (
@@ -337,6 +367,22 @@ export default function ProjectsSection() {
                           real-time deadline tracking
                         </span>
                         , subject & curriculum comparisons, tuition breakdown analytics, and entrance test question banks.
+                      </>
+                    ) : project.id === "neptune-shorts" ? (
+                      <>
+                        Local AI video-to-shorts generator running 100% privately with{" "}
+                        <span className="font-semibold text-black bg-[#FF5500]/15 px-0.5 border-b border-[#FF5500]">
+                          faster-whisper STT & OpenCV face-tracking
+                        </span>
+                        , semantic moment selection (15–20s), EMA jitter-free reframing (9:16), local Ollama clickbait titling, and EBU R128 audio normalization.
+                      </>
+                    ) : project.id === "dhaka-road-network" ? (
+                      <>
+                        Graph routing and pathfinding backend for on-demand delivery logistics (Foodpanda & local fleets) implementing{" "}
+                        <span className="font-semibold text-black bg-[#06B6D4]/20 px-0.5 border-b border-[#06B6D4]">
+                          Dijkstra & A* algorithms
+                        </span>
+                        , turn-restriction weights, and spatial indexing to fast-track rider routing and ETA computation across Dhaka city.
                       </>
                     ) : (
                       project.description

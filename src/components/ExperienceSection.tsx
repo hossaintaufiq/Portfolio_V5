@@ -202,7 +202,7 @@ export default function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="w-full bg-[#F4F4F0] border-b-2 sm:border-b-[3px] border-black py-16 sm:py-24 relative overflow-hidden"
+      className="w-full bg-[#F4F4F0] border-b-2 sm:border-b-[3px] border-black py-14 sm:py-20 lg:py-24 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -217,12 +217,12 @@ export default function ExperienceSection() {
             </h2>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
             {/* Filter Tabs */}
-            <div className="flex items-center bg-white border-2 border-black p-1 brutal-shadow-sm font-mono text-xs font-bold">
+            <div className="flex flex-wrap items-center bg-white border-2 border-black p-1 brutal-shadow-sm font-mono text-xs font-bold">
               <button
                 onClick={() => setFilter("ALL")}
-                className={`px-3 py-1 transition-all ${
+                className={`px-2.5 sm:px-3 py-1 transition-all ${
                   filter === "ALL"
                     ? "bg-black text-white"
                     : "text-neutral-700 hover:text-black"
@@ -232,7 +232,7 @@ export default function ExperienceSection() {
               </button>
               <button
                 onClick={() => setFilter("ENGINEERING")}
-                className={`px-3 py-1 transition-all ${
+                className={`px-2.5 sm:px-3 py-1 transition-all ${
                   filter === "ENGINEERING"
                     ? "bg-[#FF5500] text-black"
                     : "text-neutral-700 hover:text-black"
@@ -242,7 +242,7 @@ export default function ExperienceSection() {
               </button>
               <button
                 onClick={() => setFilter("LEADERSHIP")}
-                className={`px-3 py-1 transition-all ${
+                className={`px-2.5 sm:px-3 py-1 transition-all ${
                   filter === "LEADERSHIP"
                     ? "bg-[#84CC16] text-black"
                     : "text-neutral-700 hover:text-black"
@@ -256,7 +256,7 @@ export default function ExperienceSection() {
               href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 bg-[#FF5500] text-black font-mono font-bold text-xs uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-[#ff691e]"
+              className="px-3.5 sm:px-4 py-2 bg-[#FF5500] text-black font-mono font-bold text-xs uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-[#ff691e]"
             >
               <FileText className="w-3.5 h-3.5" />
               <span>RESUME (PDF)</span>
@@ -268,27 +268,27 @@ export default function ExperienceSection() {
         {/* ============================================================ */}
         {/* 01. LARGE DOMINANT FOUNDER CARD (1ST AT THE TOP)             */}
         {/* ============================================================ */}
-        <div className="mb-14">
-          <div className="bg-white border-2 sm:border-[4px] border-black brutal-shadow-xl overflow-hidden group">
+        <div className="mb-12 sm:mb-16">
+          <div className="bg-white border-2 sm:border-[3px] lg:border-[4px] border-black brutal-shadow-xl overflow-hidden group">
             {/* Top Status Banner */}
-            <div className="bg-[#FF5500] text-black px-5 sm:px-8 py-3.5 border-b-2 sm:border-b-[3px] border-black flex flex-wrap items-center justify-between gap-2">
+            <div className="bg-[#FF5500] text-black px-4 sm:px-8 py-3.5 border-b-2 sm:border-b-[3px] border-black flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2.5 font-mono font-black text-xs sm:text-sm tracking-wider uppercase">
                 <Building2 className="w-4 h-4 text-black" />
                 <span>VENTURE STUDIO // FOUNDER & EXECUTIVE RECORD</span>
               </div>
-              <div className="font-mono text-xs font-bold px-3 py-1 bg-black text-white border border-black flex items-center gap-1.5">
+              <div className="font-mono text-xs font-bold px-2.5 sm:px-3 py-1 bg-black text-white border border-black flex items-center gap-1.5">
                 <span className="w-2 h-2 bg-[#10B981] animate-pulse inline-block"></span>
                 <span>ACTIVE ENGINEERING STUDIO</span>
               </div>
             </div>
 
             {/* Large Executive Content Area */}
-            <div className="p-6 sm:p-8 lg:p-10">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <div className="p-4 sm:p-8 lg:p-10">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
                 {/* Left Column: Scope, Narrative & Deliverables */}
                 <div className="lg:col-span-7 flex flex-col justify-between space-y-5">
                   <div>
-                    <div className="flex items-center gap-2 mb-3">
+                    <div className="flex flex-wrap items-center gap-2 mb-3">
                       <span className="px-3 py-1 bg-black text-white font-mono text-xs font-black uppercase">
                         ROLE: {founderFeature.role}
                       </span>
@@ -297,11 +297,11 @@ export default function ExperienceSection() {
                       </span>
                     </div>
 
-                    <h3 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-black mb-3 leading-tight">
+                    <h3 className="font-display font-black text-2xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-black mb-3 leading-tight">
                       {founderFeature.company}
                     </h3>
 
-                    <p className="text-base sm:text-lg text-neutral-800 leading-relaxed font-normal mb-5 border-l-4 border-[#FF5500] pl-3.5 bg-[#F4F4F0] py-3">
+                    <p className="text-sm sm:text-lg text-neutral-800 leading-relaxed font-normal mb-5 border-l-4 border-[#FF5500] pl-3.5 bg-[#F4F4F0] py-3">
                       Founder of{" "}
                       <span className="font-bold text-black">
                         Softlligence Technologies
@@ -315,7 +315,7 @@ export default function ExperienceSection() {
                   </div>
 
                   {/* Production Scope Checklist */}
-                  <div className="space-y-2.5 font-mono">
+                  <div className="space-y-2 font-mono">
                     <div className="text-xs font-bold text-black uppercase tracking-wider flex items-center gap-2">
                       <Terminal className="w-3.5 h-3.5 text-[#FF5500]" />
                       <span>// PRODUCTION SCOPE & ARCHITECTURE:</span>
@@ -323,7 +323,7 @@ export default function ExperienceSection() {
                     {founderFeature.deliverables.map((item, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-3 p-3 bg-white border-2 border-black hover:border-[#FF5500] transition-colors"
+                        className="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-white border-2 border-black hover:border-[#FF5500] transition-colors"
                       >
                         <span className="w-2 h-2 bg-[#FF5500] flex-shrink-0 mt-1.5"></span>
                         <span className="text-xs sm:text-sm text-neutral-900 font-semibold leading-relaxed">
@@ -361,7 +361,7 @@ export default function ExperienceSection() {
                 </div>
 
                 {/* Right Column: Spec Console */}
-                <div className="lg:col-span-5 bg-black text-white p-6 sm:p-7 border-2 sm:border-[3px] border-black font-mono flex flex-col justify-between">
+                <div className="lg:col-span-5 bg-black text-white p-5 sm:p-7 border-2 sm:border-[3px] border-black font-mono flex flex-col justify-between">
                   <div>
                     <div className="text-xs text-[#10B981] font-bold mb-4 pb-2 border-b border-neutral-800 flex items-center justify-between">
                       <span className="flex items-center gap-1.5">
@@ -371,12 +371,12 @@ export default function ExperienceSection() {
                       <span>ID: SFT-FOUNDER</span>
                     </div>
 
-                    <div className="space-y-4 text-xs">
+                    <div className="space-y-3.5 text-xs">
                       <div className="border-b border-neutral-800 pb-3">
                         <span className="text-neutral-400 block text-[10px] uppercase tracking-wider mb-1">
                           PLATFORM DOMAIN
                         </span>
-                        <span className="font-bold text-white text-sm sm:text-base leading-snug block">
+                        <span className="font-bold text-white text-xs sm:text-base leading-snug block">
                           Enterprise Manufacturing ERP / MIS SaaS
                         </span>
                       </div>
@@ -410,12 +410,21 @@ export default function ExperienceSection() {
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-4 border-t border-neutral-800">
+                  <div className="mt-6 sm:mt-8 pt-4 border-t border-neutral-800 grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+                    <a
+                      href="https://www.softlligence.tech"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-full py-2.5 sm:py-3 bg-[#10B981] text-black font-bold text-xs uppercase text-center border-2 border-black hover:bg-[#0ea372] transition-colors flex items-center justify-center gap-1.5"
+                    >
+                      <span>VISIT SOFTLLIGENCE.TECH</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
                     <a
                       href="#projects"
-                      className="w-full block py-3 bg-[#10B981] text-black font-bold text-xs uppercase text-center border-2 border-black hover:bg-[#0ea372] transition-colors"
+                      className="w-full py-2.5 sm:py-3 bg-white text-black font-bold text-xs uppercase text-center border-2 border-black hover:bg-neutral-200 transition-colors flex items-center justify-center gap-1.5"
                     >
-                      VIEW SOFTLLIGENCE CLOUD CASE STUDY ↓
+                      <span>VIEW CASE STUDY ↓</span>
                     </a>
                   </div>
                 </div>
@@ -439,196 +448,269 @@ export default function ExperienceSection() {
           </div>
 
           <div className="relative">
-            {/* The List of Cards connected with real SVG Switchback Curves */}
-            <div className="space-y-8 sm:space-y-12">
-              {filteredItems.map((item, idx) => (
-                <div
-                  key={item.id}
-                  className="flex flex-col md:flex-row items-stretch gap-0 md:gap-4 group relative"
-                >
-                  {/* LEFT: DETAILED SVG SWITCHBACK ROAD SEGMENT (DESKTOP) */}
-                  <div className="hidden md:flex flex-col items-center justify-center w-36 lg:w-44 flex-shrink-0 relative select-none">
-                    <svg
-                      className="w-full h-full min-h-[260px] overflow-visible"
-                      viewBox="0 0 160 260"
-                      fill="none"
-                    >
-                      {/* 1. Road Asphalt Base Path (Sharp Switchback Loop) */}
-                      <path
-                        d="M 40,0 L 40,50 Q 40,90 85,100 Q 135,110 135,130 Q 135,150 85,160 Q 40,170 40,210 L 40,260"
-                        stroke="#475569"
-                        strokeWidth="38"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+            {/* The List of Cards connected with real Alternating SVG Switchback Curves */}
+            <div className="space-y-6 sm:space-y-10 lg:space-y-12">
+              {filteredItems.map((item, idx) => {
+                const isEven = idx % 2 === 0;
 
-                      {/* 2. Outer Dark Road Edges */}
-                      <path
-                        d="M 40,0 L 40,50 Q 40,90 85,100 Q 135,110 135,130 Q 135,150 85,160 Q 40,170 40,210 L 40,260"
-                        stroke="#0F172A"
-                        strokeWidth="42"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="-z-10"
-                      />
+                return (
+                  <div
+                    key={item.id}
+                    className={`flex flex-col ${
+                      isEven ? "md:flex-row" : "md:flex-row-reverse"
+                    } items-stretch gap-0 md:gap-3 lg:gap-4 group relative`}
+                  >
+                    {/* SVG SWITCHBACK ROAD SEGMENT (DESKTOP / TABLET >=768px) */}
+                    <div className="hidden md:flex flex-col items-center justify-center w-32 lg:w-44 flex-shrink-0 relative select-none">
+                      {isEven ? (
+                        /* LEFT ROAD SEGMENT: Curve loops towards the right card */
+                        <svg
+                          className="w-full h-full min-h-[260px] overflow-visible"
+                          viewBox="0 0 160 260"
+                          fill="none"
+                        >
+                          {/* 1. Road Asphalt Base Path */}
+                          <path
+                            d="M 40,0 L 40,50 Q 40,90 85,100 Q 135,110 135,130 Q 135,150 85,160 Q 40,170 40,210 L 40,260"
+                            stroke="#475569"
+                            strokeWidth="38"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
 
-                      {/* 3. Outer Colorful Curved Curb Cap (from Reference Image) */}
-                      <path
-                        d="M 75,98 Q 140,110 140,130 Q 140,150 75,162"
-                        stroke={item.themeColor}
-                        strokeWidth="10"
-                        strokeLinecap="round"
-                      />
+                          {/* 2. Outer Dark Road Edges */}
+                          <path
+                            d="M 40,0 L 40,50 Q 40,90 85,100 Q 135,110 135,130 Q 135,150 85,160 Q 40,170 40,210 L 40,260"
+                            stroke="#0F172A"
+                            strokeWidth="42"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="-z-10"
+                          />
 
-                      {/* 4. Center Dashed White Road Lane Stripe */}
-                      <path
-                        d="M 40,0 L 40,50 Q 40,90 85,100 Q 135,110 135,130 Q 135,150 85,160 Q 40,170 40,210 L 40,260"
-                        stroke="#FFFFFF"
-                        strokeWidth="3.5"
-                        strokeDasharray="7 7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                          {/* 3. Outer Colorful Curved Curb Cap */}
+                          <path
+                            d="M 75,98 Q 140,110 140,130 Q 140,150 75,162"
+                            stroke={item.themeColor}
+                            strokeWidth="10"
+                            strokeLinecap="round"
+                          />
 
-                      {/* 5. Pointer Arrow to Card on Right (from Reference Image) */}
-                      <polygon
-                        points="146,130 132,120 132,140"
-                        fill={item.themeColor}
-                      />
-                    </svg>
+                          {/* 4. Center Dashed White Road Lane Stripe */}
+                          <path
+                            d="M 40,0 L 40,50 Q 40,90 85,100 Q 135,110 135,130 Q 135,150 85,160 Q 40,170 40,210 L 40,260"
+                            stroke="#FFFFFF"
+                            strokeWidth="3.5"
+                            strokeDasharray="7 7"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
 
-                    {/* 6. Circular Colored Icon Pin (Centered precisely inside the loop) */}
-                    <div
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 sm:border-[3px] border-black flex items-center justify-center brutal-shadow-sm transition-transform duration-300 group-hover:scale-110 z-20"
-                      style={{ backgroundColor: item.themeColor }}
-                    >
-                      <div className="w-8 h-8 lg:w-9 lg:h-9 bg-black rounded-full flex items-center justify-center border border-white">
-                        {item.icon}
-                      </div>
-                    </div>
-                  </div>
+                          {/* 5. Pointer Arrow to Card on Right */}
+                          <polygon
+                            points="146,130 132,120 132,140"
+                            fill={item.themeColor}
+                          />
+                        </svg>
+                      ) : (
+                        /* RIGHT ROAD SEGMENT: Curve loops towards the left card */
+                        <svg
+                          className="w-full h-full min-h-[260px] overflow-visible"
+                          viewBox="0 0 160 260"
+                          fill="none"
+                        >
+                          {/* 1. Road Asphalt Base Path */}
+                          <path
+                            d="M 120,0 L 120,50 Q 120,90 75,100 Q 25,110 25,130 Q 25,150 75,160 Q 120,170 120,210 L 120,260"
+                            stroke="#475569"
+                            strokeWidth="38"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
 
-                  {/* MOBILE ROADWAY HEADER (FOR SMALL SCREENS) */}
-                  <div className="md:hidden flex items-center gap-3 mb-2 px-2">
-                    <div
-                      className="w-10 h-10 rounded-full border-2 border-black flex items-center justify-center brutal-shadow-sm"
-                      style={{ backgroundColor: item.themeColor }}
-                    >
-                      <div className="w-7 h-7 bg-black rounded-full flex items-center justify-center border border-white">
-                        {item.icon}
-                      </div>
-                    </div>
-                    <div className="font-mono text-xs font-black uppercase text-black">
-                      WAYPOINT {item.stepNum} // {item.role}
-                    </div>
-                  </div>
+                          {/* 2. Outer Dark Road Edges */}
+                          <path
+                            d="M 120,0 L 120,50 Q 120,90 75,100 Q 25,110 25,130 Q 25,150 75,160 Q 120,170 120,210 L 120,260"
+                            stroke="#0F172A"
+                            strokeWidth="42"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="-z-10"
+                          />
 
-                  {/* RIGHT: THE CONTENT CARD (MATCHING REFERENCE IMAGE) */}
-                  <div className="flex-1">
-                    <div className="bg-white border-2 sm:border-[3px] border-black brutal-shadow-lg p-6 sm:p-8 relative transition-all duration-300 group-hover:border-black group-hover:translate-x-1">
-                      {/* Pointer Notch on card edge */}
+                          {/* 3. Outer Colorful Curved Curb Cap */}
+                          <path
+                            d="M 85,98 Q 20,110 20,130 Q 20,150 85,162"
+                            stroke={item.themeColor}
+                            strokeWidth="10"
+                            strokeLinecap="round"
+                          />
+
+                          {/* 4. Center Dashed White Road Lane Stripe */}
+                          <path
+                            d="M 120,0 L 120,50 Q 120,90 75,100 Q 25,110 25,130 Q 25,150 75,160 Q 120,170 120,210 L 120,260"
+                            stroke="#FFFFFF"
+                            strokeWidth="3.5"
+                            strokeDasharray="7 7"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+
+                          {/* 5. Pointer Arrow to Card on Left */}
+                          <polygon
+                            points="14,130 28,120 28,140"
+                            fill={item.themeColor}
+                          />
+                        </svg>
+                      )}
+
+                      {/* 6. Circular Colored Icon Pin (Centered inside the curve loop) */}
                       <div
-                        className="hidden md:block absolute -left-3 top-1/2 -translate-y-1/2 w-3 h-6 bg-black"
-                        style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}
-                      ></div>
+                        className={`absolute ${
+                          isEven
+                            ? "right-2 lg:right-4"
+                            : "left-2 lg:left-4"
+                        } top-1/2 -translate-y-1/2 w-11 h-11 lg:w-14 lg:h-14 rounded-full border-2 sm:border-[3px] border-black flex items-center justify-center brutal-shadow-sm transition-transform duration-300 group-hover:scale-110 z-20`}
+                        style={{ backgroundColor: item.themeColor }}
+                      >
+                        <div className="w-7 h-7 lg:w-9 lg:h-9 bg-black rounded-full flex items-center justify-center border border-white">
+                          {item.icon}
+                        </div>
+                      </div>
+                    </div>
 
-                      {/* Top Header Row: Big Colored Step Number */}
-                      <div className="flex flex-wrap items-start justify-between gap-3 pb-4 border-b-2 border-black mb-4">
-                        <div className="flex items-center gap-3">
-                          {/* Giant Step Number in Theme Color */}
+                    {/* MOBILE ROADWAY TIMELINE HEADER (<768px) */}
+                    <div className="md:hidden flex items-center gap-2.5 mb-2.5 px-1">
+                      <div
+                        className="w-9 h-9 rounded-full border-2 border-black flex items-center justify-center brutal-shadow-sm flex-shrink-0"
+                        style={{ backgroundColor: item.themeColor }}
+                      >
+                        <div className="w-6 h-6 bg-black rounded-full flex items-center justify-center border border-white">
+                          {item.icon}
+                        </div>
+                      </div>
+                      <div className="font-mono text-xs font-black uppercase text-black flex items-center gap-1.5 truncate">
+                        <span className="px-1.5 py-0.5 bg-black text-white text-[10px]">
+                          STATION {item.stepNum}
+                        </span>
+                        <span className="truncate">{item.role}</span>
+                      </div>
+                    </div>
+
+                    {/* THE CONTENT CARD */}
+                    <div className="flex-1 min-w-0">
+                      <div className="bg-white border-2 sm:border-[3px] border-black brutal-shadow-lg p-4 sm:p-6 lg:p-8 relative transition-all duration-300 group-hover:border-black group-hover:translate-x-1">
+                        {/* Pointer Notch on card edge facing the road */}
+                        {isEven ? (
                           <div
-                            className="font-display font-black text-4xl sm:text-5xl leading-none"
-                            style={{ color: item.themeColor }}
-                          >
-                            {item.stepNum}
-                          </div>
-
-                          <div>
-                            <span className="px-2.5 py-0.5 bg-black text-white font-mono text-xs font-bold uppercase tracking-wider block w-fit">
-                              {item.badge}
-                            </span>
-                            <span className="font-mono text-[11px] text-neutral-500 font-bold block mt-0.5">
-                              {item.location}
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="font-mono font-bold text-xs sm:text-sm px-3 py-1 bg-[#F4F4F0] border-2 border-black flex items-center gap-1.5 brutal-shadow-sm">
-                          <Calendar className="w-3.5 h-3.5 text-black" />
-                          <span>{item.period}</span>
-                        </div>
-                      </div>
-
-                      {/* Role & Company */}
-                      <div className="mb-4">
-                        <h3 className="font-display font-black text-2xl sm:text-3xl text-black uppercase tracking-tight">
-                          {item.role}{" "}
-                          <span
-                            className="underline decoration-4 underline-offset-4"
-                            style={{ color: item.themeColor }}
-                          >
-                            @ {item.company}
-                          </span>
-                        </h3>
-                        <p className="font-mono text-xs sm:text-sm text-neutral-600 mt-1 flex items-center gap-1">
-                          <ChevronRight className="w-3.5 h-3.5 text-neutral-400" />
-                          <span>{item.companyContext}</span>
-                        </p>
-                      </div>
-
-                      {/* Summary Narrative */}
-                      <p className="text-sm sm:text-base text-neutral-800 leading-relaxed font-normal mb-5 border-l-4 border-black pl-3.5 bg-[#F4F4F0] py-2.5">
-                        {item.summary}
-                      </p>
-
-                      {/* Deliverables / Impact Points */}
-                      <div className="space-y-2 mb-5 font-mono text-xs sm:text-sm">
-                        <div className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider">
-                          // KEY HIGHLIGHTS & DELIVERABLES:
-                        </div>
-                        {item.deliverables.map((bullet, bIdx) => (
+                            className="hidden md:block absolute -left-3 top-1/2 -translate-y-1/2 w-3 h-6 bg-black"
+                            style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}
+                          ></div>
+                        ) : (
                           <div
-                            key={bIdx}
-                            className="flex items-start gap-2.5 p-2.5 bg-white border border-neutral-300 hover:border-black transition-colors"
-                          >
-                            <span
-                              className="w-2 h-2 flex-shrink-0 mt-1.5"
-                              style={{ backgroundColor: item.themeColor }}
-                            ></span>
-                            <span className="text-neutral-900 leading-relaxed font-medium">
-                              {bullet}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
+                            className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 w-3 h-6 bg-black"
+                            style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}
+                          ></div>
+                        )}
 
-                      {/* Tags & Action Link */}
-                      <div className="pt-3 border-t-2 border-dashed border-neutral-300 flex flex-wrap items-center justify-between gap-3">
-                        <div className="flex flex-wrap gap-1.5">
-                          {item.technologies.map((tech, tIdx) => (
-                            <span
-                              key={tIdx}
-                              className="px-2.5 py-0.5 bg-[#F4F4F0] text-neutral-900 font-mono text-[11px] font-bold border border-black"
+                        {/* Top Header Row: Big Colored Step Number */}
+                        <div className="flex flex-wrap items-start justify-between gap-2.5 pb-3.5 border-b-2 border-black mb-4">
+                          <div className="flex items-center gap-3">
+                            {/* Giant Step Number in Theme Color */}
+                            <div
+                              className="font-display font-black text-3xl sm:text-5xl leading-none"
+                              style={{ color: item.themeColor }}
                             >
-                              {tech}
+                              {item.stepNum}
+                            </div>
+
+                            <div>
+                              <span className="px-2 sm:px-2.5 py-0.5 bg-black text-white font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider block w-fit">
+                                {item.badge}
+                              </span>
+                              <span className="font-mono text-[10px] sm:text-[11px] text-neutral-500 font-bold block mt-0.5">
+                                {item.location}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="font-mono font-bold text-xs sm:text-sm px-2.5 sm:px-3 py-1 bg-[#F4F4F0] border-2 border-black flex items-center gap-1.5 brutal-shadow-sm">
+                            <Calendar className="w-3.5 h-3.5 text-black" />
+                            <span>{item.period}</span>
+                          </div>
+                        </div>
+
+                        {/* Role & Company */}
+                        <div className="mb-4">
+                          <h3 className="font-display font-black text-xl sm:text-3xl text-black uppercase tracking-tight">
+                            {item.role}{" "}
+                            <span
+                              className="underline decoration-4 underline-offset-4 break-words"
+                              style={{ color: item.themeColor }}
+                            >
+                              @ {item.company}
                             </span>
+                          </h3>
+                          <p className="font-mono text-xs sm:text-sm text-neutral-600 mt-1 flex items-center gap-1">
+                            <ChevronRight className="w-3.5 h-3.5 text-neutral-400 flex-shrink-0" />
+                            <span className="leading-snug">{item.companyContext}</span>
+                          </p>
+                        </div>
+
+                        {/* Summary Narrative */}
+                        <p className="text-xs sm:text-base text-neutral-800 leading-relaxed font-normal mb-4 sm:mb-5 border-l-4 border-black pl-3 bg-[#F4F4F0] py-2 sm:py-2.5">
+                          {item.summary}
+                        </p>
+
+                        {/* Deliverables / Impact Points */}
+                        <div className="space-y-2 mb-4 sm:mb-5 font-mono text-xs sm:text-sm">
+                          <div className="text-[10px] sm:text-[11px] font-bold text-neutral-500 uppercase tracking-wider">
+                            // KEY HIGHLIGHTS & DELIVERABLES:
+                          </div>
+                          {item.deliverables.map((bullet, bIdx) => (
+                            <div
+                              key={bIdx}
+                              className="flex items-start gap-2.5 p-2 sm:p-2.5 bg-white border border-neutral-300 hover:border-black transition-colors"
+                            >
+                              <span
+                                className="w-2 h-2 flex-shrink-0 mt-1.5"
+                                style={{ backgroundColor: item.themeColor }}
+                              ></span>
+                              <span className="text-neutral-900 leading-relaxed font-medium">
+                                {bullet}
+                              </span>
+                            </div>
                           ))}
                         </div>
 
-                        <a
-                          href="/resume.pdf"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="font-mono text-xs font-bold text-[#FF5500] hover:underline flex items-center gap-1"
-                        >
-                          <span>VIEW RESUME SPECS</span>
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </a>
+                        {/* Tags & Action Link */}
+                        <div className="pt-3 border-t-2 border-dashed border-neutral-300 flex flex-wrap items-center justify-between gap-2.5">
+                          <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                            {item.technologies.map((tech, tIdx) => (
+                              <span
+                                key={tIdx}
+                                className="px-2 sm:px-2.5 py-0.5 bg-[#F4F4F0] text-neutral-900 font-mono text-[10px] sm:text-[11px] font-bold border border-black"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+
+                          <a
+                            href="/resume.pdf"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-mono text-xs font-bold text-[#FF5500] hover:underline flex items-center gap-1"
+                          >
+                            <span>VIEW RESUME SPECS</span>
+                            <ArrowUpRight className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

@@ -100,12 +100,20 @@ export default function FounderFeature() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-neutral-800">
+              <div className="mt-6 pt-4 border-t border-neutral-800 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <a
+                  href="https://www.softlligence.tech"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full py-2.5 bg-[#10B981] text-black font-bold text-xs uppercase text-center border-2 border-black hover:bg-[#0ea372] transition-colors flex items-center justify-center gap-1.5"
+                >
+                  <span>VISIT WEBSITE ↗</span>
+                </a>
                 <a
                   href="#projects"
-                  className="w-full block py-2.5 bg-[#10B981] text-black font-bold text-xs uppercase text-center border-2 border-black hover:bg-[#0ea372] transition-colors"
+                  className="w-full py-2.5 bg-white text-black font-bold text-xs uppercase text-center border-2 border-black hover:bg-neutral-200 transition-colors flex items-center justify-center gap-1.5"
                 >
-                  VIEW SOFTLLIGENCE CLOUD CASE STUDY ↓
+                  <span>CASE STUDY ↓</span>
                 </a>
               </div>
             </div>
