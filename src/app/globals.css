@@ -12,14 +12,14 @@
 /* Neo-Brutalist Technical Grid & Textures */
 .bg-grid-pattern {
   background-size: 28px 28px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
 }
 
 .dark .bg-grid-pattern {
   background-size: 28px 28px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
@@ -85,28 +85,61 @@
 
 /* Keyframe Animations */
 @keyframes floatSlow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-5px);
   }
 }
 
 @keyframes floatAlt {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(5px);
   }
 }
 
+@keyframes floatDelay {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(0.5deg);
+  }
+}
+
+@keyframes floatReverse {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(6px) rotate(-0.5deg);
+  }
+}
+
 @keyframes pulseGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.85;
     transform: scale(1.02);
@@ -119,6 +152,14 @@
 
 .animate-float-alt {
   animation: floatAlt 5s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: floatDelay 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 5.5s ease-in-out infinite;
 }
 
 .animate-pulse-glow {

@@ -81,11 +81,10 @@ export default function Navbar() {
                 <a
                   key={link.id}
                   href={link.href}
-                  className={`px-3 py-1.5 font-mono text-xs font-bold transition-all border ${
-                    isActive
+                  className={`px-3 py-1.5 font-mono text-xs font-bold transition-all border ${isActive
                       ? "bg-black text-white border-black brutal-shadow-sm"
                       : "bg-transparent text-neutral-800 border-transparent hover:border-black hover:bg-white hover:text-[#2563EB]"
-                  }`}
+                    }`}
                 >
                   {link.label}
                 </a>
@@ -105,7 +104,7 @@ export default function Navbar() {
               <ArrowUpRight className="w-3.5 h-3.5 text-[#FF5500]" />
             </a>
             <a
-              href={`mailto:${PORTFOLIO_DATA.identity.email}`}
+              href="#contact"
               className="px-3.5 py-1.5 bg-[#FF5500] text-black font-mono font-bold text-xs uppercase border-2 border-black brutal-shadow-sm brutal-btn flex items-center gap-1.5 hover:bg-[#ff6a1f]"
             >
               <span>HIRE / CONNECT</span>
@@ -124,7 +123,7 @@ export default function Navbar() {
               RESUME
             </a>
             <a
-              href={`mailto:${PORTFOLIO_DATA.identity.email}`}
+              href="#contact"
               className="sm:hidden px-2 py-1 bg-[#FF5500] text-black font-mono font-bold text-[10px] border border-black brutal-shadow-sm"
             >
               HIRE
@@ -173,10 +172,11 @@ export default function Navbar() {
                   GITHUB REPOSITORY
                 </a>
                 <a
-                  href={`mailto:${PORTFOLIO_DATA.identity.email}`}
-                  className="px-3 py-2 bg-white text-black font-mono text-xs font-bold border-2 border-black text-center"
+                  href="#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="px-3 py-2 bg-white text-black font-mono text-xs font-bold border-2 border-black text-center hover:bg-[#FF5500] transition-colors"
                 >
-                  EMAIL: {PORTFOLIO_DATA.identity.email}
+                  GO TO CONTACT SECTION ↓
                 </a>
               </div>
             </div>

@@ -286,10 +286,7 @@ export default function ProjectsSection() {
                   {/* Card Header */}
                   <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b-2 border-black">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-bold text-neutral-400">
-                        0{idx + 2}
-                      </span>
-                      <span className={`px-2 py-0.5 font-mono text-xs font-bold uppercase ${getCategoryBadgeColor(project.category)}`}>
+                      <span className={`px-2.5 py-0.5 font-mono text-xs font-bold uppercase ${getCategoryBadgeColor(project.category)}`}>
                         [{project.category}]
                       </span>
                     </div>
@@ -383,6 +380,14 @@ export default function ProjectsSection() {
                           Dijkstra & A* algorithms
                         </span>
                         , turn-restriction weights, and spatial indexing to fast-track rider routing and ETA computation across Dhaka city.
+                      </>
+                    ) : project.id === "acumens-media" ? (
+                      <>
+                        Modern agency frontend for AcuMens Media Inc built with{" "}
+                        <span className="font-semibold text-black bg-[#2563EB]/15 px-0.5 border-b border-[#2563EB]">
+                          React & Vite
+                        </span>
+                        , featuring interactive portfolio reels, service showcases, package pricing calculators, and Core Web Vitals performance tuning.
                       </>
                     ) : (
                       project.description

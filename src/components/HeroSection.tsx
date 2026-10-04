@@ -143,22 +143,40 @@ export default function HeroSection() {
 
           {/* Right Column: Clean Centered Portrait & Floating Animated Satellite Badges */}
           <div className="lg:col-span-5 relative flex flex-col items-center justify-center pt-4 lg:pt-0">
-            {/* Top-Left Floating Badge with Animation */}
-            <div className="hidden sm:flex absolute -top-2 -left-3 z-20 items-center gap-1.5 px-2.5 py-1 bg-[#FF5500] text-black font-mono text-[11px] font-black border-2 border-black brutal-shadow-sm animate-float-slow">
+            {/* Top-Left Floating Badge 1: Backend Architect */}
+            <div className="hidden sm:flex absolute -top-3 -left-3 z-20 items-center gap-1.5 px-2.5 py-1 bg-[#FF5500] text-black font-mono text-[11px] font-black border-2 border-black brutal-shadow-sm animate-float-slow">
               <Zap className="w-3.5 h-3.5" />
               <span>BACKEND ARCHITECT</span>
             </div>
 
-            {/* Top-Right Floating Badge with Animation */}
-            <div className="hidden sm:flex absolute top-8 -right-3 z-20 items-center gap-1.5 px-2.5 py-1 bg-[#10B981] text-black font-mono text-[11px] font-black border-2 border-black brutal-shadow-sm animate-float-alt">
+            {/* Top-Right Floating Badge 2: Multimodal RAG */}
+            <div className="hidden sm:flex absolute -top-2 -right-3 z-20 items-center gap-1.5 px-2.5 py-1 bg-[#10B981] text-black font-mono text-[11px] font-black border-2 border-black brutal-shadow-sm animate-float-alt">
               <Cpu className="w-3.5 h-3.5" />
               <span>MULTIMODAL RAG</span>
             </div>
 
-            {/* Bottom-Left Floating Badge */}
+            {/* Middle-Right Floating Badge 3: 20% Load Reduction */}
+            <div className="hidden sm:flex absolute top-[38%] -right-5 z-20 items-center gap-1.5 px-2.5 py-1 bg-[#06B6D4] text-black font-mono text-[11px] font-black border-2 border-black brutal-shadow-sm animate-float-delay">
+              <span className="text-xs">🚀</span>
+              <span>20% LOAD REDUCTION</span>
+            </div>
+
+            {/* Middle-Left Floating Badge 4: Graph Routing & A* */}
+            <div className="hidden sm:flex absolute top-[44%] -left-5 z-20 items-center gap-1.5 px-2.5 py-1 bg-[#EC4899] text-white font-mono text-[11px] font-black border-2 border-black brutal-shadow-sm animate-float-reverse">
+              <span className="text-xs">🛣️</span>
+              <span>GRAPH ROUTING & A*</span>
+            </div>
+
+            {/* Bottom-Left Floating Badge 5: Founder @ Softlligence */}
             <div className="hidden sm:flex absolute bottom-14 -left-4 z-20 items-center gap-1.5 px-2.5 py-1 bg-black text-white font-mono text-[11px] font-bold border-2 border-white brutal-shadow-sm animate-float-slow">
               <span className="w-2 h-2 bg-[#10B981] inline-block"></span>
               <span>FOUNDER @ SOFTLLIGENCE</span>
+            </div>
+
+            {/* Bottom-Right Floating Badge 6: NSU CSE 3.83 CGPA */}
+            <div className="hidden sm:flex absolute bottom-14 -right-3 z-20 items-center gap-1.5 px-2.5 py-1 bg-[#84CC16] text-black font-mono text-[11px] font-black border-2 border-black brutal-shadow-sm animate-float-alt">
+              <span className="text-xs">🎓</span>
+              <span>NSU CSE · 3.83 CGPA</span>
             </div>
 
             {/* Centered Portrait Card Container */}
@@ -200,6 +218,22 @@ export default function HeroSection() {
                   )}
                 </button>
               </div>
+            </div>
+
+            {/* Mobile Fallback Satellite Badges Strip */}
+            <div className="sm:hidden flex flex-wrap justify-center gap-1.5 mt-3 w-full max-w-[390px]">
+              <span className="px-2 py-0.5 bg-[#FF5500] text-black font-mono text-[10px] font-black border border-black brutal-shadow-sm">
+                ⚡ BACKEND ARCHITECT
+              </span>
+              <span className="px-2 py-0.5 bg-[#10B981] text-black font-mono text-[10px] font-black border border-black brutal-shadow-sm">
+                🧠 MULTIMODAL RAG
+              </span>
+              <span className="px-2 py-0.5 bg-[#06B6D4] text-black font-mono text-[10px] font-black border border-black brutal-shadow-sm">
+                🚀 20% LOAD REDUCTION
+              </span>
+              <span className="px-2 py-0.5 bg-[#EC4899] text-white font-mono text-[10px] font-black border border-black brutal-shadow-sm">
+                🛣️ GRAPH ROUTING & A*
+              </span>
             </div>
           </div>
         </div>

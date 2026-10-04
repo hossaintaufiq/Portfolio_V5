@@ -31,7 +31,11 @@ export const metadata: Metadata = {
     "Full-Stack Developer",
     "North South University",
   ],
-  authors: [{ name: "Hossain Ahmmed Taufiq" }],
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   openGraph: {
     title: "HOSSAIN AHMMED TAUFIQ | Software Engineer · Backend · AI/ML Systems",
     description:
