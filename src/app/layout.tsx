@@ -1,26 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Serif, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-display",
+const plexSerif = IBM_Plex_Serif({
+  variable: "--font-plex-serif",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
-const inter = Inter({
-  variable: "--font-sans",
+const plexSans = IBM_Plex_Sans({
+  variable: "--font-plex-sans",
   subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "HOSSAIN AHMMED TAUFIQ — Software Engineer · Backend · AI/ML Systems",
+  metadataBase: new URL("https://taufiq.dev"),
+  title: "Hossain Ahmmed Taufiq — Software Engineer · Backend & AI Systems",
   description:
-    "Software Engineer with experience building scalable full-stack web applications, backend services, and AI-powered products. Founder of Softlligence Technologies.",
+    "Software Engineer building scalable backend services and AI-powered products. Backend AI Engineer at Edumax Labs and Founder of Softlligence Technologies.",
   keywords: [
     "Hossain Ahmmed Taufiq",
     "Software Engineer",
@@ -34,21 +33,25 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
   },
   openGraph: {
     title: "HOSSAIN AHMMED TAUFIQ | Software Engineer · Backend · AI/ML Systems",
     description:
-      "Software Engineer with experience building scalable full-stack web applications, backend services, and AI-powered products. Founder of Softlligence Technologies.",
+      "Software Engineer building scalable backend services and AI-powered products. Backend AI Engineer at Edumax Labs and Founder of Softlligence Technologies.",
     url: "https://taufiq.dev",
     siteName: "Hossain Ahmmed Taufiq Portfolio",
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hossain Ahmmed Taufiq — Software Engineer · Backend & AI Systems",
+  },
+  alternates: { canonical: "/" },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FF5500",
+  themeColor: "#EDEFF2",
 };
 
 export default function RootLayout({
@@ -57,11 +60,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} scroll-smooth antialiased`}
-    >
-      <body className="min-h-screen bg-[#F4F4F0] text-[#111111] font-sans selection:bg-[#FF5500] selection:text-white dark:bg-[#0C0D0E] dark:text-[#F0F0EB]">
+    <html lang="en" className={`${plexSerif.variable} ${plexSans.variable}`}>
+      <body className="min-h-screen bg-paper text-ink font-sans antialiased">
         {children}
       </body>
     </html>

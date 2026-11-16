@@ -1,176 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700;800;900&display=swap');
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-  }
-}
-
-/* Neo-Brutalist Technical Grid & Textures */
-.bg-grid-pattern {
-  background-size: 28px 28px;
-  background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
-}
-
-.dark .bg-grid-pattern {
-  background-size: 28px 28px;
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-}
-
-.bg-dot-pattern {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1px);
-  background-size: 14px 14px;
-}
-
-/* Custom Neo-Brutalist utility classes */
-.font-display {
-  font-family: var(--font-display);
-}
-
-.font-mono {
-  font-family: var(--font-mono);
-}
-
-/* Hard Shadows */
-.brutal-shadow-sm {
-  box-shadow: 2px 2px 0px #000000;
-}
-
-.brutal-shadow {
-  box-shadow: 4px 4px 0px #000000;
-}
-
-.brutal-shadow-md {
-  box-shadow: 6px 6px 0px #000000;
-}
-
-.brutal-shadow-lg {
-  box-shadow: 8px 8px 0px #000000;
-}
-
-.brutal-shadow-xl {
-  box-shadow: 10px 10px 0px #000000;
-}
-
-/* Interactive Brutalist Button States */
-.brutal-btn {
-  transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.12s cubic-bezier(0, 0, 0.2, 1);
-}
-
-.brutal-btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000;
-}
-
-.brutal-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #000000;
-}
-
-.brutal-card {
-  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.18s ease;
-}
-
-.brutal-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 8px 8px 0px #000000;
-}
-
-/* Keyframe Animations */
-@keyframes floatSlow {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes floatAlt {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(5px);
-  }
-}
-
-@keyframes floatDelay {
-
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-
-  50% {
-    transform: translateY(-6px) rotate(0.5deg);
-  }
-}
-
-@keyframes floatReverse {
-
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-
-  50% {
-    transform: translateY(6px) rotate(-0.5deg);
-  }
-}
-
-@keyframes pulseGlow {
-
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.85;
-    transform: scale(1.02);
-  }
-}
-
-.animate-float-slow {
-  animation: floatSlow 4.5s ease-in-out infinite;
-}
-
-.animate-float-alt {
-  animation: floatAlt 5s ease-in-out infinite;
-}
-
-.animate-float-delay {
-  animation: floatDelay 6s ease-in-out infinite;
-}
-
-.animate-float-reverse {
-  animation: floatReverse 5.5s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulseGlow 3s ease-in-out infinite;
+@theme inline {
+  --color-paper: #edeff2;
+  --color-ink: #16213a;
+  --color-muted: #56607a;
+  --color-rule: #cbd1db;
+  --color-signal: #2440d8;
+  --font-serif: var(--font-plex-serif), Georgia, serif;
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 85px;
+  scroll-padding-top: 2rem;
 }
 
-section {
-  scroll-margin-top: 85px;
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-signal);
+  color: #fff;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+}
+
+.bg-ink a:focus-visible,
+.bg-ink button:focus-visible,
+.bg-signal a:focus-visible {
+  outline-color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  svg g,
+  svg path,
+  svg rect {
+    transition: none !important;
+  }
 }

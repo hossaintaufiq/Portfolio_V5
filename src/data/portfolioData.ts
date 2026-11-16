@@ -166,6 +166,34 @@ export const PORTFOLIO_DATA = {
 
   experience: [
     {
+      id: "exp-edumax",
+      role: "Backend AI Engineer",
+      company: "Edumax Consultancy and Edumax Labs",
+      period: "Nov 10, 2026 – Present",
+      locationType: "Dhaka, Bangladesh",
+      companyContext:
+        "Education Consultancy & Product Lab · AI-Powered Platforms",
+      description:
+        "Backend AI Engineer at Edumax Consultancy and its product arm, Edumax Labs, building backend services and AI-powered systems for education products.",
+      points: [
+        "Design and build backend services and APIs that power Edumax Labs' AI-driven education products.",
+        "Develop LLM and retrieval-augmented (RAG) pipelines, from data ingestion to production inference endpoints.",
+        "Own service reliability, data modelling, and integration between AI components and product front-ends.",
+      ],
+      highlight:
+        "Backend and AI engineering for education products at Edumax Labs.",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "LLM Pipelines",
+        "RAG",
+        "PostgreSQL",
+        "REST APIs",
+      ],
+      stepLevel: 4,
+      badge: "CURRENT ROLE · ACTIVE",
+    },
+    {
       id: "exp-mev",
       role: "Software Engineer",
       company: "MEV (Mango Electric Vehicle)",
@@ -612,6 +640,8 @@ export const PORTFOLIO_DATA = {
         "Scikit-learn",
         "TensorFlow",
         "Gemini API",
+        "Prompt Engineering",
+        "Vector Databases",
       ],
     },
     {
@@ -643,6 +673,22 @@ export const PORTFOLIO_DATA = {
       name: "ALGORITHMS & METHODOLOGIES",
       categoryCode: "07_METH",
       skills: ["Graph Algorithms (Dijkstra/A*)", "Data Structures", "Agile / Scrum", "Test-Driven Dev", "System Design"],
+    },
+    {
+      name: "DESIGN SENSE & FORMATTING",
+      categoryCode: "08_DSGN",
+      skills: [
+        "UI / UX Design",
+        "Design Systems",
+        "Figma",
+        "Typography & Hierarchy",
+        "Layout & Grid Systems",
+        "Responsive Design",
+        "Accessibility (WCAG)",
+        "Design Tokens",
+        "Motion & Micro-interactions",
+        "Technical Documentation",
+      ],
     },
   ],
 
