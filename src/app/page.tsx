@@ -14,14 +14,18 @@ const frame = "mx-auto max-w-[1180px] px-6 md:px-10";
 export default function Home() {
   return (
     <>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <ScrollProgress />
-      <div className="bg-ink text-paper">
+      <div className="grade-hero text-paper">
         <div className={frame}>
           <SiteHeader />
           <Hero />
         </div>
+        <div className="grade-rule" aria-hidden="true" />
       </div>
-      <main>
+      <main id="main">
         <div className={frame}>
           <Work />
           <Experience />
