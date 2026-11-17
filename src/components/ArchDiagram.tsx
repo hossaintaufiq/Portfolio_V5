@@ -284,7 +284,7 @@ export default function ArchDiagram({ arch }: { arch: Architecture }) {
                   key={n.id}
                   role="button"
                   tabIndex={0}
-                  aria-label={`${n.title}. ${n.desc}`}
+                  aria-label={`${n.title}${n.sub ? `, ${n.sub}` : ""}. ${n.desc}`}
                   aria-pressed={isActive}
                   onMouseEnter={pick}
                   onFocus={pick}

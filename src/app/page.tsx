@@ -11,6 +11,8 @@ import HeroGlow from "@/components/HeroGlow";
 import SideRail from "@/components/SideRail";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import ChatGuide from "@/components/ChatGuide";
+import CommandPalette from "@/components/CommandPalette";
+import Snapshot from "@/components/Snapshot";
 import ScrollProgress from "@/components/ScrollProgress";
 
 const frame = "mx-auto max-w-[1180px] px-5 sm:px-6 md:px-10 min-[1700px]:max-w-[1320px]";
@@ -37,6 +39,7 @@ export default function Home() {
       </div>
       <main id="main">
         <div className={frame}>
+          <Snapshot />
           <Work />
           <Experience />
           <Research />
@@ -49,6 +52,7 @@ export default function Home() {
         <Footer />
       </div>
       <ChatGuide />
+      <CommandPalette />
     </>
   );
 }

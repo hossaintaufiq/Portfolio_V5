@@ -79,7 +79,7 @@ export default function Work() {
         </>
       }
       index="01"
-      blurb="Products I have designed and built, from the data model to the interface."
+      blurb="Every featured project comes with its real architecture. Hover any part to see why it exists."
       aside={
         <ol className="space-y-2 border-l border-rule pl-4 text-sm">
           {featured.map((p, i) => (

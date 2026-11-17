@@ -35,7 +35,14 @@ const ICONS: Record<string, typeof Code2> = {
   "08_DSGN": Palette,
 };
 
+// Strongest first, because that is what the role is about.
+const ORDER = ["02_BACK", "03_AIML", "04_FRNT", "05_DATA", "06_CLOD", "01_LANG", "07_METH", "08_DSGN"];
+const CORE = new Set(["02_BACK", "03_AIML"]);
+
 export default function Skills() {
+  const categories = [...PORTFOLIO_DATA.skills].sort(
+    (a, b) => ORDER.indexOf(a.categoryCode) - ORDER.indexOf(b.categoryCode),
+  );
   return (
     <Section
       id="skills"
@@ -50,10 +57,10 @@ export default function Skills() {
         </>
       }
       index="04"
-      blurb="The tools I reach for, grouped by the job they do."
+      blurb="Grouped by the job they do, strongest first. Backend and AI is where I go deepest."
     >
       <dl className="divide-y divide-rule border-y border-rule">
-        {PORTFOLIO_DATA.skills.map((c) => {
+        {categories.map((c) => {
           const Icon = ICONS[c.categoryCode] ?? Code2;
           return (
             <div
@@ -63,6 +70,11 @@ export default function Skills() {
               <dt className="flex items-center gap-3 font-medium">
                 <Icon className="h-5 w-5 text-signal" strokeWidth={1.75} aria-hidden="true" />
                 {NAMES[c.categoryCode] ?? c.name}
+                {CORE.has(c.categoryCode) && (
+                  <span className="rounded-sm bg-[#2440d8]/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-signal">
+                    Core
+                  </span>
+                )}
               </dt>
               <dd className="max-w-[62ch] text-sm leading-relaxed text-muted">
                 <TechList items={c.skills} />

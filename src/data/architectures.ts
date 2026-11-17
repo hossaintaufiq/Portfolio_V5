@@ -140,6 +140,45 @@ export const ARCHITECTURES: Record<string, Architecture> = {
   },
 
   /* ------------------------------------------------------------------ */
+  "kia-bangladesh": {
+    label:
+      "Architecture of the Kia Bangladesh website. 3D models authored in Blender are stored in Cloudflare R2. A visitor reaches a Next.js site on Vercel through the Cloudflare CDN. The site renders a Three.js 3D showroom, animated with GSAP and Framer Motion, loading models from R2, and calls an Express API backed by PostgreSQL.",
+    caption:
+      "Models are authored in Blender, stored in R2 and delivered through the CDN, so the 3D scene loads fast. The site talks to one Express API. Hover a part to see what it does.",
+    viewBox: "0 0 980 330",
+    zones: [
+      { x: C1 - 10, y: 56, w: 176, h: 86, label: "People" },
+      { x: C1 - 10, y: 216, w: 176, h: 86, label: "Authoring" },
+      { x: C2 - 10, y: 56, w: 176, h: 256, label: "Cloudflare" },
+      { x: C3 - 10, y: 56, w: 176, h: 256, label: "Next.js on Vercel" },
+      { x: C4 - 10, y: 132, w: 176, h: 118, label: "Backend" },
+      { x: C5 - 10, y: 132, w: 176, h: 118, label: "Data" },
+    ],
+    nodes: [
+      { id: "visitor", x: C1, y: 88, title: "Visitor", sub: "Browser or phone", glyph: "globe", desc: "Someone exploring the lineup, choosing a colour and turning the car around." },
+      { id: "blender", x: C1, y: 248, title: "Blender", sub: "Models authored", icon: "Blender", desc: "The car models and textures are built and optimised in Blender, then exported for the web." },
+      { id: "cdn", x: C2, y: 88, title: "Cloudflare CDN", sub: "Fast delivery", icon: "Cloudflare", desc: "Serves the site and the heavy 3D files from an edge close to the visitor." },
+      { id: "r2", x: C2, y: 248, title: "R2 storage", sub: "Models, textures", icon: "Cloudflare", desc: "Object storage for the 3D models and textures, kept out of the app bundle." },
+      { id: "site", x: C3, y: 88, title: "Next.js site", sub: "Tailwind CSS", icon: "Next.js", desc: "Renders the pages and hosts the interactive scene." },
+      { id: "scene", x: C3, y: 168, title: "3D showroom", sub: "Three.js scene", icon: "Three.js", desc: "Loads the models and lets the visitor rotate and inspect each car in real time." },
+      { id: "motion", x: C3, y: 248, title: "Animation", sub: "GSAP, Framer Motion", icon: "GSAP", desc: "Choreographs the scroll, transitions and camera moves so the page feels cinematic." },
+      { id: "api", x: C4, y: 168, title: "Express API", sub: "Node.js", icon: "Express", desc: "One API behind the site for the data the showroom needs." },
+      { id: "db", x: C5, y: 168, title: "PostgreSQL", sub: "Records", icon: "PostgreSQL", desc: "The single source of truth for the site's data." },
+    ],
+    edges: [
+      { from: "visitor", to: "cdn", d: "M176 115 H208" },
+      { from: "cdn", to: "site", d: "M364 115 H396" },
+      { from: "site", to: "scene", d: "M474 142 V168" },
+      { from: "scene", to: "motion", d: "M474 222 V248" },
+      { from: "blender", to: "r2", d: "M176 275 H208" },
+      { from: "r2", to: "scene", d: "M364 275 H380 V195 H396" },
+      { from: "cdn", to: "r2", d: "M286 142 V248", quiet: true, label: { x: 294, y: 200, text: "caches" } },
+      { from: "site", to: "api", d: "M552 115 H568 V195 H584" },
+      { from: "api", to: "db", d: "M740 195 H772" },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ */
   "playpen-school": {
     label:
       "Architecture of the Playpen School platform. Parents use a Next.js public website and school staff use a CMS dashboard. Both call one role-based Express API, which runs the admissions, live updates and payments workflows. Everything is stored in PostgreSQL, and tuition payments go to an external payment gateway. Everything except the gateway is hosted on AWS.",

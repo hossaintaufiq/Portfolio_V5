@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ArrowUp, ExternalLink, MessageCircle, X } from "lucide-react";
 import { FIRST_CHIPS, reply, type Action, type Reply } from "@/lib/guide";
+import { OPEN_GUIDE, goTo } from "@/lib/nav";
 
 type Message = { id: number; from: "bot" | "user"; text: string; actions?: Action[] };
 
@@ -10,18 +11,6 @@ const GREETING: Reply = {
   text: "Hi, I am the guide for this portfolio. Ask me about the projects, experience or skills, or tell me where to go and I will scroll you there.",
   chips: FIRST_CHIPS,
 };
-
-/** Scroll to a section or project and pulse it so the eye finds it. */
-function goTo(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  el.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "start" });
-  el.classList.remove("nav-flash");
-  void el.offsetWidth; // restart the animation if it is already running
-  el.classList.add("nav-flash");
-  window.setTimeout(() => el.classList.remove("nav-flash"), 1800);
-}
 
 export default function ChatGuide() {
   const [open, setOpen] = useState(false);
@@ -37,12 +26,20 @@ export default function ChatGuide() {
   const field = useRef<HTMLInputElement>(null);
   const timer = useRef<number | undefined>(undefined);
 
-  // A link ending in #guide opens the chat straight away.
+  // A link ending in #guide, or an "open guide" event, opens the chat.
   useEffect(() => {
     const t = window.setTimeout(() => {
       if (window.location.hash === "#guide") setOpen(true);
     }, 0);
-    return () => window.clearTimeout(t);
+    const onOpen = () => {
+      setOpen(true);
+      setTeaser(false);
+    };
+    window.addEventListener(OPEN_GUIDE, onOpen);
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener(OPEN_GUIDE, onOpen);
+    };
   }, []);
 
   // A gentle nudge once, a few seconds in.

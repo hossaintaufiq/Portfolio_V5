@@ -1,3 +1,4 @@
+import PaletteButton from "./PaletteButton";
 import ThemeToggle from "./ThemeToggle";
 
 const links = [
@@ -10,14 +11,15 @@ const links = [
 
 export default function SiteHeader() {
   return (
-    <header className="flex flex-wrap items-center gap-x-8 gap-y-3 py-5 lg:flex-nowrap lg:py-8">
+    <header className="flex flex-wrap items-center gap-x-4 gap-y-3 lg:gap-x-8 py-5 lg:flex-nowrap lg:py-8">
       <a
         href="#top"
-        className="order-1 whitespace-nowrap font-serif text-lg font-semibold tracking-tight lg:mr-auto"
+        className="order-1 whitespace-nowrap font-serif text-base sm:text-lg font-semibold tracking-tight lg:mr-auto"
       >
         Hossain Ahmmed Taufiq
       </a>
-      <div className="order-2 ml-auto lg:order-3 lg:ml-0">
+      <div className="order-2 ml-auto flex items-center gap-2 lg:order-3 lg:ml-0">
+        <PaletteButton />
         <ThemeToggle />
       </div>
       <nav

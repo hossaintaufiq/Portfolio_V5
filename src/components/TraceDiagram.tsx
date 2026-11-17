@@ -168,7 +168,7 @@ export default function TraceDiagram() {
                 key={n.id}
                 role="button"
                 tabIndex={0}
-                aria-label={`${n.title}: ${n.detail}`}
+                aria-label={`${n.title}, ${n.sub}. ${n.detail}`}
                 aria-pressed={active}
                 onClick={() => inspect(n.id)}
                 onMouseEnter={() => inspect(n.id)}
