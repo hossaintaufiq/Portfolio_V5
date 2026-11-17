@@ -59,9 +59,9 @@ const GLYPHS: Record<Glyph, typeof Globe> = {
   landmark: Landmark,
 };
 
-const INK = "#16213a";
-const MUTED = "#56607a";
-const SIGNAL = "#2440d8";
+const INK = "var(--ink)";
+const MUTED = "var(--muted)";
+const SIGNAL = "var(--signal)";
 
 /** The tip and heading of a path made of M, L, H and V commands. */
 function endOf(d: string) {
@@ -168,7 +168,7 @@ export default function ArchDiagram({ arch }: { arch: Architecture }) {
 
   return (
     <figure className="mt-8 md:-ml-[14rem]">
-      <div className="overflow-x-auto border border-rule bg-white/55">
+      <div className="overflow-x-auto border border-rule bg-[var(--surface)]">
         <svg
           ref={ref}
           viewBox={arch.viewBox}
@@ -192,8 +192,8 @@ export default function ArchDiagram({ arch }: { arch: Architecture }) {
                   y={z.y}
                   width={z.w}
                   height={z.h}
-                  fill={z.outer ? "rgba(36,64,216,0.035)" : "rgba(22,33,58,0.03)"}
-                  stroke={z.outer ? "#9fb0f5" : "#b4bccb"}
+                  fill={z.outer ? "var(--arch-outer)" : "var(--arch-zone)"}
+                  stroke={z.outer ? "var(--arch-outer-stroke)" : "var(--arch-zone-stroke)"}
                   strokeWidth={1}
                   strokeDasharray="5 5"
                 />
@@ -208,7 +208,7 @@ export default function ArchDiagram({ arch }: { arch: Architecture }) {
               const hot = !active || e.from === active || e.to === active;
               const end = endOf(e.d);
               const delay = T.edgeStart + i * T.edgeStep;
-              const colour = e.quiet ? "#8d97ad" : SIGNAL;
+              const colour = e.quiet ? "var(--arch-quiet)" : SIGNAL;
               return (
                 <g
                   key={i}
@@ -216,7 +216,7 @@ export default function ArchDiagram({ arch }: { arch: Architecture }) {
                   strokeLinejoin="round"
                   style={{ opacity: hot ? 1 : 0.18, transition: "opacity 0.25s" }}
                 >
-                  <path d={e.d} stroke="#d3d8e2" strokeWidth={1.5} />
+                  <path d={e.d} stroke="var(--arch-track)" strokeWidth={1.5} />
                   <path
                     d={e.d}
                     pathLength={1}
@@ -259,7 +259,7 @@ export default function ArchDiagram({ arch }: { arch: Architecture }) {
                     y={e.label.y}
                     fontSize="10.5"
                     fill={MUTED}
-                    stroke="#f4f6f9"
+                    stroke="var(--arch-label-bg)"
                     strokeWidth={4}
                     paintOrder="stroke"
                     style={{
@@ -293,7 +293,7 @@ export default function ArchDiagram({ arch }: { arch: Architecture }) {
                   onKeyDown={(ev) => {
                     if (ev.key === "Escape") setActive(null);
                   }}
-                  className="cursor-pointer outline-none [&:focus-visible>rect]:stroke-[#2440d8] [&:focus-visible>rect]:stroke-[3]"
+                  className="cursor-pointer outline-none [&:focus-visible>rect]:stroke-[var(--signal)] [&:focus-visible>rect]:stroke-[3]"
                   style={{
                     opacity: visible ? (dim ? 0.3 : 1) : 0,
                     transition: `opacity ${visible && active ? 0.2 : 0.5}s ease-out ${
@@ -306,7 +306,7 @@ export default function ArchDiagram({ arch }: { arch: Architecture }) {
                     y={n.y}
                     width={w}
                     height={h}
-                    fill={isActive ? "#eef1ff" : "#fbfcfd"}
+                    fill={isActive ? "var(--arch-node-active)" : "var(--arch-node)"}
                     stroke={isActive ? SIGNAL : INK}
                     strokeWidth={isActive ? 1.75 : 1.25}
                     style={{ transition: "fill 0.2s, stroke 0.2s" }}
@@ -352,6 +352,9 @@ export default function ArchDiagram({ arch }: { arch: Architecture }) {
           </g>
         </svg>
       </div>
+      <p className="mt-2 text-xs text-muted md:hidden">
+        Swipe sideways to see the whole diagram, tap a part to read what it does.
+      </p>
       <figcaption
         aria-live="polite"
         className="mt-3 min-h-[4.25rem] max-w-[68ch] text-sm leading-relaxed text-muted md:ml-[14rem]"

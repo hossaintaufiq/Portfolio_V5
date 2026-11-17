@@ -1,10 +1,25 @@
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
+import Scribble from "./Scribble";
 import Section from "./Section";
 
 export default function Background() {
   const { education, certifications, volunteering, languages } = PORTFOLIO_DATA;
   return (
-    <Section id="background" title="Background">
+    <Section
+      id="background"
+      title="Background"
+      headline={
+        <>
+          Where I{" "}
+          <Scribble variant="swash" inView>
+            <em>come from</em>
+          </Scribble>
+          .
+        </>
+      }
+      index="05"
+      blurb="Education, certifications, volunteering and languages."
+    >
       <div className="grid gap-12 md:grid-cols-2">
         <div>
           <h3 className="mb-4 font-serif text-xl font-medium">Education</h3>

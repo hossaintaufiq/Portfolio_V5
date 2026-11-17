@@ -34,11 +34,11 @@ export default function Contact() {
       aria-labelledby="contact-title"
       className="grade-contact text-white"
     >
-      <div className="mx-auto grid max-w-[1180px] gap-16 px-6 py-20 md:px-10 md:py-28 lg:grid-cols-12">
+      <div className="mx-auto grid max-w-[1180px] gap-12 px-5 py-16 sm:px-6 md:gap-16 md:px-10 md:py-28 lg:grid-cols-12 min-[1700px]:max-w-[1320px]">
         <div className="lg:col-span-6">
           <h2
             id="contact-title"
-            className="font-serif text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl"
+            className="font-serif text-[clamp(2rem,8vw,2.5rem)] font-medium leading-[1.05] tracking-tight sm:text-5xl md:text-6xl"
           >
             Building backend or AI systems? Write to me.
           </h2>

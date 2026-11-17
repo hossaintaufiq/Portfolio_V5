@@ -9,6 +9,7 @@ import {
   ListChecks,
   Palette,
 } from "lucide-react";
+import Scribble from "./Scribble";
 import Section from "./Section";
 import TechList from "./TechList";
 
@@ -36,14 +37,28 @@ const ICONS: Record<string, typeof Code2> = {
 
 export default function Skills() {
   return (
-    <Section id="skills" title="Skills">
+    <Section
+      id="skills"
+      title="Skills"
+      headline={
+        <>
+          Tools I{" "}
+          <Scribble inView>
+            <em>reach for</em>
+          </Scribble>{" "}
+          every day.
+        </>
+      }
+      index="04"
+      blurb="The tools I reach for, grouped by the job they do."
+    >
       <dl className="divide-y divide-rule border-y border-rule">
         {PORTFOLIO_DATA.skills.map((c) => {
           const Icon = ICONS[c.categoryCode] ?? Code2;
           return (
             <div
               key={c.categoryCode}
-              className="grid gap-3 py-6 transition-[padding,background-color] duration-200 hover:bg-white/60 sm:grid-cols-[13rem_1fr] sm:gap-8 sm:hover:pl-4"
+              className="grid gap-3 py-6 transition-[padding,background-color] duration-200 hover:bg-[var(--surface-hover)] sm:grid-cols-[13rem_1fr] sm:gap-8 sm:hover:pl-4"
             >
               <dt className="flex items-center gap-3 font-medium">
                 <Icon className="h-5 w-5 text-signal" strokeWidth={1.75} aria-hidden="true" />

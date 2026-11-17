@@ -15,6 +15,10 @@ export interface Project {
   isPrivateRepo?: boolean;
   featured?: boolean;
   metrics?: string;
+  /** The three-line story shown on featured projects. */
+  problem?: string;
+  built?: string;
+  result?: string;
 }
 
 export interface ResearchItem {
@@ -29,6 +33,8 @@ export interface ResearchItem {
   githubUrl?: string;
   tags: string[];
   disclaimer?: string;
+  /** Short, concrete results shown as a list under the description. */
+  findings?: string[];
 }
 
 export interface ExperienceItem {
@@ -71,6 +77,8 @@ export const PORTFOLIO_DATA = {
     shortName: "TAUFIQ",
     title: "Software Engineer · Backend · AI/ML Systems",
     location: "Dhaka, Bangladesh",
+    /** Shown as the availability badge in the hero. Edit or clear to change it. */
+    availability: "Open to backend and AI engineering roles",
     email: "hossainahmmedtaufiq22@gmail.com",
     phone: "+880 1728-360834",
     links: {
@@ -179,12 +187,15 @@ export const PORTFOLIO_DATA = {
         "Design and build backend services and APIs that power Edumax Labs' AI-driven education products.",
         "Develop LLM and retrieval-augmented (RAG) pipelines, from data ingestion to production inference endpoints.",
         "Own service reliability, data modelling, and integration between AI components and product front-ends.",
+        "Responsible for the speech-to-text and text-to-speech pipeline behind students' speaking practice, with the goal of cutting the cost per session from 25 tk to under 10 tk.",
       ],
       highlight:
-        "Backend and AI engineering for education products at Edumax Labs.",
+        "Building the speech-to-text and text-to-speech pipeline for student speaking practice, aiming to cut the cost per session from 25 tk to under 10 tk.",
       technologies: [
         "Python",
         "FastAPI",
+        "Speech-to-Text",
+        "Text-to-Speech",
         "LLM Pipelines",
         "RAG",
         "PostgreSQL",
@@ -286,8 +297,14 @@ export const PORTFOLIO_DATA = {
       category: "ENTERPRISE ERP / MIS SAAS",
       subtitle: "Enterprise Manufacturing ERP/MIS SaaS",
       featured: true,
+      problem:
+        "Steel mills, garment factories and local businesses all need ERP software, but each sector works differently and one customer's data must never touch another's.",
+      built:
+        'Four Next.js apps on one Express backend, with tenant resolution, authentication and RBAC on every request, Redis caching, Cloudflare R2 storage and a reusable industry-template framework.',
+      result:
+        'A new manufacturing sector becomes configuration, not a rebuild, and tenant data stays isolated.',
       description:
-        "Built a multi-tenant Manufacturing ERP/MIS platform for industrial businesses with modular architecture and enterprise-grade scalability.",
+        "Built a multi-tenant Manufacturing ERP/MIS platform for industrial businesses. Four Next.js apps, for steel mills, garments, inventory and local businesses, run on a single Express backend with modular architecture and enterprise-grade scalability.",
       modules: [
         "Authentication",
         "Multi-tenancy",
@@ -298,7 +315,7 @@ export const PORTFOLIO_DATA = {
         "Reporting",
       ],
       additional:
-        "Designed a reusable industry-template framework supporting multiple manufacturing sectors while ensuring secure tenant isolation, scalable architecture, and AI-ready platform integration.",
+        "Layered the platform with tenant resolution, authentication and RBAC on every request, Redis caching for fast reads, and Cloudflare R2 for object storage. A reusable industry-template framework supports multiple manufacturing sectors with secure tenant isolation and AI-ready platform integration.",
       technologies: [
         "AWS",
         "Next.js",
@@ -307,21 +324,68 @@ export const PORTFOLIO_DATA = {
         "TailwindCSS",
         "Prisma",
         "PostgreSQL",
+        "Redis",
+        "Cloudflare R2",
         "TypeScript",
       ],
       liveUrl: "https://www.softlligence.tech",
       githubUrl: "https://github.com/hossaintaufiq",
     },
     {
+      id: "kia-bangladesh",
+      title: "KIA BANGLADESH",
+      category: "AUTOMOTIVE PLATFORM",
+      subtitle: "Immersive 3D Showroom Website for Kia Bangladesh",
+      problem:
+        'A car showroom is something you want to see and turn around, not read about.',
+      built:
+        'An immersive 3D site: Blender models rendered with Three.js, choreographed with GSAP and Framer Motion, on an Express and PostgreSQL backend with assets on the Cloudflare CDN and R2.',
+      result:
+        'Live at kia-bangladesh.vercel.app.',
+      description:
+        "Built a Kia Bangladesh website with an immersive 3D experience, using Three.js with models made in Blender, GSAP and Framer Motion for animation, and an Express and PostgreSQL backend.",
+      additional:
+        "Assets are served through the Cloudflare CDN and stored in Cloudflare R2 for fast delivery.",
+      technologies: [
+        "Next.js",
+        "Node.js",
+        "Tailwind CSS",
+        "Framer Motion",
+        "GSAP",
+        "Three.js",
+        "Blender",
+        "Express.js",
+        "Cloudflare CDN",
+        "Cloudflare R2",
+        "PostgreSQL",
+      ],
+      liveUrl: "https://kia-bangladesh.vercel.app",
+      githubUrl: "https://github.com/hossaintaufiq/kia_bangladesh",
+    },
+    {
       id: "playpen-school",
       title: "PLAYPEN SCHOOL WEBSITE",
       category: "EDUCATION PORTAL",
-      subtitle: "School Management & Admissions Platform",
+      subtitle: "School Website, CMS, Admissions & Payments Platform",
       status: "Ongoing",
+      problem:
+        "A school needs admissions, tuition payments, events and parent updates in one place, and its staff need to change the website themselves without waiting for a developer.",
+      built:
+        "A parent-facing Next.js site and a CMS for staff, on an Express and PostgreSQL backend, with online admissions, tuition payments through a payment gateway, live updates published from the CMS, and a detailed custom design.",
+      result:
+        "In progress: a production-ready platform for the school, built around the CMS, payments and live updates.",
       description:
-        "Developed a production-ready school management platform enabling online admissions, tuition payments, event management, and parent engagement through an intuitive web interface.",
+        "Building the complete school platform: a content management system for staff, online admissions, tuition payments through a payment gateway, event management and parent engagement, with live updates that publish from the CMS to the site.",
+      modules: [
+        "CMS for school staff",
+        "Online admissions",
+        "Tuition payments (payment gateway)",
+        "Live content updates",
+        "Event management",
+        "Parent engagement",
+      ],
       additional:
-        "Built reusable UI components and secure backend services with TypeScript and Express.js, improving maintainability, scalability, and future feature development.",
+        "Wrote reusable UI components for a complex, detailed visual design, and secure backend services in TypeScript and Express.js to keep the platform maintainable as features grow.",
       technologies: [
         "Next.js",
         "TypeScript",
@@ -341,6 +405,12 @@ export const PORTFOLIO_DATA = {
       title: "MANGO ELECTRIC VEHICLE WEBSITE",
       category: "AUTOMOTIVE PLATFORM",
       subtitle: "Full-Stack EV Reservation & Inquiries System",
+      problem:
+        'Buyers needed one place to explore electric vehicles, reserve one and ask questions, and the team needed to manage all of it.',
+      built:
+        'A server-rendered Next.js site on an Express API with role-based reservations, inquiry management and payment integration, backed by PostgreSQL.',
+      result:
+        'Fast pages tuned for Core Web Vitals through image optimisation, caching and SEO.',
       description:
         "Engineered a scalable full-stack platform using Next.js, Express.js, and PostgreSQL, implementing secure reservation workflows, inquiry management, payment integration, and role-based backend APIs.",
       additional:
@@ -402,6 +472,12 @@ export const PORTFOLIO_DATA = {
       title: "LUCY — AUTONOMOUS AI ASSISTANT",
       category: "AUTONOMOUS AI AGENTS",
       subtitle: "Local-First J.A.R.V.I.S.-Style Voice & AI Companion on CPU",
+      problem:
+        'Voice assistants usually depend on cloud services and a GPU.',
+      built:
+        'Whisper speech-to-text, a local Ollama model and Kokoro speech, streamed over FastAPI WebSockets with editable markdown memory.',
+      result:
+        'A full voice assistant that runs on an ordinary CPU laptop, with nothing leaving the machine.',
       description:
         "Engineered an end-to-end local-first personal AI assistant with bidirectional live voice (Whisper STT + Kokoro TTS), on-device CPU LLM inference via Ollama, streaming WebSocket APIs, and customizable markdown memory.",
       modules: [
@@ -602,6 +678,34 @@ export const PORTFOLIO_DATA = {
         "ARIMA",
       ],
     },
+    {
+      id: "res-neptune",
+      title: "NEPTUNE: AUTONOMOUS QUANTITATIVE MARKET INTELLIGENCE & PAPER TRADING PLATFORM",
+      institution: "Independent research project",
+      timeline: "2026 – Present",
+      status: "Ongoing, paper trading only",
+      hasGithub: true,
+      githubUrl: "https://github.com/hossaintaufiq/Trading_Bot",
+      description:
+        "Built a cryptocurrency quantitative research platform around ten specialist AI agents coordinated by a central state-machine brain, with every paper trade gated by an independent risk manager, Monte Carlo simulation and a strict zero look-ahead rule. Only the strategy agent is implemented so far. The platform never places live orders or holds keys.",
+      findings: [
+        "Found a look-ahead bias in the original intraday strategy, fixed it and documented the correction. After the fix it was not profitable: +$35.70 gross over 189 trades (t = 0.66), and -$12.01 net after costs.",
+        "Replaced it with a long-only daily trend rule, chosen on 2018 to 2023 data only and evaluated once on 2024 to 2026. On BTC, ETH and BNB it returned +25.6% net against +55.6% for buy and hold.",
+        "Across 36 coins including delisted ones, it returned +52% against -44% for buy and hold, with a 37% maximum drawdown.",
+        "Limits stated openly: survivorship bias, few independent trends, 25 to 45% drawdowns, and only 17 of 36 coins individually profitable.",
+      ],
+      disclaimer:
+        "Research and paper trading only. Backtest results are not a profitability claim and not financial advice.",
+      tags: [
+        "Quantitative Research",
+        "Paper Trading Only",
+        "Zero Look-Ahead Bias",
+        "Multi-Agent Systems",
+        "FastAPI",
+        "Next.js",
+        "Backtesting",
+      ],
+    },
   ] as ResearchItem[],
 
   skills: [
@@ -642,6 +746,7 @@ export const PORTFOLIO_DATA = {
         "Gemini API",
         "Prompt Engineering",
         "Vector Databases",
+        "Recommendation & Suggestion Models",
       ],
     },
     {
@@ -667,7 +772,7 @@ export const PORTFOLIO_DATA = {
     {
       name: "CLOUD, DEVOPS & SYSTEMS",
       categoryCode: "06_CLOD",
-      skills: ["AWS", "Docker", "Git", "GitHub Actions", "CI/CD", "Vercel", "FFmpeg"],
+      skills: ["AWS", "Cloudflare R2", "Redis", "Docker", "Git", "GitHub Actions", "CI/CD", "Vercel", "FFmpeg"],
     },
     {
       name: "ALGORITHMS & METHODOLOGIES",

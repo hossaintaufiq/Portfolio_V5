@@ -39,6 +39,11 @@ import {
   siCplusplus,
   siOpenjdk,
   siSocketdotio,
+  siRedis,
+  siCloudflare,
+  siGsap,
+  siThreedotjs,
+  siBlender,
 } from "simple-icons";
 
 export type BrandIcon = { path: string; hex: string; title: string };
@@ -84,6 +89,11 @@ const REGISTRY: Record<string, BrandIcon> = {
   cpp: siCplusplus,
   java: siOpenjdk,
   websockets: siSocketdotio,
+  redis: siRedis,
+  cloudflare: siCloudflare,
+  gsap: siGsap,
+  threejs: siThreedotjs,
+  blender: siBlender,
 };
 
 const ALIASES: Record<string, string> = {
@@ -98,6 +108,9 @@ const ALIASES: Record<string, string> = {
   node: "nodejs",
   nextjs16: "nextjs",
   "c": "cpp",
+  cloudflarer2: "cloudflare",
+  r2: "cloudflare",
+  cloudflarecdn: "cloudflare",
   fasterwhisper: "",
 };
 
@@ -117,7 +130,7 @@ export function findIcon(name: string): BrandIcon | undefined {
   return k && REGISTRY[k] ? REGISTRY[k] : undefined;
 }
 
-const INK = "#16213a";
+const INK = "var(--icon-ink)";
 
 /** Brand colour, softened to the page ink when it would be too dark or too light. */
 export function iconColor(icon: BrandIcon): string {

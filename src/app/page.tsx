@@ -7,9 +7,13 @@ import Skills from "@/components/Skills";
 import Background from "@/components/Background";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import HeroGlow from "@/components/HeroGlow";
+import SideRail from "@/components/SideRail";
+import { PORTFOLIO_DATA } from "@/data/portfolioData";
+import ChatGuide from "@/components/ChatGuide";
 import ScrollProgress from "@/components/ScrollProgress";
 
-const frame = "mx-auto max-w-[1180px] px-6 md:px-10";
+const frame = "mx-auto max-w-[1180px] px-5 sm:px-6 md:px-10 min-[1700px]:max-w-[1320px]";
 
 export default function Home() {
   return (
@@ -18,8 +22,14 @@ export default function Home() {
         Skip to content
       </a>
       <ScrollProgress />
-      <div className="grade-hero text-paper">
-        <div className={frame}>
+      <SideRail
+        email={PORTFOLIO_DATA.identity.email}
+        github={PORTFOLIO_DATA.identity.links.github}
+        linkedin={PORTFOLIO_DATA.identity.links.linkedin}
+      />
+      <div className="grade-hero relative overflow-hidden text-paper">
+        <HeroGlow />
+        <div className={`${frame} relative`}>
           <SiteHeader />
           <Hero />
         </div>
@@ -38,6 +48,7 @@ export default function Home() {
       <div className={frame}>
         <Footer />
       </div>
+      <ChatGuide />
     </>
   );
 }

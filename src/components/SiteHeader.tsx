@@ -1,3 +1,5 @@
+import ThemeToggle from "./ThemeToggle";
+
 const links = [
   { href: "#work", label: "Work" },
   { href: "#experience", label: "Experience" },
@@ -8,15 +10,24 @@ const links = [
 
 export default function SiteHeader() {
   return (
-    <header className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 py-6 md:py-8">
-      <a href="#top" className="font-serif text-lg font-semibold tracking-tight">
+    <header className="flex flex-wrap items-center gap-x-8 gap-y-3 py-5 lg:flex-nowrap lg:py-8">
+      <a
+        href="#top"
+        className="order-1 whitespace-nowrap font-serif text-lg font-semibold tracking-tight lg:mr-auto"
+      >
         Hossain Ahmmed Taufiq
       </a>
-      <nav aria-label="Primary">
-        <ul className="flex flex-wrap items-baseline gap-x-6 gap-y-2 text-sm">
+      <div className="order-2 ml-auto lg:order-3 lg:ml-0">
+        <ThemeToggle />
+      </div>
+      <nav
+        aria-label="Primary"
+        className="order-3 -mx-6 w-[calc(100%+3rem)] overflow-x-auto px-6 [scrollbar-width:none] lg:order-2 lg:mx-0 lg:w-auto lg:overflow-visible lg:px-0 [&::-webkit-scrollbar]:hidden [mask-image:linear-gradient(90deg,#000_90%,transparent)] lg:[mask-image:none]"
+      >
+        <ul className="flex items-center gap-x-6 whitespace-nowrap text-sm">
           {links.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="opacity-70 hover:opacity-100">
+              <a href={l.href} className="inline-block py-2 opacity-75 hover:opacity-100">
                 {l.label}
               </a>
             </li>
@@ -26,7 +37,7 @@ export default function SiteHeader() {
               href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
-              className="font-medium underline decoration-white/30 decoration-2 underline-offset-4 hover:decoration-white"
+              className="inline-block py-2 font-medium underline decoration-white/30 decoration-2 underline-offset-4 hover:decoration-white"
             >
               Resume
             </a>

@@ -1,12 +1,29 @@
 import type { ReactNode } from "react";
 
+/**
+ * A page section. The headline is a large display line of its own, set apart
+ * from the smaller item headings inside, with one italic word to underline.
+ */
 export default function Section({
   id,
   title,
+  headline,
+  index,
+  blurb,
+  aside,
   children,
 }: {
   id: string;
+  /** Short name of the section, shown as the label above the headline. */
   title: string;
+  /** The display headline. Falls back to the title. */
+  headline?: ReactNode;
+  /** Section number shown before the label, for example "01". */
+  index?: string;
+  /** One line that says what the section is. */
+  blurb?: string;
+  /** Extra content under the blurb, such as a jump list. */
+  aside?: ReactNode;
   children: ReactNode;
 }) {
   return (
@@ -15,13 +32,25 @@ export default function Section({
       aria-labelledby={`${id}-title`}
       className="border-t border-rule py-16 md:py-24"
     >
-      <div className="grid gap-8 md:grid-cols-[11rem_1fr] md:gap-12">
+      <header className="mb-12 max-w-[22ch] md:mb-16 md:max-w-4xl">
+        <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted">
+          {index && <span className="tabular-nums text-signal">{index}</span>}
+          <span aria-hidden="true" className="h-px w-10 bg-rule" />
+          {title}
+        </p>
         <h2
           id={`${id}-title`}
-          className="font-serif text-2xl font-medium tracking-tight"
+          className="mt-5 font-serif text-[2.6rem] font-medium leading-[1.05] tracking-[-0.025em] sm:text-5xl md:text-6xl"
         >
-          {title}
+          {headline ?? title}
         </h2>
+      </header>
+
+      <div className="grid gap-8 md:grid-cols-[11rem_1fr] md:gap-12">
+        <div>
+          {blurb && <p className="text-sm leading-relaxed text-muted">{blurb}</p>}
+          {aside && <div className="mt-6 hidden md:block">{aside}</div>}
+        </div>
         <div className="min-w-0">{children}</div>
       </div>
     </section>

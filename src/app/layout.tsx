@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Hossain Ahmmed Taufiq — Software Engineer · Backend & AI Systems",
   description:
-    "Software Engineer building scalable backend services and AI-powered products. Backend AI Engineer at Edumax Labs and Founder of Softlligence Technologies.",
+    "Software Engineer building scalable backend services and AI-powered products. Backend AI Engineer at Edumax Labs and Founder of Softlligence Technologies, building multi-tenant ERP and speech AI.",
   keywords: [
     "Hossain Ahmmed Taufiq",
     "Software Engineer",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "HOSSAIN AHMMED TAUFIQ | Software Engineer · Backend · AI/ML Systems",
     description:
-      "Software Engineer building scalable backend services and AI-powered products. Backend AI Engineer at Edumax Labs and Founder of Softlligence Technologies.",
+      "Software Engineer building scalable backend services and AI-powered products. Backend AI Engineer at Edumax Labs and Founder of Softlligence Technologies, building multi-tenant ERP and speech AI.",
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: "en_US",
@@ -49,7 +49,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#EDEFF2",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#EDEFF2" },
+    { media: "(prefers-color-scheme: dark)", color: "#0D1324" },
+  ],
 };
 
 const personLd = {
@@ -76,8 +79,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${plexSerif.variable} ${plexSans.variable}`}>
+    <html lang="en" className={`${plexSerif.variable} ${plexSans.variable}`} suppressHydrationWarning>
       <body className="min-h-screen bg-paper text-ink font-sans antialiased">
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var q=new URLSearchParams(location.search).get('theme');var t=q==='light'||q==='dark'?q:localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){}",
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

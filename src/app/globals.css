@@ -1,11 +1,74 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --ink: #16213a;
+  --muted: #56607a;
+  --rule: #cbd1db;
+  --signal: #2440d8;
+  --surface: rgba(255, 255, 255, 0.55);
+  --surface-hover: rgba(255, 255, 255, 0.6);
+  --icon-ink: #16213a;
+  --page-a: #edeff2;
+  --page-b: #e9edf5;
+  --page-c: #eceff4;
+  --page-d: #e7ebf3;
+  --hl: rgba(255, 184, 0, 0.34);
+  --dot: rgba(22, 33, 58, 0.17);
+
+  /* Architecture sketches */
+  --arch-node: #fbfcfd;
+  --arch-node-active: #eef1ff;
+  --arch-track: #d3d8e2;
+  --arch-quiet: #8d97ad;
+  --arch-label-bg: #f4f6f9;
+  --arch-zone: rgba(22, 33, 58, 0.03);
+  --arch-zone-stroke: #b4bccb;
+  --arch-outer: rgba(36, 64, 216, 0.035);
+  --arch-outer-stroke: #9fb0f5;
+
+  /* Hand-drawn underlines, one per tone and shape */
+  --sw-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7 C 12 2 20 11 32 6 S 52 3 64 7 S 86 10 98 5' fill='none' stroke='%232440d8' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --sw-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7 C 12 2 20 11 32 6 S 52 3 64 7 S 86 10 98 5' fill='none' stroke='%237f95ff' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --ss-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 C 30 3 62 10 98 3' fill='none' stroke='%232440d8' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M14 11 C 40 8 66 12 88 9' fill='none' stroke='%232440d8' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --ss-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 C 30 3 62 10 98 3' fill='none' stroke='%237f95ff' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M14 11 C 40 8 66 12 88 9' fill='none' stroke='%237f95ff' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e6eaf5;
+  --muted: #9aa5c0;
+  --rule: #2b3552;
+  --signal: #8ea1ff;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.07);
+  --icon-ink: #e6eaf5;
+  --page-a: #0d1324;
+  --page-b: #0f1628;
+  --page-c: #0e1527;
+  --page-d: #111a30;
+  --hl: rgba(255, 184, 0, 0.26);
+  --dot: rgba(142, 161, 255, 0.16);
+
+  --arch-node: #141c33;
+  --arch-node-active: #1d2a5c;
+  --arch-track: #2b3552;
+  --arch-quiet: #6b7794;
+  --arch-label-bg: #0f1628;
+  --arch-zone: rgba(255, 255, 255, 0.03);
+  --arch-zone-stroke: #34415f;
+  --arch-outer: rgba(142, 161, 255, 0.05);
+  --arch-outer-stroke: #44529a;
+}
+
 @theme inline {
+  /* The hero and contact bands are always dark, so paper stays fixed. */
   --color-paper: #edeff2;
-  --color-ink: #16213a;
-  --color-muted: #56607a;
-  --color-rule: #cbd1db;
-  --color-signal: #2440d8;
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
   --font-serif: var(--font-plex-serif), Georgia, serif;
   --font-sans: var(--font-plex-sans), system-ui, sans-serif;
 }
@@ -16,24 +79,24 @@ html {
 }
 
 body {
+  overflow-x: clip;
   /* A very gentle vertical grade so long pages do not feel flat. */
-  background:
-    linear-gradient(
-      180deg,
-      #edeff2 0%,
-      #e9edf5 38%,
-      #eceff4 62%,
-      #e7ebf3 100%
-    );
+  background: linear-gradient(
+    180deg,
+    var(--page-a) 0%,
+    var(--page-b) 38%,
+    var(--page-c) 62%,
+    var(--page-d) 100%
+  );
   background-attachment: scroll;
-  color: var(--color-ink);
+  color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--color-signal);
+  background: #2440d8;
   color: #fff;
 }
 
@@ -54,9 +117,6 @@ button:focus-visible {
   html {
     scroll-behavior: auto;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
   svg g,
   svg path,
   svg rect {
@@ -72,6 +132,15 @@ button:focus-visible {
     linear-gradient(165deg, #16213a 0%, #121a30 55%, #0f1527 100%);
 }
 
+/* A soft light that follows the pointer across the hero. */
+.hero-glow {
+  background: radial-gradient(
+    420px circle at var(--mx, 72%) var(--my, 18%),
+    rgba(127, 149, 255, 0.2),
+    transparent 62%
+  );
+}
+
 /* The contact band shades from cobalt into deep indigo. */
 .grade-contact {
   background:
@@ -85,12 +154,190 @@ button:focus-visible {
   background: linear-gradient(90deg, rgba(127, 149, 255, 0), #7f95ff 30%, rgba(127, 149, 255, 0));
 }
 
+/* Hand-drawn underline for headlines. Drawn as a background so it follows
+   the text across line wraps. Variants: wave (default) and swash. */
+.scribble {
+  --sw: var(--sw-ink);
+  --ss: var(--ss-ink);
+  background-image: var(--sw);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 0.3em;
+  padding-bottom: 0.14em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+[data-theme="dark"] .scribble,
+.scribble-light {
+  --sw: var(--sw-light);
+  --ss: var(--ss-light);
+}
+.scribble-swash {
+  background-image: var(--ss);
+  background-size: 100% 0.36em;
+}
+
+@keyframes scribble-draw {
+  from {
+    background-size: 0% 0.3em;
+  }
+  to {
+    background-size: 100% 0.3em;
+  }
+}
+@keyframes scribble-draw-swash {
+  from {
+    background-size: 0% 0.36em;
+  }
+  to {
+    background-size: 100% 0.36em;
+  }
+}
+
+/* Count-up numbers: a registered integer property drives a CSS counter, so
+   there is no script and the final value is already in place for crawlers. */
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+@keyframes count-up {
+  from {
+    --num: 0;
+  }
+}
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.count {
+  --num: var(--to);
+  counter-reset: num var(--num);
+}
+.count::after {
+  content: counter(num);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scribble {
+    animation: scribble-draw 0.9s cubic-bezier(0.3, 0.7, 0.2, 1) 0.35s both;
+  }
+  .scribble-swash {
+    animation-name: scribble-draw-swash;
+  }
+  .count {
+    animation: count-up 1.5s cubic-bezier(0.2, 0.7, 0.2, 1) 0.5s backwards;
+  }
+
+  /* Below the fold: draw and reveal as things scroll into view. */
+  @supports (animation-timeline: view()) {
+    .scribble-view {
+      animation-delay: 0s;
+      animation-duration: 1ms;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
+    }
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+
+/* Faint blueprint dots in the side margins, fading out toward the content. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(var(--dot) 1.1px, transparent 1.4px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(90deg, #000 0, transparent 20%, transparent 80%, #000 100%);
+  mask-image: linear-gradient(90deg, #000 0, transparent 20%, transparent 80%, #000 100%);
+}
+
+/* Highlighter pen for key phrases. */
+.hl {
+  color: inherit;
+  background-color: transparent;
+  background-image: linear-gradient(
+    transparent 54%,
+    var(--hl) 54%,
+    var(--hl) 94%,
+    transparent 94%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 0 0.12em;
+  margin: 0 -0.12em;
+  border-radius: 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+@keyframes hl-in {
+  from {
+    background-size: 0% 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
+}
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .float-a {
+    animation: floaty 6s ease-in-out infinite;
+  }
+  .float-b {
+    animation: floaty 7.5s ease-in-out -2s infinite;
+  }
+  @supports (animation-timeline: view()) {
+    .hl {
+      animation: hl-in linear both;
+      animation-timeline: view();
+      animation-range: entry 15% entry 75%;
+    }
+  }
+}
+
+/* The pulse a section gets when the guide scrolls to it. */
+@keyframes nav-flash {
+  0% {
+    box-shadow: 0 0 0 0 rgba(36, 64, 216, 0.55);
+    background-color: rgba(127, 149, 255, 0.16);
+  }
+  100% {
+    box-shadow: 0 0 0 18px rgba(36, 64, 216, 0);
+    background-color: transparent;
+  }
+}
+.nav-flash {
+  animation: nav-flash 1.6s ease-out;
+}
+
 .skip-link {
   position: absolute;
   left: 1rem;
   top: -4rem;
   z-index: 60;
-  background: var(--color-ink);
+  background: #16213a;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: #fff;
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
@@ -98,4 +345,38 @@ button:focus-visible {
 }
 .skip-link:focus {
   top: 1rem;
+}
+
+/* Hover-only effects should not stick on touch screens. */
+@media (hover: none) {
+  .group:hover > div {
+    transform: none;
+  }
+}
+
+/* A clean printout: content only, no chrome. */
+@media print {
+  body::before,
+  .hero-glow,
+  .skip-link {
+    display: none !important;
+  }
+  .grade-hero,
+  .grade-contact {
+    background: #fff !important;
+    color: #16213a !important;
+  }
+  .grade-hero *,
+  .grade-contact * {
+    color: #16213a !important;
+  }
+  [aria-label="Portfolio guide"],
+  [aria-label="Sections"],
+  [aria-label="Contact shortcuts"],
+  button[aria-label*="guide"] {
+    display: none !important;
+  }
+  section {
+    break-inside: avoid-page;
+  }
 }
