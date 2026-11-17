@@ -167,7 +167,7 @@ export default function ArchDiagram({ arch }: { arch: Architecture }) {
   };
 
   return (
-    <figure className="mt-8 md:-ml-[14rem]">
+    <figure className="mt-8">
       <div className="overflow-x-auto border border-rule bg-[var(--surface)]">
         <svg
           ref={ref}
@@ -357,7 +357,7 @@ export default function ArchDiagram({ arch }: { arch: Architecture }) {
       </p>
       <figcaption
         aria-live="polite"
-        className="mt-3 min-h-[4.25rem] max-w-[68ch] text-sm leading-relaxed text-muted md:ml-[14rem]"
+        className="mt-3 min-h-[4.25rem] max-w-[68ch] text-sm leading-relaxed text-muted"
       >
         {activeNode ? (
           <>

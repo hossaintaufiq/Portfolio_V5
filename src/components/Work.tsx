@@ -69,6 +69,7 @@ export default function Work() {
     <Section
       id="work"
       title="Work"
+      wide
       headline={
         <>
           Things I have{" "}
@@ -81,10 +82,10 @@ export default function Work() {
       index="01"
       blurb="Every featured project comes with its real architecture. Hover any part to see why it exists."
       aside={
-        <ol className="space-y-2 border-l border-rule pl-4 text-sm">
+        <ol className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           {featured.map((p, i) => (
             <li key={p.id}>
-              <a href={`#${p.id}`} className="text-muted hover:text-ink">
+              <a href={`#${p.id}`} className="font-medium underline decoration-rule decoration-2 underline-offset-4 hover:decoration-signal">
                 <span className="mr-2 tabular-nums text-xs">{String(i + 1).padStart(2, "0")}</span>
                 {NAMES[p.id] ?? p.title}
               </a>
