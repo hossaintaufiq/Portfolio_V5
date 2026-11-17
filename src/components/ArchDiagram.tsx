@@ -24,6 +24,8 @@ import {
   BookOpen,
   Terminal,
   Landmark,
+  Database,
+  Layers,
 } from "lucide-react";
 import {
   NODE_H,
@@ -57,6 +59,8 @@ const GLYPHS: Record<Glyph, typeof Globe> = {
   book: BookOpen,
   terminal: Terminal,
   landmark: Landmark,
+  database: Database,
+  layers: Layers,
 };
 
 const INK = "var(--ink)";

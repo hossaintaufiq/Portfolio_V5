@@ -208,16 +208,16 @@ export const PORTFOLIO_DATA = {
       id: "exp-mev",
       role: "Software Engineer",
       company: "MEV (Mango Electric Vehicle)",
-      period: "Jan 2026 – Present",
+      period: "Jan 2026 – Jun 2026",
       locationType: "On-site",
       companyContext:
         "Electric Vehicle Manufacturer · In-House Vehicle Platform & Operations",
       description:
-        "Maintain and enhance MEV's internal management systems supporting day-to-day operations, while building software applications for locally built electric vehicles.",
+        "Maintained and enhanced MEV's internal management systems supporting day-to-day operations, while building software applications for locally built electric vehicles.",
       points: [
-        "Maintain and enhance MEV's internal management systems, supporting day-to-day operations across the business.",
-        "Develop applications for MEV's locally built electric vehicles, delivering software for the in-house vehicle platform.",
-        "Build and maintain CRM and customer-facing tools using Next.js, Express.js, PostgreSQL, and TypeScript.",
+        "Maintained and enhanced MEV's internal management systems, supporting day-to-day operations across the business.",
+        "Developed applications for MEV's locally built electric vehicles, delivering software for the in-house vehicle platform.",
+        "Built and maintained CRM and customer-facing tools using Next.js, Express.js, PostgreSQL, and TypeScript.",
       ],
       highlight:
         "Engineered vehicle management systems & customer-facing operational tools with Next.js, Express.js, PostgreSQL, and TypeScript.",
@@ -231,7 +231,27 @@ export const PORTFOLIO_DATA = {
         "CRM Systems",
       ],
       stepLevel: 3,
-      badge: "CURRENT ROLE · ACTIVE",
+      badge: "EV MANUFACTURER",
+    },
+    {
+      id: "exp-zerodevs",
+      role: "Software Engineer",
+      company: "ZeroDevs Ltd",
+      period: "Nov 2024 – Dec 2025",
+      locationType: "Hybrid",
+      companyContext: "Bangladeshi SaaS & Software Development Company",
+      description:
+        "Developed Shorborno Cloud, a cloud-based school management SaaS used by more than 200 schools, together with its website, on PHP and Laravel.",
+      points: [
+        "Built Shorborno Cloud, a multi-tenant school management SaaS used by more than 200 schools.",
+        "Designed the system: microservices behind an API gateway, role-based access control per school, a relational database on AWS, and Cloudflare for the CDN, security and R2 storage.",
+        "Built the PHP and Laravel application and the product's public website.",
+      ],
+      highlight:
+        "Built Shorborno Cloud, a multi-tenant school SaaS used by more than 200 schools: microservices, RBAC, AWS and Cloudflare, on PHP and Laravel.",
+      technologies: ["PHP", "Laravel", "AWS", "Cloudflare", "Microservices", "RBAC"],
+      stepLevel: 3,
+      badge: "SAAS · 200+ SCHOOLS",
     },
     {
       id: "exp-brooksource",
@@ -361,6 +381,32 @@ export const PORTFOLIO_DATA = {
       ],
       liveUrl: "https://kia-bangladesh.vercel.app",
       githubUrl: "https://github.com/hossaintaufiq/kia_bangladesh",
+    },
+    {
+      id: "shorborno-cloud",
+      title: "SHORBORNO CLOUD",
+      category: "EDUCATION SAAS",
+      subtitle: "Cloud-Based School Management Software",
+      problem:
+        "Schools need dependable software to run their administration, without having to host or maintain it themselves.",
+      built:
+        "A multi-tenant school management SaaS and its website on PHP and Laravel: microservices behind an API gateway, role-based access control per school, a relational database on AWS, and Cloudflare for the CDN, security and R2 storage.",
+      result: "More than 200 schools use it.",
+      description:
+        "Built Shorborno Cloud, a cloud-based school management SaaS used by more than 200 schools, together with its Laravel website, at ZeroDevs Ltd.",
+      modules: [
+        "Multi-tenant, one tenant per school",
+        "Role-based access control",
+        "Microservices behind an API gateway",
+        "Cloudflare CDN, security and R2 storage",
+        "AWS hosting and relational database",
+        "Laravel application and website",
+      ],
+      additional:
+        "Among the most complex systems I have built: strict separation between schools, permissions that follow each person's role, and services that can grow independently as more schools join.",
+      technologies: ["PHP", "Laravel", "AWS", "Cloudflare", "Cloudflare R2", "Microservices", "RBAC"],
+      liveUrl: "https://shorborno.cloud",
+      isPrivateRepo: true,
     },
     {
       id: "playpen-school",
@@ -712,7 +758,7 @@ export const PORTFOLIO_DATA = {
     {
       name: "PROGRAMMING LANGUAGES",
       categoryCode: "01_LANG",
-      skills: ["TypeScript", "Python", "JavaScript", "C++", "Java", "SQL"],
+      skills: ["TypeScript", "Python", "PHP", "JavaScript", "C++", "Java", "SQL"],
     },
     {
       name: "BACKEND & ARCHITECTURE",
@@ -721,6 +767,7 @@ export const PORTFOLIO_DATA = {
         "FastAPI",
         "Node.js",
         "Express.js",
+        "Laravel",
         "Django",
         "REST APIs",
         "GraphQL",

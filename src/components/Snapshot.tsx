@@ -17,7 +17,7 @@ export default function Snapshot() {
     },
     {
       label: "Strongest with",
-      lines: ["Node.js, Express, FastAPI", "PostgreSQL, Redis, Prisma", "RAG, speech and LLM pipelines"],
+      lines: ["Node.js, Express, Laravel", "FastAPI, PostgreSQL, Redis", "RAG, speech and LLM pipelines"],
     },
     {
       label: "Education",
@@ -30,33 +30,37 @@ export default function Snapshot() {
   ];
 
   const ghost =
-    "inline-flex items-center gap-2 border border-white/55 px-5 py-3 text-sm font-semibold text-white hover:bg-white/15";
+    "inline-flex items-center gap-2 border border-[var(--snap-ghost)] px-5 py-3 text-sm font-semibold hover:bg-[var(--snap-ghost-hover)]";
 
   return (
     <section aria-labelledby="snapshot-title" className="pt-12 md:pt-16">
-      <div className="snapshot relative overflow-hidden p-6 pb-28 text-white shadow-[0_34px_70px_-34px_rgba(36,64,216,0.75)] md:p-10 md:pb-32">
+      <div className="snapshot relative overflow-hidden p-6 pb-28 text-[var(--snap-fg)] shadow-[0_34px_70px_-34px_var(--snap-shadow)] md:p-10 md:pb-32">
         <Waves />
 
         <div className="relative">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-4">
             <h2 id="snapshot-title" className="font-serif text-3xl font-medium tracking-tight md:text-4xl">
-              <Scribble tone="peach" variant="swash" inView>
+              <Scribble variant="swash" inView>
                 Recruiter snapshot
               </Scribble>
             </h2>
-            <p className="rounded-full bg-black/20 px-3 py-1 text-xs text-white/90">Updated {updated}</p>
+            <p className="rounded-full bg-[var(--snap-pill)] px-3 py-1 text-xs text-[var(--snap-fg)]">
+              Updated {updated}
+            </p>
           </div>
 
           <dl className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {facts.map((f) => (
               <div
                 key={f.label}
-                className="border-t-[3px] border-[#ffd9a8] bg-white/12 px-4 pb-4 pt-3 backdrop-blur-[2px]"
+                className="border-t-[3px] border-[var(--snap-accent)] bg-[var(--snap-card)] px-4 pb-4 pt-3 backdrop-blur-[2px]"
               >
-                <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[#ffe6c6]">{f.label}</dt>
+                <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--snap-label)]">
+                  {f.label}
+                </dt>
                 <dd className="mt-2 space-y-1 text-sm leading-snug">
                   {f.lines.map((l, i) => (
-                    <p key={l} className={i === 0 ? "font-semibold" : "text-white/90"}>
+                    <p key={l} className={i === 0 ? "font-semibold" : "text-[var(--snap-soft)]"}>
                       {l}
                     </p>
                   ))}
@@ -70,7 +74,7 @@ export default function Snapshot() {
               href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-white px-5 py-3 text-sm font-semibold text-[#2440d8] hover:bg-[#fff1de]"
+              className="inline-flex items-center gap-2 bg-[var(--snap-btn)] px-5 py-3 text-sm font-semibold text-[var(--snap-btn-fg)] hover:opacity-90"
             >
               <Download className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
               Download resume
@@ -88,7 +92,7 @@ export default function Snapshot() {
               <MessageCircle className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
               WhatsApp
             </a>
-            <AskGuideButton tone="light" />
+            <AskGuideButton tone="snapshot" />
           </div>
         </div>
       </div>

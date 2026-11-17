@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Check, Lock, Radio, RotateCw, Sparkles, WifiOff, Zap } from "lucide-react";
+import { Check, GraduationCap, Lock, Radio, RotateCw, Sparkles, WifiOff, Zap } from "lucide-react";
 
 // A product mock-up for each featured project: a browser frame, a phone
 // overlapping it, and small floating UI cards. When a real screenshot exists
@@ -200,6 +200,55 @@ function Softlligence() {
   );
 }
 
+function Shorborno() {
+  const GOLD = "#f5b83d";
+  const nav = ["Dashboard", "Students", "Classes", "Teachers", "Reports"];
+  const bars = [52, 64, 58, 74, 66, 82, 70];
+  return (
+    <svg viewBox="0 0 480 300" className="h-full w-full" aria-hidden="true" fontFamily={SANS}>
+      <rect width="480" height="300" fill="#0d1a24" />
+      <rect width="92" height="300" fill="#0a1f2c" />
+      <circle cx="26" cy="26" r="11" fill={GOLD} />
+      <text x="42" y="30" fill="#fff" fontSize="9" fontWeight="600">Shorborno</text>
+      {nav.map((t, i) => (
+        <g key={t}>
+          {i === 0 && <rect x="8" y={52 + i * 28} width="76" height="22" rx="5" fill={GOLD} fillOpacity="0.22" />}
+          <circle cx="22" cy={63 + i * 28} r="3.5" fill={i === 0 ? GOLD : "#fff"} opacity={i === 0 ? 1 : 0.35} />
+          <text x="34" y={66 + i * 28} fill="#fff" fillOpacity={i === 0 ? 1 : 0.55} fontSize="9.5">{t}</text>
+        </g>
+      ))}
+      <text x="110" y="30" fill="#fff" fontSize="14" fontFamily={SERIF} fontWeight="500">School overview</text>
+      <rect x="378" y="14" width="86" height="22" rx="11" fill={GOLD} />
+      <text x="421" y="29" fill="#0d1a24" fontSize="9" fontWeight="700" textAnchor="middle">+ Add student</text>
+      {[["Students", "Enrolled"], ["Teachers", "Active"], ["Classes", "Running"]].map(([a, b], i) => (
+        <g key={a}>
+          <rect x={110 + i * 118} y="50" width="108" height="56" rx="6" fill="#fff" fillOpacity="0.06" stroke={GOLD} strokeOpacity="0.3" />
+          <text x={122 + i * 118} y="70" fill="#9fb3c2" fontSize="9">{a}</text>
+          <text x={122 + i * 118} y="92" fill="#fff" fontSize="13" fontWeight="600">{b}</text>
+          <circle cx={204 + i * 118} cy="64" r="3.5" fill="#5fd38d" />
+        </g>
+      ))}
+      <rect x="110" y="120" width="226" height="166" rx="6" fill="#fff" fillOpacity="0.05" stroke={GOLD} strokeOpacity="0.3" />
+      <text x="122" y="140" fill="#fff" fontSize="10.5" fontWeight="600">Attendance this week</text>
+      {bars.map((h, i) => (
+        <g key={i}>
+          <rect x={126 + i * 30} y={266 - h} width="18" height={h} rx="2" fill={GOLD} opacity={0.45 + i * 0.07} />
+          <text x={135 + i * 30} y="280" fill="#9fb3c2" fontSize="7.5" textAnchor="middle">{["M", "T", "W", "T", "F", "S", "S"][i]}</text>
+        </g>
+      ))}
+      <rect x="348" y="120" width="116" height="166" rx="6" fill="#fff" fillOpacity="0.05" stroke={GOLD} strokeOpacity="0.3" />
+      <text x="360" y="140" fill="#fff" fontSize="10.5" fontWeight="600">Notices</text>
+      {["Exam schedule", "Parents meeting", "Holiday notice", "Fee reminder"].map((t, i) => (
+        <g key={t}>
+          <circle cx="365" cy={162 + i * 28} r="4" fill={i % 2 ? "#5fd38d" : GOLD} />
+          <text x="376" y={165 + i * 28} fill="#e4edf3" fontSize="8.5">{t}</text>
+          <rect x="376" y={171 + i * 28} width="52" height="4" rx="2" fill="#fff" opacity="0.12" />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 function Lucy() {
   const heights = [14, 34, 22, 58, 40, 76, 52, 90, 60, 44, 70, 36, 54, 26, 42, 18, 30, 12, 26, 16];
   return (
@@ -271,6 +320,21 @@ function PhoneScreen({ id }: { id: string }) {
           <text x="10" y="132" fill="#fff" fontSize="9" fontFamily={SERIF}>Book a test drive</text>
           <rect x="10" y="144" width="70" height="20" rx="10" fill="#2440d8" />
           <text x="45" y="157" fill="#fff" fontSize="8" fontWeight="600" textAnchor="middle">Reserve</text>
+        </>
+      )}
+      {id === "shorborno-cloud" && (
+        <>
+          <rect width="90" height="190" fill="#0d1a24" />
+          <circle cx="16" cy="18" r="6" fill="#f5b83d" />
+          <text x="26" y="21" fill="#fff" fontSize="8" fontWeight="600">Shorborno</text>
+          {["Students", "Attendance", "Notices", "Fees"].map((t, i) => (
+            <g key={t}>
+              <rect x="8" y={36 + i * 34} width="74" height="28" rx="5" fill="#fff" fillOpacity="0.07" />
+              <circle cx="20" cy={50 + i * 34} r="5" fill={i === 0 ? "#f5b83d" : "#5fd38d"} />
+              <text x="30" y={53 + i * 34} fill="#fff" fontSize="7.5">{t}</text>
+            </g>
+          ))}
+          <rect x="8" y="174" width="74" height="10" rx="5" fill="#f5b83d" />
         </>
       )}
       {id === "softlligence-cloud" && (
@@ -347,6 +411,14 @@ const ART: Record<
     chips: [
       { icon: Lock, text: "Tenant isolated", tone: "#2440d8" },
       { icon: Zap, text: "Served from Redis", tone: "#d82c20" },
+    ],
+  },
+  "shorborno-cloud": {
+    art: Shorborno,
+    url: "shorborno.cloud",
+    chips: [
+      { icon: GraduationCap, text: "200+ schools", tone: "#d99a0b" },
+      { icon: Radio, text: "Live at shorborno.cloud", tone: "#16a34a" },
     ],
   },
   "kia-bangladesh": {

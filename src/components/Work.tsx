@@ -9,10 +9,11 @@ import Scribble from "./Scribble";
 import Section from "./Section";
 import TechList from "./TechList";
 
-const FEATURED = ["softlligence-cloud", "kia-bangladesh", "playpen-school", "lucy-ai-assistant"];
+const FEATURED = ["softlligence-cloud", "shorborno-cloud", "kia-bangladesh", "playpen-school", "lucy-ai-assistant"];
 
 const NAMES: Record<string, string> = {
   "softlligence-cloud": "Softlligence Manufacturing Cloud",
+  "shorborno-cloud": "Shorborno Cloud",
   "playpen-school": "Playpen School website",
   "mango-ev": "Mango Electric Vehicle website",
   "kia-bangladesh": "Kia Bangladesh",

@@ -9,6 +9,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import HeroGlow from "@/components/HeroGlow";
 import SideRail from "@/components/SideRail";
+import StickyNav from "@/components/StickyNav";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import ChatGuide from "@/components/ChatGuide";
 import CommandPalette from "@/components/CommandPalette";
@@ -24,6 +25,7 @@ export default function Home() {
         Skip to content
       </a>
       <ScrollProgress />
+      <StickyNav />
       <SideRail
         email={PORTFOLIO_DATA.identity.email}
         github={PORTFOLIO_DATA.identity.links.github}

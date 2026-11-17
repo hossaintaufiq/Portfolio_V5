@@ -77,7 +77,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 2rem;
+  scroll-padding-top: 4.75rem;
 }
 
 body {
@@ -143,12 +143,50 @@ button:focus-visible {
   );
 }
 
-/* The recruiter snapshot: vibrant cobalt to violet with warm and teal glows. */
+/* The recruiter snapshot: a light pastel card, vibrant in the dark theme. */
 .snapshot {
+  --snap-fg: #16213a;
+  --snap-soft: #3f4a6b;
+  --snap-label: #2440d8;
+  --snap-card: rgba(255, 255, 255, 0.72);
+  --snap-accent: #ff8a5c;
+  --snap-pill: rgba(255, 255, 255, 0.75);
+  --snap-btn: #16213a;
+  --snap-btn-fg: #ffffff;
+  --snap-ghost: rgba(22, 33, 58, 0.38);
+  --snap-ghost-hover: rgba(22, 33, 58, 0.07);
+  --snap-shadow: rgba(36, 64, 216, 0.35);
+  --wave-1: rgba(255, 176, 122, 0.55);
+  --wave-2: rgba(94, 214, 196, 0.5);
+  --wave-3: rgba(124, 144, 255, 0.45);
+  background:
+    radial-gradient(34rem 20rem at 100% -10%, rgba(255, 190, 150, 0.6), transparent 62%),
+    radial-gradient(30rem 18rem at 0% 110%, rgba(150, 228, 212, 0.6), transparent 65%),
+    linear-gradient(118deg, #e4ebff 0%, #eee8ff 52%, #ffeadb 100%);
+}
+[data-theme="dark"] .snapshot {
+  --snap-fg: #ffffff;
+  --snap-soft: rgba(255, 255, 255, 0.9);
+  --snap-label: #ffe6c6;
+  --snap-card: rgba(255, 255, 255, 0.12);
+  --snap-accent: #ffd9a8;
+  --snap-pill: rgba(0, 0, 0, 0.2);
+  --snap-btn: #ffffff;
+  --snap-btn-fg: #2440d8;
+  --snap-ghost: rgba(255, 255, 255, 0.55);
+  --snap-ghost-hover: rgba(255, 255, 255, 0.15);
+  --snap-shadow: rgba(36, 64, 216, 0.75);
+  --wave-1: rgba(255, 168, 96, 0.55);
+  --wave-2: rgba(34, 211, 197, 0.55);
+  --wave-3: rgba(24, 22, 92, 0.5);
   background:
     radial-gradient(34rem 20rem at 100% -10%, rgba(255, 150, 90, 0.34), transparent 62%),
     radial-gradient(30rem 18rem at 0% 110%, rgba(43, 181, 160, 0.4), transparent 65%),
     linear-gradient(118deg, #2440d8 0%, #5a3fd9 52%, #8a3fd0 100%);
+}
+[data-theme="dark"] .snapshot .scribble {
+  --sw: var(--sw-peach);
+  --ss: var(--ss-peach);
 }
 
 @keyframes wave-drift {
@@ -395,6 +433,7 @@ body::before {
   .grade-contact * {
     color: #16213a !important;
   }
+  [aria-label="Sticky navigation"],
   [aria-label="Portfolio guide"],
   [aria-label="Sections"],
   [aria-label="Contact shortcuts"],

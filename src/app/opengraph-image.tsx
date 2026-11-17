@@ -6,9 +6,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const proof = [
+  ["200+", "schools on the SaaS I build"],
   ["4 apps", "on one multi-tenant backend"],
   ["20%", "faster front-end load"],
-  ["< 10 tk", "target per speaking session"],
 ];
 
 // The link-preview card shown when the site is shared.

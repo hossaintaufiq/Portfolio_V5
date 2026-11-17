@@ -20,7 +20,9 @@ export type Glyph =
   | "audio"
   | "book"
   | "terminal"
-  | "landmark";
+  | "landmark"
+  | "database"
+  | "layers";
 
 export type ArchZone = {
   x: number;
@@ -77,6 +79,7 @@ const C2 = 208;
 const C3 = 396;
 const C4 = 584;
 const C5 = 772;
+const C6 = 960;
 
 export const ARCHITECTURES: Record<string, Architecture> = {
   /* ------------------------------------------------------------------ */
@@ -136,6 +139,63 @@ export const ARCHITECTURES: Record<string, Architecture> = {
       { from: "rep", to: "r2", d: "M568 355 V485 H772", label: { x: 640, y: 477, text: "files" } },
       { from: "tpl", to: "mfg", d: "M700 88 V46 H500 V88", quiet: true, label: { x: 560, y: 40, text: "configures" } },
       { from: "rep", to: "ai", d: "M474 382 V404 H662 V382", quiet: true, label: { x: 520, y: 398, text: "feeds" } },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ */
+  "shorborno-cloud": {
+    label:
+      "High-level system design of Shorborno Cloud, a multi-tenant school management SaaS. Visitors and school users reach Cloudflare, which provides the CDN, DNS and security and serves files from R2 object storage. Behind it, on AWS, a Laravel website and a Laravel school application send requests to an API gateway. A tenant resolver scopes each request to one school, and an identity and RBAC service checks the role. Requests then reach five microservices: academics, attendance, fees and payments, reports and notifications. The services share a relational database scoped by school, and notifications use cache and queues.",
+    caption:
+      "Cloudflare filters and caches at the edge. On AWS, every request is scoped to one school and checked against a role before any microservice runs. Hover a part to see what it does.",
+    viewBox: "0 0 1150 510",
+    zones: [
+      { x: C3 - 18, y: 20, w: 752, h: 470, label: "Hosted on AWS", outer: true },
+      { x: C1 - 10, y: 56, w: 176, h: 246, label: "People" },
+      { x: C2 - 10, y: 132, w: 176, h: 340, label: "Cloudflare" },
+      { x: C3 - 10, y: 56, w: 176, h: 256, label: "Laravel apps (PHP)" },
+      { x: C4 - 10, y: 56, w: 176, h: 256, label: "Gateway and security" },
+      { x: C5 - 10, y: 56, w: 176, h: 416, label: "Microservices" },
+      { x: C6 - 10, y: 216, w: 176, h: 260, label: "Data layer" },
+    ],
+    nodes: [
+      { id: "visitors", x: C1, y: 88, title: "Visitors", sub: "Prospective schools", glyph: "globe", desc: "Schools and parents learning about the product on the public website." },
+      { id: "users", x: C1, y: 248, title: "School users", sub: "Admin, teacher, parent", glyph: "users", desc: "The people who run a school day to day. Each one sees only what their role allows." },
+      { id: "edge", x: C2, y: 168, title: "Edge network", sub: "CDN, DNS, security", icon: "Cloudflare", desc: "Cloudflare sits in front of everything. It serves cached assets from the edge and filters bad traffic before it reaches AWS." },
+      { id: "r2", x: C2, y: 408, title: "Object storage", sub: "Cloudflare R2", icon: "Cloudflare", desc: "Uploaded files and generated documents live in R2, away from the database and close to the CDN." },
+      { id: "site", x: C3, y: 88, title: "Website", sub: "Laravel, PHP", icon: "Laravel", desc: "The public product website, built with Laravel." },
+      { id: "app", x: C3, y: 248, title: "School app", sub: "Laravel, PHP", icon: "Laravel", desc: "The school application, built with Laravel. Every school signs in here and works inside its own tenant." },
+      { id: "gw", x: C4, y: 88, title: "API gateway", sub: "Single entry point", glyph: "zap", desc: "One entry point for the platform. It routes each request to the right microservice." },
+      { id: "tenant", x: C4, y: 168, title: "Tenant resolver", sub: "Scopes to one school", glyph: "building", desc: "Works out which school a request belongs to and scopes everything after it to that school." },
+      { id: "rbac", x: C4, y: 248, title: "Identity and RBAC", sub: "Roles per school", glyph: "shield", desc: "Verifies who is calling, then checks their role against the action. Roles such as admin, teacher and parent decide what is allowed. Denied by default." },
+      { id: "acad", x: C5, y: 88, title: "Academics", sub: "Students, results", glyph: "book", desc: "Students, classes, subjects and results for each school." },
+      { id: "att", x: C5, y: 168, title: "Attendance", sub: "Daily records", glyph: "calendar", desc: "Daily attendance records for students and staff." },
+      { id: "fees", x: C5, y: 248, title: "Fees and payments", sub: "Invoices, collection", glyph: "card", desc: "Fee structures, invoices and collection." },
+      { id: "rep", x: C5, y: 328, title: "Reports", sub: "Dashboards, exports", glyph: "chart", desc: "Dashboards and exports for school leaders." },
+      { id: "notif", x: C5, y: 408, title: "Notifications", sub: "SMS, email, notices", glyph: "mail", desc: "Sends messages and notices to staff and parents. Slow sends run on a queue so they never block a request." },
+      { id: "db", x: C6, y: 248, title: "Relational database", sub: "Amazon RDS", glyph: "database", desc: "One database where every record is scoped to a school, so one school can never see another's data." },
+      { id: "queue", x: C6, y: 408, title: "Cache and queues", sub: "Fast reads, async work", glyph: "layers", desc: "Caching for hot reads and queues for slow work, so the platform stays fast under load." },
+    ],
+    edges: [
+      { from: "visitors", to: "edge", d: "M176 115 H192 V195 H208" },
+      { from: "users", to: "edge", d: "M176 275 H192 V195 H208", arrow: false },
+      { from: "edge", to: "site", d: "M364 195 H380 V115 H396" },
+      { from: "edge", to: "app", d: "M364 195 H380 V275 H396", arrow: false },
+      { from: "edge", to: "r2", d: "M286 222 V408", quiet: true, label: { x: 294, y: 320, text: "serves files" } },
+      { from: "app", to: "r2", d: "M474 302 V435 H364", label: { x: 388, y: 427, text: "uploads" } },
+      { from: "app", to: "gw", d: "M552 275 H568 V115 H584" },
+      { from: "gw", to: "tenant", d: "M662 142 V168" },
+      { from: "tenant", to: "rbac", d: "M662 222 V248" },
+      { from: "rbac", to: "acad", d: "M740 275 H756 V115 H772", arrow: false },
+      { from: "rbac", to: "att", d: "M740 275 H756 V195 H772", arrow: false },
+      { from: "rbac", to: "fees", d: "M740 275 H772" },
+      { from: "rbac", to: "rep", d: "M740 275 H756 V355 H772", arrow: false },
+      { from: "rbac", to: "notif", d: "M740 275 H756 V435 H772", arrow: false },
+      { from: "acad", to: "db", d: "M928 115 H944 V275", arrow: false },
+      { from: "att", to: "db", d: "M928 195 H944 V275", arrow: false },
+      { from: "rep", to: "db", d: "M928 355 H944 V275", arrow: false },
+      { from: "fees", to: "db", d: "M928 275 H960" },
+      { from: "notif", to: "queue", d: "M928 435 H960" },
     ],
   },
 

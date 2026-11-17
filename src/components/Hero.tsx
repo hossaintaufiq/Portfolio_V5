@@ -20,6 +20,7 @@ type Proof = {
 
 // Only figures that are true and sourced from the work itself.
 const PROOF: Proof[] = [
+  { to: 200, suffix: "+", label: "schools use the SaaS I build", where: "Shorborno Cloud, ZeroDevs Ltd" },
   { to: 4, suffix: " apps", label: "on one multi-tenant backend", where: "Softlligence Manufacturing Cloud" },
   { to: 20, suffix: "%", label: "faster front-end load", where: "Brooksource, Fortune 500 client" },
   {
@@ -28,7 +29,6 @@ const PROOF: Proof[] = [
     where: "Edumax Labs, speech AI",
     tag: "Target",
   },
-  { to: 4, label: "research projects in RAG, deep learning and markets", where: "North South University and independent" },
 ];
 
 export default function Hero() {
@@ -57,9 +57,9 @@ export default function Hero() {
             behind education and manufacturing software.
           </h1>
           <p className="mt-6 max-w-[58ch] text-lg leading-relaxed text-[#b5bed3]">
-            A founder-engineer who ships end to end: from a multi-tenant
-            manufacturing ERP serving four industry apps to speech AI for
-            students&rsquo; speaking practice at Edumax Labs. Based in Dhaka,
+            A founder-engineer who ships end to end: from a school SaaS used
+            by 200+ schools and a multi-tenant manufacturing ERP to speech AI
+            for students&rsquo; speaking practice at Edumax Labs. Based in Dhaka,
             finishing my computer science degree at North South University.
           </p>
 

@@ -38,6 +38,7 @@ const ITEMS: Item[] = [
   { group: "Go to", label: "Background", hint: "Education and volunteering", icon: User, keywords: "education degree certifications", run: () => goTo("background") },
   { group: "Go to", label: "Contact", hint: "Send a message", icon: Mail, keywords: "hire email form", run: () => goTo("contact") },
   { group: "Projects", label: "Softlligence Manufacturing Cloud", hint: "Multi-tenant ERP, four apps", icon: FolderGit2, keywords: "erp steel garments saas", run: () => goTo("softlligence-cloud") },
+  { group: "Projects", label: "Shorborno Cloud", hint: "School SaaS, 200+ schools", icon: FolderGit2, keywords: "school laravel php zerodevs saas", run: () => goTo("shorborno-cloud") },
   { group: "Projects", label: "Kia Bangladesh", hint: "Immersive 3D showroom", icon: FolderGit2, keywords: "three.js blender gsap", run: () => goTo("kia-bangladesh") },
   { group: "Projects", label: "Playpen School", hint: "CMS, admissions, payments", icon: FolderGit2, keywords: "school cms payment", run: () => goTo("playpen-school") },
   { group: "Projects", label: "Lucy", hint: "Local voice assistant", icon: FolderGit2, keywords: "voice ollama whisper", run: () => goTo("lucy-ai-assistant") },

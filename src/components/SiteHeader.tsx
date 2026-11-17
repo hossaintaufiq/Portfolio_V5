@@ -11,7 +11,7 @@ const links = [
 
 export default function SiteHeader() {
   return (
-    <header className="flex flex-wrap items-center gap-x-4 gap-y-3 lg:gap-x-8 py-5 lg:flex-nowrap lg:py-8">
+    <header id="site-header" className="flex flex-wrap items-center gap-x-4 gap-y-3 lg:gap-x-8 py-5 lg:flex-nowrap lg:py-8">
       <a
         href="#top"
         className="order-1 whitespace-nowrap font-serif text-base sm:text-lg font-semibold tracking-tight lg:mr-auto"

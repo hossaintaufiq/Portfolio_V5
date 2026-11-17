@@ -44,6 +44,8 @@ import {
   siGsap,
   siThreedotjs,
   siBlender,
+  siLaravel,
+  siPhp,
 } from "simple-icons";
 
 export type BrandIcon = { path: string; hex: string; title: string };
@@ -94,6 +96,8 @@ const REGISTRY: Record<string, BrandIcon> = {
   gsap: siGsap,
   threejs: siThreedotjs,
   blender: siBlender,
+  laravel: siLaravel,
+  php: siPhp,
 };
 
 const ALIASES: Record<string, string> = {

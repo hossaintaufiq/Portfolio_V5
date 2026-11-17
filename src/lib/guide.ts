@@ -25,10 +25,11 @@ export const FIRST_CHIPS = [
   "How do I contact him?",
 ];
 
-const FEATURED = ["softlligence-cloud", "kia-bangladesh", "playpen-school", "lucy-ai-assistant"];
+const FEATURED = ["softlligence-cloud", "shorborno-cloud", "kia-bangladesh", "playpen-school", "lucy-ai-assistant"];
 
 const NAMES: Record<string, string> = {
   "softlligence-cloud": "Softlligence Manufacturing Cloud",
+  "shorborno-cloud": "Shorborno Cloud",
   "playpen-school": "Playpen School website",
   "mango-ev": "Mango Electric Vehicle website",
   "kia-bangladesh": "Kia Bangladesh",
@@ -43,6 +44,7 @@ const NAMES: Record<string, string> = {
 
 const ALIASES: Record<string, string[]> = {
   "softlligence-cloud": ["softlligence", "manufacturing cloud", "erp", "mis", "steel mill", "garments", "saas"],
+  "shorborno-cloud": ["shorborno", "school management", "zerodevs", "zero devs", "laravel"],
   "kia-bangladesh": ["kia", "showroom"],
   "playpen-school": ["playpen", "school", "cms"],
   "lucy-ai-assistant": ["lucy", "voice assistant", "jarvis", "assistant"],
@@ -95,6 +97,7 @@ const RESEARCH_TITLES: Record<string, string> = {
 
 const SHORT_LABEL: Record<string, string> = {
   "softlligence-cloud": "Softlligence",
+  "shorborno-cloud": "Shorborno",
   "kia-bangladesh": "Kia",
   "playpen-school": "Playpen",
   "lucy-ai-assistant": "Lucy",

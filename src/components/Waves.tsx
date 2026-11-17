@@ -13,9 +13,9 @@ function wavePath(amp: number, mid: number, period = 720, periods = 4) {
 type Layer = { fill: string; amp: number; mid: number; height: string; speed: string; reverse?: boolean };
 
 const LAYERS: Layer[] = [
-  { fill: "rgba(255, 168, 96, 0.55)", amp: 26, mid: 58, height: "h-28", speed: "34s", reverse: true },
-  { fill: "rgba(34, 211, 197, 0.55)", amp: 22, mid: 66, height: "h-24", speed: "26s" },
-  { fill: "rgba(24, 22, 92, 0.5)", amp: 18, mid: 80, height: "h-20", speed: "20s", reverse: true },
+  { fill: "var(--wave-1)", amp: 26, mid: 58, height: "h-28", speed: "34s", reverse: true },
+  { fill: "var(--wave-2)", amp: 22, mid: 66, height: "h-24", speed: "26s" },
+  { fill: "var(--wave-3)", amp: 18, mid: 80, height: "h-20", speed: "20s", reverse: true },
 ];
 
 /** Layered colour waves along the bottom edge, drifting slowly. Decorative. */
