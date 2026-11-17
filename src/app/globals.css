@@ -32,6 +32,8 @@
   --sw-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7 C 12 2 20 11 32 6 S 52 3 64 7 S 86 10 98 5' fill='none' stroke='%232440d8' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
   --sw-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7 C 12 2 20 11 32 6 S 52 3 64 7 S 86 10 98 5' fill='none' stroke='%237f95ff' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
   --ss-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 C 30 3 62 10 98 3' fill='none' stroke='%232440d8' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M14 11 C 40 8 66 12 88 9' fill='none' stroke='%232440d8' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --sw-peach: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7 C 12 2 20 11 32 6 S 52 3 64 7 S 86 10 98 5' fill='none' stroke='%23ffd9a8' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --ss-peach: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 C 30 3 62 10 98 3' fill='none' stroke='%23ffd9a8' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M14 11 C 40 8 66 12 88 9' fill='none' stroke='%23ffd9a8' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
   --ss-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 C 30 3 62 10 98 3' fill='none' stroke='%237f95ff' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M14 11 C 40 8 66 12 88 9' fill='none' stroke='%237f95ff' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
 }
 
@@ -141,6 +143,25 @@ button:focus-visible {
   );
 }
 
+/* The recruiter snapshot: vibrant cobalt to violet with warm and teal glows. */
+.snapshot {
+  background:
+    radial-gradient(34rem 20rem at 100% -10%, rgba(255, 150, 90, 0.34), transparent 62%),
+    radial-gradient(30rem 18rem at 0% 110%, rgba(43, 181, 160, 0.4), transparent 65%),
+    linear-gradient(118deg, #2440d8 0%, #5a3fd9 52%, #8a3fd0 100%);
+}
+
+@keyframes wave-drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .wave-drift {
+    animation: wave-drift 30s linear infinite;
+  }
+}
+
 /* The contact band shades from cobalt into deep indigo. */
 .grade-contact {
   background:
@@ -171,6 +192,10 @@ button:focus-visible {
 .scribble-light {
   --sw: var(--sw-light);
   --ss: var(--ss-light);
+}
+.scribble.scribble-peach {
+  --sw: var(--sw-peach);
+  --ss: var(--ss-peach);
 }
 .scribble-swash {
   background-image: var(--ss);
